@@ -1,0 +1,245 @@
+//Team Leader: Benedick Guile V. Belisano
+/*Member: 
+    JB Barotag
+    Dexter Valencia
+    Nicole Santon 
+    Byron Boral
+*/
+
+//Scanner 
+import java.util.Scanner;
+
+public class BankSystem {
+    
+    public static void main(String[] args) {
+        double savingAccount = 0;
+        double chequeAccount = 0;
+        Scanner input = new Scanner(System.in);
+        int type;
+        String subtype;
+         
+        AccountManagement bankAccount = new BankSystem().new AccountManagement(input, savingAccount, chequeAccount);
+
+        while (true) {
+            
+            try{
+            System.out.print("\n----------<BANK ACCOUNT MANAGEMENT SYSTEM>----------");
+            System.out.print("\n[1] Create Account and Deposit Initial Balance\n[2] Deposit Money [Saving Account/Checking Account]\n[3] Display Balance Account\n[4] Withdraw Money [Saving/Checking Account]\n[5] Leave the program");
+            System.out.print("\nType your choice at this blank: ");
+            subtype = input. nextLine();
+            type = Integer.parseInt(subtype);
+            
+            //5 case for bank system
+            switch (type) {
+                
+                //Creating Account
+                case 1:
+                    try{
+
+                        System.out.print("\nEnter the initial balance for your saving account: ");
+                        subtype = input.nextLine();
+                        savingAccount = Double.parseDouble(subtype);
+
+                        System.out.print("\nEnter the initial balance for your checking account: ");
+                        subtype = input.nextLine();
+                        chequeAccount = Double.parseDouble(subtype);
+                       
+                        bankAccount.bankAccount(savingAccount, chequeAccount);
+    
+                        if(savingAccount != savingAccount && chequeAccount != chequeAccount){
+                            System.out.print("\n<--Invalid input-->");
+                        }
+                        else{
+                            System.out.println("Account was created successfully!");
+                        }
+
+                    }catch(Exception e){
+                        System.out.print("\n<--Invalid input-->");
+                    }  
+                    break;
+                //Deposit for Saving & Checking
+                case 2:
+                    try{
+                        System.out.print("\nEnter amount you want to deposit in bank: ");
+                        subtype = input.nextLine();
+                        double depositAccount = Double.parseDouble(subtype);
+                        if(depositAccount != depositAccount){
+                            bankAccount.depositPhase(depositAccount);
+                        }else{
+                            System.out.println("\n<--Invalid input.-->");
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.print("\n<--Invalid input-->");
+                    }
+                    break;
+
+                //Display Saving & Checking
+                case 3:
+                    bankAccount.displayPhase();
+                    break;
+                // Withdraw for Saving & Checking
+                case 4:
+                    try{
+                        System.out.print("\nEnter amount you want to withdraw: ");
+                        subtype = input.nextLine();
+                        double withdrawAccount = Double.parseDouble(subtype);
+
+                        bankAccount.withdrawPhase(withdrawAccount);
+                    }catch(Exception e){
+                        System.out.print("\n<--Invalid input-->");
+                    }
+                    break;
+                
+                //Official Exit of Program 
+                case 5:
+                    System.out.println("\n----------------------------------------------------");
+                    System.out.print("\nNow you're leaving the program, Thank you for using it.\n");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.print("\n<--Invalid input-->");
+                    break;
+                }
+                        
+                }catch(Exception e){
+                    System.out.println("\n<--Invalid input.-->");
+                }
+        }
+    }
+
+    //New class created for some needs
+    class AccountManagement extends BankSystem{
+        
+        private Scanner input;
+        public double savingAccount;
+        public double chequeAccount;
+        private int type;
+
+        public AccountManagement(Scanner input, double savingAccount, double chequeAccount) {
+            this.input = input;
+            this.savingAccount = savingAccount;
+            this.chequeAccount = chequeAccount;
+        }
+
+        public void bankAccount(double savingAccount, double chequeAccount) {
+            this.savingAccount = savingAccount;
+            this.chequeAccount = chequeAccount;
+        }
+
+        //Deposit Method
+        public void depositPhase(double depositAccount) {
+
+                try{
+                System.out.print("\nChoose Account\n[1] Saving Account \n[2] Checking Account");
+                System.out.print("\nType your choice at this blank: ");
+                String subtype = input. nextLine();
+                type = Integer.parseInt(subtype);
+
+                switch (type) {
+                    case 1:
+                            newDepositDisplay(depositAccount);
+                            System.out.println("\nDeposit Successfully.\n");
+                            break;
+                    case 2:
+                            newDepositDisplay(depositAccount);
+                            System.out.println("\nDeposit Succesfully.\n");
+                            break;
+
+                    default:
+                        System.out.print("<--Invalid input-->");
+                        break;
+                    }
+                }catch(Exception e){
+                    System.out.print("<--Invalid input-->");
+                }    
+        }
+
+        public void newDisplay() {
+        }
+        
+        //Display Method
+        public void displayPhase() {
+            newDisplay();
+            System.out.println("\n{Display Balance of Account}");
+            System.out.printf("\n[Saving Account Balance]: ₱ %.2f", savingAccount);
+            System.out.printf("\n[Checking Account Balance]: ₱ %.2f", chequeAccount);
+        }
+
+        //Access for Deposited Phase for updating saving & checking
+        public void newDepositDisplay(double depositAccount) {
+            switch(type){
+                case 1:
+                    savingAccount += depositAccount;
+                    break;
+                
+                case 2:
+                    chequeAccount += depositAccount;
+                    break;
+
+                default:
+                    System.out.print("\n<--Invalid input-->");
+                    break;
+                }    
+        }
+
+        //Access for Withdraw Phase for updating saving & checking 
+        public void newWithdrawDisplay(double withdrawAccount) {
+            switch(type){
+                case 1:
+                    savingAccount -= withdrawAccount;
+                    break;
+                
+                case 2:
+                    chequeAccount -=  withdrawAccount;
+                    break;
+
+                default:
+                    System.out.print("\n<--Invalid input-->");
+                    break;
+                }  
+        }
+
+        //Withdraw Method
+        public void withdrawPhase(double withdrawAccount) {
+                try{
+                    System.out.print("\nChoose Account\n[1] Saving Account \n[2] Checking Account");
+                    System.out.print("\nType your choice at this blank: ");
+                    String subtype = input. nextLine();
+                    type = Integer.parseInt(subtype);
+
+                    switch (type) {
+                        case 1:
+                            if (savingAccount >= withdrawAccount) {
+                                newWithdrawDisplay(withdrawAccount);
+
+                                System.out.println("\nWithdrawal successful!\n");
+                                System.out.printf("\nRemaining balance for saving account: \r\n" + //
+                                                                "₱ %.2f", savingAccount);
+                            } else {
+                                System.out.println("\nYour saving account balance is insufficient");
+                            }
+                            break;
+                        case 2:
+                            if (chequeAccount >= withdrawAccount) {
+                                newWithdrawDisplay(withdrawAccount);
+
+                                System.out.println("\nWithdrawal successful!\n");
+                                System.out.printf("\nRemaining balance for checking account: \r\n" + //
+                                                                "₱ %.2f", chequeAccount);
+                            } else {
+                                System.out.println("\nYour checking account balance is insufficient");
+                            }
+                            break;
+                        default:
+                            System.out.print("\n<--Invalid input-->");
+                            break;
+                }
+
+                }catch(Exception e){
+                    System.out.print("\n<--Invalid input-->");
+            }
+        }
+    }
+}
