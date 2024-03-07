@@ -1,17 +1,36 @@
 import java.util.Scanner;
 import java.util.Random;
-import java.util.random.*;
 
 public class MapProgram {
     static Random shuffle = new Random();
     static Scanner find = new Scanner(System.in);
     static String anotherLocation;
-    static String empty = "";
-    static String places[] = { "SCHOOL", "JOLLIBEE", "HOSPITAL", "MCDO", "SM" };
+    static String places[] = { "SCHOOL", "JOLLIBEE", "HOSPITAL", "MCDO", "SM", "APARTMENT"};
     static String thecurrentLocation = places[shuffle.nextInt(places.length)];
     static boolean op = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        String sim = """
+            ████████╗    ██╗  ██╗    ███████╗    ███╗   ███╗     █████╗     ██████╗     
+            ╚══██╔══╝    ██║  ██║    ██╔════╝    ████╗ ████║    ██╔══██╗    ██╔══██╗    
+               ██║       ███████║    █████╗      ██╔████╔██║    ███████║    ██████╔╝    
+               ██║       ██╔══██║    ██╔══╝      ██║╚██╔╝██║    ██╔══██║    ██╔═══╝     
+               ██║       ██║  ██║    ███████╗    ██║ ╚═╝ ██║    ██║  ██║    ██║         
+               ╚═╝       ╚═╝  ╚═╝    ╚══════╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝    ╚═╝         
+                                                                                        
+             ██╗ ██████╗   ██╗██╗   ██████╗ ██╗                                         
+            ██╔╝██╔═══██╗ ██╔╝╚██╗ ██╔═══██╗╚██╗                                        
+            ██║ ██║   ██║██╔╝  ╚██╗██║   ██║ ██║                                        
+            ██║ ██║   ██║╚██╗  ██╔╝██║   ██║ ██║                                        
+            ╚██╗╚██████╔╝ ╚██╗██╔╝ ╚██████╔╝██╔╝                                        
+             ╚═╝ ╚═════╝   ╚═╝╚═╝   ╚═════╝ ╚═╝                                                                                                                                 
+                """;
+
+
+            for(int i = 0; i < sim.length(); i++){
+                System.out.print(sim.charAt(i));
+                Thread.sleep(5);
+            }
         
         designMap mapDesign = new designMap();
         MapFunctionality mapFunction = new MapFunctionality();
@@ -22,10 +41,12 @@ public class MapProgram {
         int distance4 = shuffle.nextInt(10, 100);
         int distance5 = shuffle.nextInt(10, 100);
         int distance6 = shuffle.nextInt(10, 100);
+        int distance7 = shuffle.nextInt(10, 100);
+        int distance8 = shuffle.nextInt(10, 100);
 
         do{
 
-        mapDesign.generateMap(thecurrentLocation, places, distance1, distance2, distance3, distance4,distance5, distance6);
+        mapDesign.generateMap(thecurrentLocation, places, distance1, distance2, distance3, distance4,distance5, distance6, distance7, distance8);
 
         // DISPLAY DETAILS SHOWN IN MAP
         System.out.print("*****************************************************************************************************************************************************");
@@ -40,7 +61,8 @@ public class MapProgram {
         // DISPLAY CURRENT LOCATION OF THE USER[Randomize]
         // The story was idea of mr. Byron Boral
         // Dexter Valencia
-        // edited by: Nicole Stanton 
+        // edited by: Nicole Stanton
+         
 
             randomLocation();
             System.out.print("");
@@ -50,12 +72,27 @@ public class MapProgram {
 
             if( menu.equalsIgnoreCase(thecurrentLocation)){
                 System.out.println("\nYou are already in this location.\n");
-                System.out.println("\nDo you want to go back there?\n[Y] Yes, I want to back.\n[N] nevermind.\n");
+                System.out.println("\nDo you want to stay here?\n[Y] Yes, I want to stay.\n[N] No, I want to leave.\n");
                 anotherLocation = find.nextLine();
                     
                     if (anotherLocation.equalsIgnoreCase(("Y").trim()) || anotherLocation.equalsIgnoreCase(("y").trim())) {
                     continue;  
                     }else{
+                        String art = """
+                            ████████╗    ██╗  ██╗     █████╗     ███╗   ██╗    ██╗  ██╗    ██╗   ██╗     ██████╗     ██╗   ██╗    ██╗
+                            ╚══██╔══╝    ██║  ██║    ██╔══██╗    ████╗  ██║    ██║ ██╔╝    ╚██╗ ██╔╝    ██╔═══██╗    ██║   ██║    ██║
+                               ██║       ███████║    ███████║    ██╔██╗ ██║    █████╔╝      ╚████╔╝     ██║   ██║    ██║   ██║    ██║
+                               ██║       ██╔══██║    ██╔══██║    ██║╚██╗██║    ██╔═██╗       ╚██╔╝      ██║   ██║    ██║   ██║    ╚═╝
+                               ██║       ██║  ██║    ██║  ██║    ██║ ╚████║    ██║  ██╗       ██║       ╚██████╔╝    ╚██████╔╝    ██╗
+                               ╚═╝       ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚═╝  ╚═══╝    ╚═╝  ╚═╝       ╚═╝        ╚═════╝      ╚═════╝     ╚═╝
+                                                                                                                                                                                                                                                                                                   
+                                """;
+                
+                
+                            for(int i = 0; i < art.length(); i++){
+                                System.out.print(art.charAt(i));
+                            }
+                        System.out.println("FOR USING THIS MAP");
                         System.exit(0);
                     }
                 continue;
@@ -78,18 +115,32 @@ public class MapProgram {
 
 
             // Display Possible Route Function
-            mapFunction.userDestination(menu, thecurrentLocation, places, distance1, distance2, distance3, distance4, distance5, distance6);
+            mapFunction.userDestination(menu, thecurrentLocation, places, distance1, distance2, distance3, distance4, distance5, distance6, distance7, distance8);
 
             thecurrentLocation = menu.toUpperCase();
             // Option
-            System.out.println("\nDo you want to go there?\n[Y] Yes, I want to go there.\n[N] nevermind.\n");
+            System.out.print("\nDo you still want to go to another place?\n[Y] Yes, I want to go somewhere.\n[N] No, want to exit .\nChoice: ");
                     anotherLocation = find.nextLine();
                         
                         if (anotherLocation.equalsIgnoreCase(("Y").trim()) || anotherLocation.equalsIgnoreCase(("y").trim())) {
                         continue;   
                     }else{
                         op = false;
-                        System.out.println("I hope you enjoy your strolling outside the city.");
+                        String art = """
+                            ████████╗    ██╗  ██╗     █████╗     ███╗   ██╗    ██╗  ██╗    ██╗   ██╗     ██████╗     ██╗   ██╗    ██╗
+                            ╚══██╔══╝    ██║  ██║    ██╔══██╗    ████╗  ██║    ██║ ██╔╝    ╚██╗ ██╔╝    ██╔═══██╗    ██║   ██║    ██║
+                               ██║       ███████║    ███████║    ██╔██╗ ██║    █████╔╝      ╚████╔╝     ██║   ██║    ██║   ██║    ██║
+                               ██║       ██╔══██║    ██╔══██║    ██║╚██╗██║    ██╔═██╗       ╚██╔╝      ██║   ██║    ██║   ██║    ╚═╝
+                               ██║       ██║  ██║    ██║  ██║    ██║ ╚████║    ██║  ██╗       ██║       ╚██████╔╝    ╚██████╔╝    ██╗
+                               ╚═╝       ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚═╝  ╚═══╝    ╚═╝  ╚═╝       ╚═╝        ╚═════╝      ╚═════╝     ╚═╝
+                                                                                                                                                                                                                                                                                                   
+                                """;
+                
+                
+                            for(int i = 0; i < art.length(); i++){
+                                System.out.print(art.charAt(i));
+                            }
+                            System.out.println("FOR USING THIS MAP");
                         break;
                     }
         } while (op);
@@ -105,11 +156,29 @@ public class MapProgram {
             (smStory);
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");  
             System.out.println("\nYour current location: " + places[4]);
-            System.out.println("\nJOLLIBEE" + "\nHOSPITAL" + "\nMCDO" + "\nSCHOOL");
-            
+            for(int i = 0; i < places.length; i++){
+
+                if(i != 4)
+                System.out.println(places[i]);
+                
+            }
+        } else{
+        
+        if (thecurrentLocation.equalsIgnoreCase((places[5]).trim())) {
+                System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
+                String jollibeeStory = "\n\tYou and your family are finish in finding your place to sleep but your sister wants a family bonding. Where do you want to go next?\n".toUpperCase();
+                System.out.println
+                (jollibeeStory);
+                System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("\nYour current location: " + places[5]);
+                    for(int i = 0; i < places.length; i++){
+    
+                        if(i != 5)
+                        System.out.println(places[i]);
+                        
+                    }
         }
 
-        else{
 
         
         if (thecurrentLocation.equalsIgnoreCase((places[1]).trim())) {
@@ -119,7 +188,12 @@ public class MapProgram {
             (jollibeeStory);
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("\nYour current location: " + places[1]);
-                System.out.println("\nHOSPITAL" + "\nSCHOOL" + "\nSM" + "\nMCDO");
+                for(int i = 0; i < places.length; i++){
+
+                    if(i != 1)
+                    System.out.println(places[i]);
+                    
+                }
         }
 
         if (thecurrentLocation.equalsIgnoreCase((places[2]).trim())) {
@@ -129,8 +203,12 @@ public class MapProgram {
             (hospitalStory);
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("\nYour current location: " + places[2]);
-                System.out.println("\nSCHOOL" + "\nSM" + "\nMCDO" + "\nJOLLIBEE");
-            
+                for(int i = 0; i < places.length; i++){
+
+                    if(i != 2)
+                    System.out.println(places[i]);
+                    
+                }
         }
 
         if (thecurrentLocation.equalsIgnoreCase((places[3]).trim())) {
@@ -140,8 +218,12 @@ public class MapProgram {
             (mcdoStory);
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("\nYour current location: " + places[3]);
-                System.out.println("\nSM" + "\nJOLLIBEE" + "\nHOSPITAL" + "\nSCHOOL");
-  
+                for(int i = 0; i < places.length; i++){
+
+                    if(i != 3)
+                    System.out.println(places[i]);
+                    
+                }
             }
 
         if (thecurrentLocation.equalsIgnoreCase((places[0]).trim())) {
@@ -151,10 +233,17 @@ public class MapProgram {
                 (schoolStory); 
                 System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("\nYour current location: " + places[0]);
-                System.out.println("\nMCDO" + "\nSM" + "\nHOSPITAL" + "\nJOLLIBEE");
+                for(int i = 0; i < places.length; i++){
+
+                    if(i != 0)
+                    System.out.println(places[i]);
+                    
+                }
             
-            }
         }
+        
+    }
+    
     }
 }
 
