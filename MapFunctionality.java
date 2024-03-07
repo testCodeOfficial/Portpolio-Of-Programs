@@ -224,7 +224,7 @@ public class MapFunctionality {
 
                     else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("Third  Route " + currentLocation[0] + " >>> " + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) " + " >>> " + currentLocation[5] + " (" + distance8 + "m)" + " >>> " + currentLocation[6] + " (" + distance7 + "m)" + " (" + distance6 + "m)" +"\nCalculated Distance: " + +thirdRouteSM + "m\n");
+                        System.out.println("Third  Route " + currentLocation[0] + " >>> " + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) " + " >>> " + currentLocation[5] + " (" + distance8 + "m)" + " >>> " + currentLocation[4] + " (" + distance7 + "m)" + " (" + distance6 + "m)" +"\nCalculated Distance: " + +thirdRouteSM + "m\n");
                         if (secondRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {

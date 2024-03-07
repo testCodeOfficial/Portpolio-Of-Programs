@@ -9,32 +9,13 @@ public class MapProgram {
     static String thecurrentLocation = places[shuffle.nextInt(places.length)];
     static boolean op = true;
 
-    public static void main(String[] args) throws InterruptedException {
-        String sim = """
-            ████████╗    ██╗  ██╗    ███████╗    ███╗   ███╗     █████╗     ██████╗     
-            ╚══██╔══╝    ██║  ██║    ██╔════╝    ████╗ ████║    ██╔══██╗    ██╔══██╗    
-               ██║       ███████║    █████╗      ██╔████╔██║    ███████║    ██████╔╝    
-               ██║       ██╔══██║    ██╔══╝      ██║╚██╔╝██║    ██╔══██║    ██╔═══╝     
-               ██║       ██║  ██║    ███████╗    ██║ ╚═╝ ██║    ██║  ██║    ██║         
-               ╚═╝       ╚═╝  ╚═╝    ╚══════╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝    ╚═╝         
-                                                                                        
-             ██╗ ██████╗   ██╗██╗   ██████╗ ██╗                                         
-            ██╔╝██╔═══██╗ ██╔╝╚██╗ ██╔═══██╗╚██╗                                        
-            ██║ ██║   ██║██╔╝  ╚██╗██║   ██║ ██║                                        
-            ██║ ██║   ██║╚██╗  ██╔╝██║   ██║ ██║                                        
-            ╚██╗╚██████╔╝ ╚██╗██╔╝ ╚██████╔╝██╔╝                                        
-             ╚═╝ ╚═════╝   ╚═╝╚═╝   ╚═════╝ ╚═╝                                                                                                                                 
-                """;
 
-
-            for(int i = 0; i < sim.length(); i++){
-                System.out.print(sim.charAt(i));
-                Thread.sleep(5);
-            }
+    private static void cls(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+    public static void main(String[] args) throws InterruptedException{
         
-        designMap mapDesign = new designMap();
-        MapFunctionality mapFunction = new MapFunctionality();
-
         int distance1 = shuffle.nextInt(10, 100);
         int distance2 = shuffle.nextInt(10, 100);
         int distance3 = shuffle.nextInt(10, 100);
@@ -44,8 +25,61 @@ public class MapProgram {
         int distance7 = shuffle.nextInt(10, 100);
         int distance8 = shuffle.nextInt(10, 100);
 
-        do{
+        //TITLE
+        String sim = """
+            █████████  ███████████ ███████████      ███████    █████       █████          ██████   ██████   █████████   ███████████ 
+            ███░░░░░███░█░░░███░░░█░░███░░░░░███   ███░░░░░███ ░░███       ░░███          ░░██████ ██████   ███░░░░░███ ░░███░░░░░███
+           ░███    ░░░ ░   ░███  ░  ░███    ░███  ███     ░░███ ░███        ░███           ░███░█████░███  ░███    ░███  ░███    ░███
+           ░░█████████     ░███     ░██████████  ░███      ░███ ░███        ░███           ░███░░███ ░███  ░███████████  ░██████████ 
+            ░░░░░░░░███    ░███     ░███░░░░░███ ░███      ░███ ░███        ░███           ░███ ░░░  ░███  ░███░░░░░███  ░███░░░░░░  
+            ███    ░███    ░███     ░███    ░███ ░░███     ███  ░███      █ ░███      █    ░███      ░███  ░███    ░███  ░███        
+           ░░█████████     █████    █████   █████ ░░░███████░   ███████████ ███████████    █████     █████ █████   █████ █████       
+            ░░░░░░░░░     ░░░░░    ░░░░░   ░░░░░    ░░░░░░░    ░░░░░░░░░░░ ░░░░░░░░░░░    ░░░░░     ░░░░░ ░░░░░   ░░░░░ ░░░░░        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                        
+             ██╗ ██████╗   ██╗██╗   ██████╗ ██╗                                         
+            ██╔╝██╔═══██╗ ██╔╝╚██╗ ██╔═══██╗╚██╗                                        
+            ██║ ██║   ██║██╔╝  ╚██╗██║   ██║ ██║                                        
+            ██║ ██║   ██║╚██╗  ██╔╝██║   ██║ ██║                                        
+            ╚██╗╚██████╔╝ ╚██╗██╔╝ ╚██████╔╝██╔╝                                        
+             ╚═╝ ╚═════╝   ╚═╝╚═╝   ╚═════╝ ╚═╝ 
+             
+             \nGROUP\n
+             > BENEDICK BELISANO
+             > JB BAROTAG
+             > NICOLE STANTON
+             > BYRON BORAL
+             > DEXTER VALENCIA
+                """;
 
+        Thread artThread = new Thread(() -> {
+            try {
+                for (int i = 0; i < sim.length(); i++) {
+                    System.out.print(sim.charAt(i));
+                    Thread.sleep(50);
+                }
+            } catch (InterruptedException e) {
+            }
+        });
+
+        artThread.start();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("");
+        scanner.nextLine();
+        artThread.interrupt();
+        Thread.sleep(100);
+        
+        cls();
+
+        
+
+        designMap mapDesign = new designMap();
+
+        MapFunctionality mapFunction = new MapFunctionality();
+        
+
+        do{
+        System.out.println("\n" + sim);
         mapDesign.generateMap(thecurrentLocation, places, distance1, distance2, distance3, distance4,distance5, distance6, distance7, distance8);
 
         // DISPLAY DETAILS SHOWN IN MAP
@@ -70,9 +104,13 @@ public class MapProgram {
             System.out.print("\nChoose location you would like to visit: ");
             String menu = find.nextLine().trim();
 
+            // Display Possible Route Function
+            mapFunction.userDestination(menu, thecurrentLocation, places, distance1, distance2, distance3, distance4, distance5, distance6, distance7, distance8);
+
+
             if( menu.equalsIgnoreCase(thecurrentLocation)){
                 System.out.println("\nYou are already in this location.\n");
-                System.out.println("\nDo you want to stay here?\n[Y] Yes, I want to stay.\n[N] No, I want to leave.\n");
+                System.out.print("\nDo you want to stay here?\n[Y] Yes, I want to stay.\n[N] No, I want to leave.\nChoice: ");
                 anotherLocation = find.nextLine();
                     
                     if (anotherLocation.equalsIgnoreCase(("Y").trim()) || anotherLocation.equalsIgnoreCase(("y").trim())) {
@@ -112,14 +150,9 @@ public class MapProgram {
                 continue;
             }
 
-
-
-            // Display Possible Route Function
-            mapFunction.userDestination(menu, thecurrentLocation, places, distance1, distance2, distance3, distance4, distance5, distance6, distance7, distance8);
-
             thecurrentLocation = menu.toUpperCase();
             // Option
-            System.out.print("\nDo you still want to go to another place?\n[Y] Yes, I want to go somewhere.\n[N] No, want to exit .\nChoice: ");
+            System.out.print("\nDo you still want to go to another place?\n[Y] Yes, I want to go somewhere.\n[N] No, want to exit.\nChoice: ");
                     anotherLocation = find.nextLine();
                         
                         if (anotherLocation.equalsIgnoreCase(("Y").trim()) || anotherLocation.equalsIgnoreCase(("y").trim())) {
