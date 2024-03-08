@@ -19,6 +19,7 @@ public class UniversityManagementSystem {
         System.out.print("Enter Index From 1-6:");
 		int choice = s.nextInt();
         s.nextLine();
+        // Assign for Add
 		switch(choice) {
 			case 1:
                 clearScreen();
@@ -49,6 +50,7 @@ public class UniversityManagementSystem {
                         break;
                 }
                 break;
+            //Assign For Display
             case 2:
                 clearScreen();
                 System.out.println("DISPLAYING <INFO>");
@@ -75,6 +77,7 @@ public class UniversityManagementSystem {
                         break;
                 }
                 break;
+            //Assign For Delete
             case 3:     
                 clearScreen();
                 System.out.println("DELETE <INFO>");   
@@ -92,6 +95,7 @@ public class UniversityManagementSystem {
                         main(backToMain);
                         break;
                 }
+            //Assign For Edit
             case 4:
                 clearScreen();
                 System.out.println("EDIT <INFO>");
@@ -109,6 +113,7 @@ public class UniversityManagementSystem {
                         main(backToMain);
                         break;
                 }
+            //Assign For Searching
             case 5:
                 clearScreen();
                 System.out.println("SEARCHING <INFO>");
