@@ -5,6 +5,7 @@ import java.util.List;
 
 public class UniversityManagementSystem {
 	private static final Scanner s = new Scanner(System.in);
+    public static Random r = new Random();
 
     static List<String[]> forInstructors = new ArrayList<>();
     static List<String[]> forStudents = new ArrayList<>();
@@ -14,7 +15,28 @@ public class UniversityManagementSystem {
         
 
 		// UNIVERSITY MANAGEMENT SYSTEM
-		System.out.println("\n------------------------------------------------\nUNIVERSITY MANAGEMENT SYSTEM PROFILING\n");
+        String umpsArt = """
+            \n
+            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            .-..-.  .-..-.  .-.  .-..-.   .--.   .---.    .--.   .-.  .-----.  .-..-.  .-..-.   .--.   .-..-.   .--.    .--.    .--.   .-..-.   .--.   .-..-.  .-----.  
+            : :: :  : `: :  : :  : :: :  : .--'  : .; :  : .--'  : :  `-. .-'  : :: :  : `' :  : .; :  : `: :  : .; :  : .--'  : .--'  : `' :  : .--'  : `: :  `-. .-'  
+            : :: :  : .` :  : :  : :: :  : `;    :   .'  `. `.   : :    : :    `.  .'  : .. :  :    :  : .` :  :    :  : : _   : `;    : .. :  : `;    : .` :    : :    
+            : :; :  : :. :  : :  : `' ;  : :__   : :.`.   _`, :  : :    : :     .' ;   : :; :  : :: :  : :. :  : :: :  : :; :  : :__   : :; :  : :__   : :. :    : :    
+            `.__.'  :_;:_;  :_;   `.,'   `.__.'  :_;:_;  `.__.'  :_;    :_;    :_,'    :_;:_;  :_;:_;  :_;:_;  :_;:_;  `.__.'  `.__.'  :_;:_;  `.__.'  :_;:_;    :_;    
+                                                                                                                                                                        
+                                                                                                                                                                        
+            .---.   .---.    .--.   .---.   .-.  .-.     .-.  .-..-.   .--.    .--.   .-..-.   .--.   .-----.   .--.   .-..-.                                           
+            : .; :  : .; :  : ,. :  : .--'  : :  : :     : :  : `: :  : .--'  : .--'  : :: :  : .--'  `-. .-'  : .--'  : `' :                                           
+            :  _.'  :   .'  : :: :  : `;    : :  : :     : :  : .` :  : : _   `. `.   `.  .'  `. `.     : :    : `;    : .. :                                           
+            : :     : :.`.  : :; :  : :     : :  : :__   : :  : :. :  : :; :   _`, :   .' ;    _`, :    : :    : :__   : :; :                                           
+            :_;     :_;:_;  `.__.'  :_;     :_;  :___.'  :_;  :_;:_;  `.__.'  `.__.'  :_,'    `.__.'    :_;    `.__.'  :_;:_;                                                                                                                        
+            -----------------------------------------------------------------------------------------------------------------------------------------------------------------    
+                \n""";
+
+        for(int i = 0; i < umpsArt.length(); i++){
+            System.out.print(umpsArt.charAt(i));
+        }
+
         System.out.print("\n[1]Prompt To Add \n[2]Prompt To Display \n[3]Prompt To Delete \n[4]Prompt To Edit \n[5]Prompt To Search \n[6]Want To End\n");
         System.out.print("Enter Index From 1-6:");
 		int choice = s.nextInt();
@@ -202,19 +224,20 @@ public class UniversityManagementSystem {
                 String sDescription = getData[1];
                 String sIdentity = getData[2];
 
-                System.out.println("DISPLAYING DATA OF  SUBJECT/S\n");
-                System.out.print("SUBJECT ID: "+sIdentity+"\nSubject Title: "+sTitle+"\nSubject Description: "+sDescription+"\n");
+                System.out.print("SUBJECT CODE: "+sIdentity+"\nSubject Title: "+sTitle+"\nSubject Description: "+sDescription+"\n");
+                return;
                 }else{}
             }
-            
         
     }
-
+    //DISPLAY DATA FOR SUBJECTS
     private static void displayingDataOfSubjects(){
         if(forSubjects.isEmpty()){
             System.out.println("There's no subject Available, Try to add");
+            return;
         }
         getDataForSubjects(forSubjects);
+        return;
     }
 
     /*INSTRUCTOR ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -238,16 +261,63 @@ public class UniversityManagementSystem {
         System.out.print("CREATE INSTRUCTOR/S FORM\n");
 		String informationForAll[] = new String[6];
 
-		System.out.print("Enter your First Name: ");
-		informationForAll[0] = s.nextLine();
-		System.out.print("Enter your Last Name: ");
-		informationForAll[1] = s.nextLine(); 
-		System.out.print("Enter your Middle Name (Optional): ");
-		informationForAll[2] = s.nextLine(); 
-		System.out.print("Enter your Address: ");
-		informationForAll[3] = s.nextLine();
+        Boolean isTrue = false;
 
-        while(true){
+        while(!isTrue){
+            System.out.print("Enter your First Name: ");
+            String instructorFirstName = s.nextLine();
+
+            if(instructorFirstName.isEmpty() || instructorFirstName.equals("")){
+                System.out.println("First name is empty, Fill it");
+            } else if(instructorFirstName.matches(".*\\d.*")){
+                System.out.println("First name can't contain any number");
+            }else{
+                informationForAll[0] = instructorFirstName;
+                break;
+            }
+        }
+
+        while(!isTrue){
+            System.out.print("Enter your Last Name: ");
+            String instructorLastName = s.nextLine();
+
+            if(instructorLastName.isEmpty() || instructorLastName.equals("")){
+                System.out.println("Last name is empty, Fill it");
+            } else if(instructorLastName.matches(".*\\d.*")){
+                System.out.println("Last name can't contain any number");
+            } else{
+                informationForAll[1] = instructorLastName; 
+                break;
+            }
+        }
+
+        while(!isTrue){
+            System.out.print("Enter your Middle Name (Optional): ");
+            String instructorMiddleName = s.nextLine();
+            if(instructorMiddleName.matches(".*\\d.*")){
+                System.out.println("Middle name can't contain any number");
+            }else{
+                informationForAll[2] = instructorMiddleName; 
+                break;
+            }
+        }
+        
+        while(!isTrue){
+            System.out.print("Enter your Address: ");
+            String instructorAddress = s.nextLine();
+
+            if(instructorAddress.isEmpty() || instructorAddress.equals("")){
+                System.out.println("Address is empty, Fill it");
+            } else if(instructorAddress.matches(".*\\d.*")){
+                System.out.println("Address can't contain any number");
+            } else{
+                informationForAll[3] = instructorAddress; 
+                break;
+            }
+        }
+        
+
+        while(!isTrue){
 		System.out.print("Enter your Age: ");
         String insAgeInput = s.nextLine(); 
             try {
@@ -271,15 +341,29 @@ public class UniversityManagementSystem {
             System.out.println("You're a Instructor.");
         }
 		return informationForAll;
-	}
+
+}
+    
+
+
 
     //DISPLAY DATA FOR INSTRUCTOR
     private static void displayingDataOfInstructors(){
-        if(forInstructors.isEmpty() || forInstructors != null){
+        if(forInstructors.isEmpty() || forInstructors == null){
             System.out.println("There's no Instructor Available, Try to Add");
+            return;
         }
         
         getDataForInstructors(forInstructors);
+
+        System.out.println("\nSUBJECT HANDLE");
+        getDataForSubjects(forSubjects);
+
+        for(String[] subjectHandled : forInstructors){
+           
+
+            String[] subjectToInstructor;
+        }
     }
 
     //SETTER DATA FOR INSTRUCTOR
@@ -298,6 +382,7 @@ public class UniversityManagementSystem {
                 System.out.println("DISPLAYING DATA OF  INSTRUCTOR/S\n");
 
                 System.out.print("INSTRUCTOR ID:"+instructorIdentity+"\n|First Name: " +insFname+" | Last Name: "+insLname+" | Middle Name: "+insMname+" | Address: "+insAddress+" | Age: "+insAge+" |\n");
+                
                 }else{}
                 }
             
@@ -360,8 +445,9 @@ public class UniversityManagementSystem {
 
     //DISPLAYING DATA FOR STUDENTS
         private static void displayingDataOfStudents(){
-            if(forStudents.isEmpty() || forStudents != null){
+            if(forStudents.isEmpty() || forStudents == null){
                 System.out.println("There's no Student Available, Try to Add");
+                return;
             }
             getDataForStudents(forStudents);
     }
@@ -408,7 +494,6 @@ class ThisIsForStudent extends UniversityManagementSystem{
 
     private String r4d(List<String[]> forSubject){
         final int year = 24;
-        final Random r = new Random();
         final int student4Digit = r.nextInt(1000,10000);
         String stFormat = String.format("(ST"+ year +"-%04d)%n", student4Digit);
         forStudents.add(new String[]{stFormat});
@@ -431,7 +516,6 @@ class ThisIsForInstructor extends UniversityManagementSystem{
 
     private String r4d(List<String[]> forInstructor){
         final int year = 24;
-        final Random r = new Random();
         final int instuctor4Digit = r.nextInt(1000,10000);
         String insFormat = String.format("(INS"+ year +"-%04d)%n", instuctor4Digit);
         forInstructors.add(new String[]{insFormat});
@@ -453,7 +537,6 @@ class ThisIsForSubject extends UniversityManagementSystem {
     }
 
     private String r4d(List<String[]> forSubject){
-        final Random r = new Random();
         final int subject4Digit = r.nextInt(1000,10000);
         String subFormat = String.format("(SUB"+ "-%04d)%n", subject4Digit);
         forSubjects.add(new String[]{subFormat});
