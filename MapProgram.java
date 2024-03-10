@@ -14,6 +14,7 @@ public class MapProgram {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
     public static void main(String[] args) throws InterruptedException{
         
         int distance1 = shuffle.nextInt(10, 100);
@@ -103,6 +104,8 @@ public class MapProgram {
             
             System.out.print("\nChoose location you would like to visit: ");
             String menu = find.nextLine().trim();
+            find.nextLine();
+
 
             // Display Possible Route Function
             mapFunction.userDestination(menu, thecurrentLocation, places, distance1, distance2, distance3, distance4, distance5, distance6, distance7, distance8);
@@ -176,8 +179,9 @@ public class MapProgram {
                             System.out.println("FOR USING THIS MAP");
                         break;
                     }
+                    
         } while (op);
-
+        find.close();
     }
 
     public static void randomLocation(){
