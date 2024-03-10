@@ -4,16 +4,16 @@ import java.util.Random;
 import java.util.List;
 
 public class UniversityManagementSystem {
-	private static final Scanner s = new Scanner(System.in);
-    public static Random r = new Random();
+	static final Scanner s = new Scanner(System.in);
 
     static List<String[]> forInstructors = new ArrayList<>();
     static List<String[]> forStudents = new ArrayList<>();
     static List<String[]> forSubjects = new ArrayList<>();
+    static Boolean isTrue = false;
 
 	public static void main(String[] backToMain) {
         
-
+        
 		// UNIVERSITY MANAGEMENT SYSTEM
         String umpsArt = """
             \n
@@ -33,160 +33,188 @@ public class UniversityManagementSystem {
             -----------------------------------------------------------------------------------------------------------------------------------------------------------------    
                 \n""";
 
-        for(int i = 0; i < umpsArt.length(); i++){
-            System.out.print(umpsArt.charAt(i));
-        }
+        System.out.print(umpsArt);
 
-        System.out.print("\n[1]Prompt To Add \n[2]Prompt To Display \n[3]Prompt To Delete \n[4]Prompt To Edit \n[5]Prompt To Search \n[6]Want To End\n");
-        System.out.print("Enter Index From 1-6:");
-		int choice = s.nextInt();
-        s.nextLine();
-        // Assign for Add
-		switch(choice) {
-			case 1:
-                clearScreen();
-                System.out.println("ADDING < INFORMATION >");
-                System.out.println("\n[1]Add Instructor\n[2]Add Student\n[3]Add Subject\n[4]Back");
-                System.out.print("Enter Index 1-3: ");
-                int addChoice = s.nextInt();
-                s.nextLine();
-                clearScreen();
-                switch(addChoice){
+        do{
+            try{
+                System.out.print("\n\n[1]Prompt To Add \n[2]Prompt To Display \n[3]Prompt To Delete \n[4]Prompt To Edit \n[5]Prompt To Search \n[6]Want To End\n");
+                System.out.print("Enter Index From 1-6: ");
+                String schoice = s.nextLine();
+                int choice = Integer.parseInt(schoice);
+                // Assign for Add Method
+                switch(choice) {
                     case 1:
-                        addingInstructor(); 
-                        main(backToMain);
+                        clearScreen();
+                        do{
+                            try{
+                                System.out.println("ADDING < INFORMATION >");
+                                System.out.println("\n[1]Add Instructor\n[2]Add Student\n[3]Add Subject\n[4]Back");
+                                System.out.print("Enter Index 1-3: ");
+                                String cAddChoice = s.nextLine();
+                                int addChoice = Integer.parseInt(cAddChoice);
+                                clearScreen();
+                            
+                                switch(addChoice){
+                                    case 1:
+                                        addingInstructor(); 
+                                        main(backToMain);
+                                        break;
+                                    case 2:
+                                        addingStudent();
+                                        main(backToMain);
+                                        break;
+                                    case 3:
+                                        addingSubject();
+                                        main(backToMain);
+                                        break;
+                                    case 4:
+                                        main(backToMain);
+                                        break;
+                                    default:
+                                        System.out.printf("This [%s] is invalid, Please Enter the valid Choices.", addChoice);
+                                        System.out.println("--------------------------------------------------------------------------------------------");
+                                        break;
+                                }
+                            }catch(NumberFormatException e){
+                                System.out.println("\nThe input is not valid.");
+                                System.out.println("--------------------------------------------------------------------------------------------");
+                            }
+                    }while(!isTrue);
                         break;
+                    //Assign For Display
                     case 2:
-                        addingStudent();
-                        main(backToMain);
+                        clearScreen();
+                        do{
+                            try{
+                                System.out.println("DISPLAYING < INFO >");
+                                System.out.println("\n[1]Display Instructor\n[2]Display Student\n[3]Display Subject\n[4]Back");
+                                System.out.print("Enter Index 1-3: ");
+                                String dChoice = s.nextLine();
+                                int displayChoice = Integer.parseInt(dChoice);
+                                clearScreen();
+                                switch(displayChoice){
+                                    case 1: 
+                                        displayingDataOfInstructors();
+                                        main(backToMain);
+                                        break;
+                                    case 2:
+                                        displayingDataOfStudents();
+                                        main(backToMain);
+                                        break;
+                                    case 3:
+                                        displayingDataOfSubjects();
+                                        main(backToMain);
+                                        break;
+                                    case 4:
+                                        main(backToMain);
+                                        break;
+                                    default:
+                                        System.out.printf("This [%s] is invalid, Please Enter the valid Choices.", displayChoice);
+                                        System.out.println("--------------------------------------------------------------------------------------------");
+                                        break;
+                                }
+                            }catch(Exception e){
+                                System.out.println("\nThe input is not valid.");
+                                System.out.println("--------------------------------------------------------------------------------------------");
+                            }
+                    }while(!isTrue);
                         break;
-                    case 3:
-                        addingSubject();
-                        main(backToMain);
-                        break;
+                    //Assign For Delete
+                    case 3:     
+                        clearScreen();
+                        System.out.println("DELETE < INFO >");   
+                        System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
+                        System.out.print("Enter Index 1-3: ");
+                        int deleteChoice = s.nextInt();
+                        s.nextLine();
+                        clearScreen();
+                        switch(deleteChoice){
+                            case 1:
+                                main(backToMain);
+                                break;
+                            case 2:
+                                main(backToMain);
+                                break;
+                            case 3:
+                                main(backToMain);
+                                break;
+                            case 4:
+                                main(backToMain);
+                                break;
+                        }
+                    //Assign For Edit
                     case 4:
-                        main(backToMain);
-                        break;
+                        clearScreen();
+                        System.out.println("EDIT < INFO >");
+                        System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
+                        System.out.print("Enter Index 1-3: ");
+                        int editChoice = s.nextInt();
+                        s.nextLine();
+                        clearScreen();
+                        switch(editChoice){
+                            case 1:
+                                main(backToMain);
+                                break;
+                            case 2:
+                                main(backToMain);
+                                break;
+                            case 3:
+                                main(backToMain);
+                                break;
+                            case 4:
+                                main(backToMain);
+                                break;
+                        }
+                    //Assign For Searching
+                    case 5:
+                        clearScreen();
+                        System.out.println("SEARCHING < INFO >");
+                        System.out.println("\n[1]Search Instructor\n[2]Search Student\n[3]Search Subject\n[4]Back");
+                        System.out.print("Enter Index 1-3: ");
+                        int searchChoice = s.nextInt();
+                        s.nextLine();
+                        clearScreen();
+                        switch(searchChoice){
+                            case 1:
+                                main(backToMain);
+                                break;
+                            case 2:
+                                main(backToMain);
+                                break;
+                            case 3:
+                                main(backToMain);
+                                break;
+                            case 4:
+                                main(backToMain);
+                                break;
+                        }
+                    case 6:                
+                        System.out.print("\nHello Admin, ");
+                        System.err.print("Do you want to end this program?\n[Y] Yes \n[N] No \nChoose From Y/N: ");
+                        String yesOrNo = s.next().trim().toUpperCase();
+                        if(yesOrNo.equals("Y") || yesOrNo.equals("YES")){
+                            System.out.println("You now exiting in program. Thank You");
+                            break;
+                        }else{
+                            System.out.println("--------------------------------------------------");
+                            main(backToMain);
+                        }
+                            break;
                     default:
-                        break;
+                        clearScreen();
+                        System.out.printf("\nThis [%s] is invalid, Please Enter the valid Choices.", choice);
+                            main(backToMain);
+                            break;
+                    
                 }
-                break;
-            //Assign For Display
-            case 2:
-                clearScreen();
-                System.out.println("DISPLAYING < INFO >");
-                System.out.println("\n[1]Display Instructor\n[2]Display Student\n[3]Display Subject\n[4]Back");
-                System.out.print("Enter Index 1-3: ");
-                int displayChoice = s.nextInt();
-                clearScreen();
-                switch(displayChoice){
-                    case 1: 
-                        displayingDataOfInstructors();
-                        main(backToMain);
-                        break;
-                    case 2:
-                        displayingDataOfStudents();
-                        main(backToMain);
-                        break;
-                    case 3:
-                        displayingDataOfSubjects();
-                        main(backToMain);
-                        break;
-                    case 4:
-                        main(backToMain);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            //Assign For Delete
-            case 3:     
-                clearScreen();
-                System.out.println("DELETE < INFO >");   
-                System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
-                System.out.print("Enter Index 1-3: ");
-                int deleteChoice = s.nextInt();
-                s.nextLine();
-                clearScreen();
-                switch(deleteChoice){
-                    case 1:
-                        main(backToMain);
-                        break;
-                    case 2:
-                        main(backToMain);
-                        break;
-                    case 3:
-                        main(backToMain);
-                        break;
-                    case 4:
-                        main(backToMain);
-                        break;
-                }
-            //Assign For Edit
-            case 4:
-                clearScreen();
-                System.out.println("EDIT < INFO >");
-                System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
-                System.out.print("Enter Index 1-3: ");
-                int editChoice = s.nextInt();
-                s.nextLine();
-                clearScreen();
-                switch(editChoice){
-                    case 1:
-                        main(backToMain);
-                        break;
-                    case 2:
-                        main(backToMain);
-                        break;
-                    case 3:
-                        main(backToMain);
-                        break;
-                    case 4:
-                        main(backToMain);
-                        break;
-                }
-            //Assign For Searching
-            case 5:
-                clearScreen();
-                System.out.println("SEARCHING < INFO >");
-                System.out.println("\n[1]Search Instructor\n[2]Search Student\n[3]Search Subject\n[4]Back");
-                System.out.print("Enter Index 1-3: ");
-                int searchChoice = s.nextInt();
-                s.nextLine();
-                clearScreen();
-                switch(searchChoice){
-                    case 1:
-                        main(backToMain);
-                        break;
-                    case 2:
-                        main(backToMain);
-                        break;
-                    case 3:
-                        main(backToMain);
-                        break;
-                    case 4:
-                        main(backToMain);
-                        break;
-                }
-            case 6:
-                System.err.print("Hello User!!!\nDo you want to end this program?\n[Y] Yes \n[N] No \nChoose From Y/N: ");
-                String yesOrNo = s.next().trim().toUpperCase();
-                if(yesOrNo.equals("Y") || yesOrNo.equals("YES")){
-                    System.out.println("You now exiting in program. Thank You");
-                    break;
-                }else{
-                    System.out.println("--------------------------------------------------");
-                    main(backToMain);
-                }
-                    break;
-            default:
-                clearScreen();
-                System.out.printf("This [%s] is invalid, Please Enter the valid Choices.", choice);
-                    main(backToMain);
-                    break;
-            
-		}
-        s.close();	
+            }catch(NumberFormatException e){
+                System.out.println("\nThe input must be valid and program didn't allowed it.");
+                System.out.println("--------------------------------------------------------------------------------------------");
+            }
+ 
+
+        }while(!isTrue);
+        s.close();
 	}
 
     /*SUBJECTS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -195,21 +223,62 @@ public class UniversityManagementSystem {
     //ADDING SUBJECTS METHOD
     private static void addingSubject(){
         String [] subDetails = subjectInformation("SubjectDetails");
-        
-        subs.instantiateOfSubject();
-        String subsId = subs.getTheSubjectId();
-        subDetails[2] = subsId; 
-        forSubjects.add(subDetails);
+
+        if(subDetails.length == 0){
+            System.out.print("The subject must cancelled.");
+        } else{
+            System.out.print("The subject must added");
+            subs.instantiateOfSubject();
+            String subsId = subs.getTheSubjectId();
+            subDetails[2] = subsId; 
+            forSubjects.add(subDetails);
+        }
     }
 
     //SUBJECT DATA GETTER
     static String[] subjectInformation(String sub){
         String subjectForAll[] = new String[3];
         System.out.println("CREATE SUBJECT/S\n");
+
+        while(!isTrue){
         System.out.print("Enter subject title: ");
-        subjectForAll[0] = s.nextLine();
+        String sTitles = s.nextLine();
+            if(sTitles.isBlank()){
+                System.out.println("Subject title is empty, Fill it");
+            } else if(sTitles.matches(".*\\d.*")){
+                System.out.println("Subject title can't contain any number");
+            } else{
+                subjectForAll[0] = sTitles;
+                break;
+            }
+        }
+
+        while(!isTrue){
         System.out.print("Enter subject description: ");
-        subjectForAll[1] = s.nextLine();
+        String sDes = s.nextLine();
+            if(sDes.isBlank()){
+                System.out.println("Subject description is empty, Fill it");
+            } else if(sDes.matches(".*\\d.*")){
+                System.out.println("Subject description can't contain any number");
+            } else{
+                subjectForAll[1] = sDes;
+                break;
+            }
+        }
+
+        System.out.print("\nDo you want to add this subject?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
+        while(!isTrue){
+        System.out.print("Choices [Y/N]: ");
+        String subC = s.nextLine().toUpperCase();
+            
+            if(subC.equals("Y")){
+                break;
+            } else if(subC.equals("N")){
+                return new String[0];
+            } else{
+                System.out.println("Invalid input");
+            }
+        }    
 
         return subjectForAll;
     }
@@ -217,6 +286,7 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR SUBJECTS
     static void getDataForSubjects(List<String[]> takeDataForSubjects){
             List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);  
+            System.out.print("|            SUBJECT CODE          |             Subject Title        |                 Subject Description                    |");
             for(String[] getData: getDataOfSubs){
                 if(getData.length >= 2){
 
@@ -224,10 +294,10 @@ public class UniversityManagementSystem {
                 String sDescription = getData[1];
                 String sIdentity = getData[2];
 
-                System.out.print("SUBJECT CODE: "+sIdentity+"\nSubject Title: "+sTitle+"\nSubject Description: "+sDescription+"\n");
-                return;
-                }else{}
+                System.out.print("\n|"+sIdentity+"|: "+sTitle+"|"+sDescription+"|");
+                }
             }
+            
         
     }
     //DISPLAY DATA FOR SUBJECTS
@@ -235,8 +305,10 @@ public class UniversityManagementSystem {
         if(forSubjects.isEmpty()){
             System.out.println("There's no subject Available, Try to add");
             return;
-        }
+        } 
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         getDataForSubjects(forSubjects);
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         return;
     }
 
@@ -249,10 +321,18 @@ public class UniversityManagementSystem {
     private static void addingInstructor(){
         String[] iDetails = insInformation("instructorDeatails");
 
-        ins.instantiateOfInstructor();
-        String insId = ins.getTheInstructorId();
-        iDetails[5] = insId;
-        forInstructors.add(iDetails);
+        if(iDetails.length == 0){
+            System.out.println("The instructor cancelled application");
+            return;
+        }
+
+        else{
+            System.out.println("The isntructor was been enrolled in.");
+            ins.instantiateOfInstructor();
+            String insId = ins.getTheInstructorId();
+            iDetails[5] = insId;
+            forInstructors.add(iDetails);
+        }
         
     }
 
@@ -261,13 +341,13 @@ public class UniversityManagementSystem {
         System.out.print("CREATE INSTRUCTOR/S FORM\n");
 		String informationForAll[] = new String[6];
 
-        Boolean isTrue = false;
+
 
         while(!isTrue){
             System.out.print("Enter your First Name: ");
             String instructorFirstName = s.nextLine();
 
-            if(instructorFirstName.isEmpty() || instructorFirstName.equals("")){
+            if(instructorFirstName.isBlank()){
                 System.out.println("First name is empty, Fill it");
             } else if(instructorFirstName.matches(".*\\d.*")){
                 System.out.println("First name can't contain any number");
@@ -281,7 +361,7 @@ public class UniversityManagementSystem {
             System.out.print("Enter your Last Name: ");
             String instructorLastName = s.nextLine();
 
-            if(instructorLastName.isEmpty() || instructorLastName.equals("")){
+            if(instructorLastName.isBlank()){
                 System.out.println("Last name is empty, Fill it");
             } else if(instructorLastName.matches(".*\\d.*")){
                 System.out.println("Last name can't contain any number");
@@ -306,7 +386,7 @@ public class UniversityManagementSystem {
             System.out.print("Enter your Address: ");
             String instructorAddress = s.nextLine();
 
-            if(instructorAddress.isEmpty() || instructorAddress.equals("")){
+            if(instructorAddress.isBlank()){
                 System.out.println("Address is empty, Fill it");
             } else if(instructorAddress.matches(".*\\d.*")){
                 System.out.println("Address can't contain any number");
@@ -340,8 +420,23 @@ public class UniversityManagementSystem {
         if(insAge >= 24  && insAge <= 100){
             System.out.println("You're a Instructor.");
         }
-		return informationForAll;
 
+
+        System.out.print("\nDo you want to add this instructor?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
+        while(!isTrue){
+        System.out.print("Choices [Y/N]: ");
+        String insC = s.nextLine().toUpperCase();
+            
+            if(insC.equals("Y")){
+                break;
+            } else if(insC.equals("N")){
+                return new String[0];
+            } else{
+                System.out.println("Invalid input");
+            }
+        }    
+        return informationForAll;
+    
 }
     
 
@@ -353,17 +448,12 @@ public class UniversityManagementSystem {
             System.out.println("There's no Instructor Available, Try to Add");
             return;
         }
-        
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         getDataForInstructors(forInstructors);
+        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+        // System.out.println("\nSUBJECT HANDLE");
+        // getDataForSubjects(forSubjects);
 
-        System.out.println("\nSUBJECT HANDLE");
-        getDataForSubjects(forSubjects);
-
-        for(String[] subjectHandled : forInstructors){
-           
-
-            String[] subjectToInstructor;
-        }
     }
 
     //SETTER DATA FOR INSTRUCTOR
@@ -382,9 +472,8 @@ public class UniversityManagementSystem {
                 System.out.println("DISPLAYING DATA OF  INSTRUCTOR/S\n");
 
                 System.out.print("INSTRUCTOR ID:"+instructorIdentity+"\n|First Name: " +insFname+" | Last Name: "+insLname+" | Middle Name: "+insMname+" | Address: "+insAddress+" | Age: "+insAge+" |\n");
-                
-                }else{}
                 }
+            }
             
         
     }
@@ -397,10 +486,15 @@ public class UniversityManagementSystem {
     private static void addingStudent(){
         String[] sDetails = stInformation("studentDeatails");
 
-        st.instantiateOfStudents();
-        String stId = st.getTheStudentId();
-        sDetails[5] = stId;
-        forStudents.add(sDetails);
+        if(sDetails.length == 0){
+            System.out.println("The student cancelled application");
+        } else{
+            System.out.println("The student was enrolled.");
+            st.instantiateOfStudents();
+            String stId = st.getTheStudentId();
+            sDetails[5] = stId;
+            forStudents.add(sDetails);
+        }
     }
 
     //STUDENTS DATA GETTER
@@ -408,14 +502,56 @@ public class UniversityManagementSystem {
 		String informationForAll[] = new String[6];
         System.out.println("CREATE STUDENT/S FORM\n");
 
+        while(!isTrue){
 		System.out.print("Enter your First Name: ");
-		informationForAll[0] = s.nextLine();
+		String stFname = s.nextLine();
+            if(stFname.isBlank()){
+                System.out.println("First name is empty, Fill it");
+            } else if(stFname.matches(".*\\d.*")){
+                System.out.println("First name can't contain any number");
+            } else{
+                informationForAll[0] = stFname;
+                break;
+            }
+
+        }
+
+        while(!isTrue){
 		System.out.print("Enter your Last Name: ");
-		informationForAll[1] = s.nextLine(); 
+		String stLname = s.nextLine();
+            if(stLname.isBlank()){
+                System.out.println("Last name is empty, fill it");
+            } else if(stLname.matches(".*\\d.*")){
+                System.out.println("Last name can't contain any number");
+            } else{
+                informationForAll[1] = stLname;
+                break;
+            }
+        }
+
+        while(!isTrue){
 		System.out.print("Enter your Middle Name (Optional): ");
-		informationForAll[2] = s.nextLine(); 
+        String stMname = s.nextLine();
+            if(stMname.matches(".*\\d.*")){
+                System.out.println("Middle name can't contain any number");
+            } else{
+                informationForAll[2] = stMname; 
+                break;
+            }
+        }
+
+        while(!isTrue){
 		System.out.print("Enter your Address: ");
-		informationForAll[3] = s.nextLine();
+        String  stAddress = s.nextLine();
+            if(stAddress.isBlank()){
+                System.out.println("Address is empty, Fill it");
+            } else if(stAddress.matches(".*\\d.*")){
+                System.out.println("Address can't contain any number");
+            } else{
+                informationForAll[3] = stAddress;
+                break;
+            }
+        }
 
         while(true){
 		System.out.print("Enter your Age: ");
@@ -440,6 +576,22 @@ public class UniversityManagementSystem {
         if(insAge >= 17  && insAge <=23){
             System.out.println("You're a Student.");
         }
+
+        System.out.print("\nDo you want to add this student?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
+
+        while(!isTrue){
+        System.out.print("Choices [Y/N]: ");
+        String sC = s.nextLine().toUpperCase();
+            
+            if(sC.equals("Y")){
+                break;
+            } else if(sC.equals("N")){
+                return new String[0];
+            } else{
+                System.out.println("Invalid input");
+            }
+        }  
+
 		return informationForAll;
 	}
 
@@ -449,7 +601,9 @@ public class UniversityManagementSystem {
                 System.out.println("There's no Student Available, Try to Add");
                 return;
             }
+            System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
             getDataForStudents(forStudents);
+            System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
     }
 
 
@@ -494,6 +648,7 @@ class ThisIsForStudent extends UniversityManagementSystem{
 
     private String r4d(List<String[]> forSubject){
         final int year = 24;
+        final Random r = new Random();
         final int student4Digit = r.nextInt(1000,10000);
         String stFormat = String.format("(ST"+ year +"-%04d)%n", student4Digit);
         forStudents.add(new String[]{stFormat});
@@ -516,6 +671,7 @@ class ThisIsForInstructor extends UniversityManagementSystem{
 
     private String r4d(List<String[]> forInstructor){
         final int year = 24;
+        final Random r = new Random();
         final int instuctor4Digit = r.nextInt(1000,10000);
         String insFormat = String.format("(INS"+ year +"-%04d)%n", instuctor4Digit);
         forInstructors.add(new String[]{insFormat});
@@ -537,6 +693,7 @@ class ThisIsForSubject extends UniversityManagementSystem {
     }
 
     private String r4d(List<String[]> forSubject){
+        final Random r = new Random();
         final int subject4Digit = r.nextInt(1000,10000);
         String subFormat = String.format("(SUB"+ "-%04d)%n", subject4Digit);
         forSubjects.add(new String[]{subFormat});
