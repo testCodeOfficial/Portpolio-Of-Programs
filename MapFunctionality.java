@@ -56,7 +56,7 @@ public class MapFunctionality {
 
                     else {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0] + " (" + distance1 + "m) " + ": "  + currentLocation[4] + " (" + distance6 + "m) " + " >>> " + currentLocation[5] + " ("   + distance7 + "m) " + " >>> " + currentLocation[3] + " (" + distance8 + "m) >>> "  + currentLocation[2] + " (" + distance4 + "m) >>> "+ currentLocation[1] + " (" + distance3 + "m) " + "\nCalculated Distance: " + thirdRouteJollibee + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0] + " (" + distance1 + "m) " + ": "  + currentLocation[4] + " (" + distance6 + "m) " + " >>> " + currentLocation[5] + " ("   + distance7 + "m) " + " >>> " + currentLocation[3] + " (" + distance8 + "m) >>> "  + currentLocation[2] + " (" + distance4 + "m) >>> "+ currentLocation[1] + " (" + distance3 + "m) " + "\nCalculated Distance: " + thirdRouteJollibee + "m\n");
                         if(thirdRouteJollibee < 60){
                             System.out.println("This is the quickest option: " + minute3 + " minute/s\n");
                         }else{
@@ -108,7 +108,7 @@ public class MapFunctionality {
                         if (secondRouteHospital < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
-                            System.out.printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                            System.out.printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else {
@@ -117,7 +117,7 @@ public class MapFunctionality {
                          if (secondRouteHospital < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
-                            System.out.printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                            System.out.printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
                 }
@@ -149,7 +149,7 @@ public class MapFunctionality {
                         if (firstRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
-                            System.out .printf("\nThis is the quickest option: " + hours + " and " + minute + "  minute/s\n");
+                            System.out .printf("\nThis is the quickest option: " + hours + "hour/s and " + minute + "  minute/s\n");
                         }
                     }
                      else if (secondRouteMcdo <= firstRouteMcdo && secondRouteMcdo <= thirdRouteMcdo) {
@@ -158,7 +158,7 @@ public class MapFunctionality {
                         if (secondRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
-                            System.out.printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                            System.out.printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
 
@@ -200,7 +200,7 @@ public class MapFunctionality {
 
                     if (firstRouteSM <= secondRouteSM && firstRouteSM <= thirdRouteSM) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0] + " (" + distance1 + "m) " + ": " + currentLocation[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "+ +firstRouteSM + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0] + " (" + distance1 + "m) " + ": " + currentLocation[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "+ +firstRouteSM + "m\n");
                         if (firstRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -213,23 +213,23 @@ public class MapFunctionality {
 
                     else if(secondRouteSM <= firstRouteSM && secondRouteSM <= thirdRouteSM){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0]  + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[5] + " (" + distance5 + "m) "+ currentLocation[4]+" (" + distance6 + "m) " + "\nCalculated Distance: " + +secondRouteSM + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0]  + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[5] + " (" + distance5 + "m) "+ currentLocation[4]+" (" + distance6 + "m) " + "\nCalculated Distance: " + +secondRouteSM + "m\n");
                         if (secondRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
 
                     else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0]   + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) " + " >>> " + currentLocation[5] + " (" + distance8 + "m)" + " >>> " +  " (" + distance7 + "m)" + currentLocation[4] + " (" + distance6 + "m)" +"\nCalculated Distance: " + +thirdRouteSM + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0]   + ": " + currentLocation[1]+ " (" + distance2 + "m) " + " >>> " + currentLocation[2] + " (" + distance3 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) " + " >>> " + currentLocation[5] + " (" + distance8 + "m)" + " >>> " +  " (" + distance7 + "m)" + currentLocation[4] + " (" + distance6 + "m)" +"\nCalculated Distance: " + +thirdRouteSM + "m\n");
                         if (thirdRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                 }
@@ -278,29 +278,29 @@ public class MapFunctionality {
 
                     else if (secondRouteApartment <= firstRouteApartment && secondRouteApartment <= thirdRouteApartment && secondRouteApartment <=  fourthRouteApartment) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[1]+ " (" + distance3 + "m) " + " >>> " + currentLocation[2] + " (" + distance5 + "m) "+ " >>> " + currentLocation[5] + " (" + distance7 + "m) " + "\nCalculated Distance: " + +secondRouteApartment + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[1]+ " (" + distance3 + "m) " + " >>> " + currentLocation[2] + " (" + distance5 + "m) "+ " >>> " + currentLocation[5] + " (" + distance7 + "m) " + "\nCalculated Distance: " + +secondRouteApartment + "m\n");
                         if (secondRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
 
                     else if (thirdRouteApartment <= firstRouteApartment && thirdRouteApartment <= secondRouteApartment && thirdRouteApartment <= fourthRouteApartment){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[1]+ " (" + distance3 + "m) " + " >>> " + currentLocation[3] + " (" + distance4 + "m) "+ " >>> " + currentLocation[5] + " (" + distance8 + "m)" + "\nCalculated Distance: " + +thirdRouteApartment + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[1]+ " (" + distance3 + "m) " + " >>> " + currentLocation[3] + " (" + distance4 + "m) "+ " >>> " + currentLocation[5] + " (" + distance8 + "m)" + "\nCalculated Distance: " + +thirdRouteApartment + "m\n");
                         if (thirdRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
 
                     else{
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[4]+ " (" + distance6 + "m) " + " >>> " + currentLocation[2] + " (" + distance5 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) >>> " +  currentLocation[5] + " (" + distance8 + "m)" + "\nCalculated Distance: " + +fourthRouteApartment + "m\n");
+                        System.out.println("You may take this route: " + currentLocation[0] + " (" + distance2 + "m) " + ": " + currentLocation[4]+ " (" + distance6 + "m) " + " >>> " + currentLocation[2] + " (" + distance5 + "m) "+ " >>> " + currentLocation[3] + " (" + distance4 + "m) >>> " +  currentLocation[5] + " (" + distance8 + "m)" + "\nCalculated Distance: " + +fourthRouteApartment + "m\n");
                         if (fourthRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute4 + "  minute/s\n");
                         } else {
@@ -374,7 +374,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
 
@@ -388,7 +388,7 @@ public class MapFunctionality {
                         
                     } else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + " (" + distance3 + "m) " + ": " + currentLocation1[2] + " (" + distance4 + "m) " + " >>> " + currentLocation1[3] + " ("+ distance8 + "m)" + " >>> " + currentLocation1[5] + " (" + distance7 + ") " + " >>> " + currentLocation1[4] + " ("+ distance6 + "m)" + " >>> " + currentLocation1[0] + " (" + distance1 + ") " + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
+                        System.out.println("You may take this route: " + currentLocation1[1] + " (" + distance3 + "m) " + ": " + currentLocation1[2] + " (" + distance4 + "m) " + " >>> " + currentLocation1[3] + " ("+ distance8 + "m)" + " >>> " + currentLocation1[5] + " (" + distance7 + ") " + " >>> " + currentLocation1[4] + " ("+ distance6 + "m)" + " >>> " + currentLocation1[0] + " (" + distance1 + ") " + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
                         
                     }
                 }
@@ -432,7 +432,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
@@ -440,21 +440,21 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
 
                     if(firstRouteHospital <= secondRouteHospital && firstRouteHospital <= thirdRouteHospital){
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + " >>> " + ": " + currentLocation1[2]  + " (" + distance3 + "m) " + "\nCalculated Distance: " + +firstRouteHospital + "m\n");
+                        System.out.println("You may take this route: " + currentLocation1[1] + " >>> " + ": " + currentLocation1[2]  + " (" + distance3 + "m) " + "\nCalculated Distance: " + +firstRouteHospital + "m\n");
                     
                     } else if(secondRouteHospital <= firstRouteHospital && secondRouteHospital <= thirdRouteHospital){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this Route " + currentLocation1[1] + " (" + distance2 + "m) " + ": " + currentLocation1[0] + " (" + distance1 + "m) " + " >>> " + currentLocation1[4] + " (" + distance6 + "m) " + " >>> " + currentLocation1[2] + " (" + distance5 + "m) " + "\nCalculated Distance: "  +secondRouteHospital + "m\n");
+                        System.out.println("You may take this route: " + currentLocation1[1] + " (" + distance2 + "m) " + ": " + currentLocation1[0] + " (" + distance1 + "m) " + " >>> " + currentLocation1[4] + " (" + distance6 + "m) " + " >>> " + currentLocation1[2] + " (" + distance5 + "m) " + "\nCalculated Distance: "  +secondRouteHospital + "m\n");
                     
                     }else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + " (" + distance2 + "m) " + ": " + currentLocation1[0] + " (" + distance1 + "m) " + " >>> " + currentLocation1[4] + " (" + distance6 + "m) " + " >>> " + currentLocation1[5] + " (" + distance7 + "m) >>>" + currentLocation1[3] + " (" + distance8 + "m) " + " >>> " + currentLocation1[2] + " (" + distance4 + "m) " + "\nCalculated Distance: "  +thirdRouteHospital + "m\n");
+                        System.out.println("You may take this route: " + currentLocation1[1] + " (" + distance2 + "m) " + ": " + currentLocation1[0] + " (" + distance1 + "m) " + " >>> " + currentLocation1[4] + " (" + distance6 + "m) " + " >>> " + currentLocation1[5] + " (" + distance7 + "m) >>>" + currentLocation1[3] + " (" + distance8 + "m) " + " >>> " + currentLocation1[2] + " (" + distance4 + "m) " + "\nCalculated Distance: "  +thirdRouteHospital + "m\n");
                         
                     }
 
@@ -510,7 +510,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
@@ -519,7 +519,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
 
@@ -537,7 +537,7 @@ public class MapFunctionality {
                                 + currentLocation1[3] + "(" + distance4 + "m) " + "\nCalculated Distance: "
                                 + +secondRouteMcdo + "m\n");
                     }else{
-                        System.out.println("You may take this route " + currentLocation1[1] + " >>> " + ": " + currentLocation1[2]
+                        System.out.println("You may take this route: " + currentLocation1[1] + " >>> " + ": " + currentLocation1[2]
                         + " (" + distance5 + "m) " + " >>> " + currentLocation1[5] + " (" + distance7 + "m) >>> " + currentLocation1[3] + " (" + distance8 + "m) " 
                         + "\nCalculated Distance: " + +thirdRouteMcdo + "m\n");
                     }
@@ -592,7 +592,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
@@ -600,7 +600,7 @@ public class MapFunctionality {
                         if(thirdRouteSM < 60){
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         }else{
-                            System.out.printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                            System.out.printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
                     }
 
@@ -617,7 +617,7 @@ public class MapFunctionality {
                                 + distance6 + "m) " + "\nCalculated Distance: " + +secondRouteSM + "m\n");
                     } else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + " (" + distance3 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation1[1] + " (" + distance3 + "m) " + ": "
                         + currentLocation1[2] + " (" + distance4 + "m) " + " >>> " + currentLocation1[3] + " ("
                         + distance8 + "m) >>> " + currentLocation1[5] + " ("
                         + distance7 + "m) >>> " + currentLocation1[4] + " ("
@@ -685,17 +685,17 @@ public class MapFunctionality {
 
                     if(firstRouteApartment <= secondRouteApartment && firstRouteApartment <= thirdRouteApartment){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + ": (" + currentLocation1[2] + distance3 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation1[1] + ": (" + currentLocation1[2] + distance3 + "m) " + ": "
                         + currentLocation1[3] + " (" + distance4 + "m) " + " >>> " + currentLocation1[5] + " ("
                         + distance7 + "m)" + "\nCalculated Distance: " + +firstRouteApartment + "m\n"); 
                     }else if(secondRouteApartment <= firstRouteApartment && secondRouteApartment <= thirdRouteApartment){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + ": (" + currentLocation1[2]+ distance5 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation1[1] + ": (" + currentLocation1[2]+ distance5 + "m) " + ": "
                         + currentLocation1[5] + " (" + distance7 + "m) " + " >>> "  + "\nCalculated Distance: " + +secondRouteApartment + "m\n");
                         
                     } else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation1[1] + ": (" + distance2 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation1[1] + ": (" + distance2 + "m) " + ": "
                         + currentLocation1[0] + " (" + distance1 + "m) " +  currentLocation1[4] + " (" + distance6 + "m) >>> "  + currentLocation1[5] + " (" + distance7 + "m) " + " >>> "  + "\nCalculated Distance: " + +thirdRouteApartment + "m\n");
                     }
                 break;
@@ -735,16 +735,12 @@ public class MapFunctionality {
                     + currentLocation2[3] + " (" + distance8+ "m) " + " >>> " + currentLocation2[5] + " ("
                     + distance7 + "m) >>> " + currentLocation2[4] + " ("
                     + distance6 + "m) >>> " + currentLocation2[0] + " ("
-                    + distance1 + "m) >>> " + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
+                    + distance1 + "m) " + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
                     System.out.println("Time: " + hours3 + " hour/s and " + minute3 + " minute/s\n");
                     System.out.println();
                     
                     if (firstRouteSchool <= secondRouteSchool && firstRouteSchool <= thirdRouteSchool) {
-                        System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[1]
-                                + " (" + distance3 + "m) " + currentLocation2[0] + " (" + distance2 + "m) "
-                                + "\nCalculated Distance: " + +firstRouteSchool + "m\n");
-
+                       
                         if (firstRouteSchool < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -756,30 +752,42 @@ public class MapFunctionality {
 
  
                     else if (secondRouteSchool <= firstRouteSchool && secondRouteSchool <= thirdRouteSchool) {
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route:  " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
-                                + currentLocation2[4] + " (" + distance6 + "m) " + " >>> " + currentLocation2[0] + " ("
-                                + distance1 + "m) " + "\nCalculated Distance: " + secondRouteSchool + "m\n");
+                        
                         if (firstRouteSchool < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance4 + "m) " + ": "
-                        + currentLocation2[3] + " (" + distance8+ "m) " + " >>> " + currentLocation2[5] + " ("
-                        + distance7 + "m) >>> " + currentLocation2[4] + " ("
-                        + distance6 + "m) >>> " + currentLocation2[0] + " ("
-                        + distance1 + "m) >>> " + "\nCalculated Distance: " + thirdRouteSchool + "m\n");   
+                          
                         if (thirdRouteSchool < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
+                    }
+
+                    if(firstRouteSchool <= secondRouteSchool && firstRouteSchool <= thirdRouteSchool){
+                        System.out.println("\nRECOMMENDED!\n");
+                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[1]
+                                + " (" + distance3 + "m) " + currentLocation2[0] + " (" + distance2 + "m) "
+                                + "\nCalculated Distance: " + +firstRouteSchool + "m\n");
+
+                    } else if(secondRouteSchool <= firstRouteSchool && secondRouteSchool <= thirdRouteSchool){
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route:  " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
+                                + currentLocation2[4] + " (" + distance6 + "m) " + " >>> " + currentLocation2[0] + " ("
+                                + distance1 + "m) " + "\nCalculated Distance: " + secondRouteSchool + "m\n");
+                    } else{
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance4 + "m) " + ": "
+                        + currentLocation2[3] + " (" + distance8+ "m) " + " >>> " + currentLocation2[5] + " ("
+                        + distance7 + "m) >>> " + currentLocation2[4] + " ("
+                        + distance6 + "m) >>> " + currentLocation2[0] + " ("
+                        + distance1 + "m) " + "\nCalculated Distance: " + thirdRouteSchool + "m\n"); 
                     }
                 }
 
@@ -819,9 +827,7 @@ public class MapFunctionality {
                     System.out.println();
 
                     if (firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= thirdRouteJollibee) {
-                        System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[1]
-                                + " (" + distance3 + "m) " + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
+                        
                         if (firstRouteJollibee < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -830,30 +836,41 @@ public class MapFunctionality {
 
                         }
                     }  else if (secondRouteJollibee <= firstRouteJollibee && secondRouteJollibee <= thirdRouteJollibee) {
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route:  " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
-                                + currentLocation2[4] + " (" + distance6 + "m) " + " >>> " + currentLocation2[0] + " ("
-                                + distance1 + "m) " + " >>> " + currentLocation2[1] + " (" + distance2 + "m) "
-                                + "\nCalculated Distance: " + +secondRouteJollibee + "m\n");
+                        
                         if (secondRouteJollibee < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
-                        System.out.println("You make take this route " + currentLocation2[2] + " (" + distance4 + "m) " + ": "
-                        + currentLocation2[3] + " (" + distance8 + "m) " + " >>> " + currentLocation2[5] + " ("
-                        + distance7 + "m) " + " >>> " + currentLocation2[4] + " (" + distance6 + "m) "
-                        + currentLocation2[0] + " (" + distance1 + "m) " + currentLocation2[1] + " (" + distance2 + "m) "
-                        +  "\nCalculated Distance: " + +thirdRouteJollibee + "m\n");
+                        
                         if (thirdRouteJollibee < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3+ "  minute/s\n");
                         } else {
                             System.out
                                     .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "  minute/s\n");
                         }
+                    }
+
+                    if(firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= thirdRouteJollibee){
+                        System.out.println("\nRECOMMENDED!\n");
+                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[1]
+                                + " (" + distance3 + "m) " + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
+                    } else if(secondRouteJollibee <= firstRouteJollibee && secondRouteJollibee <= thirdRouteJollibee){
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route:  " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
+                                + currentLocation2[4] + " (" + distance6 + "m) " + " >>> " + currentLocation2[0] + " ("
+                                + distance1 + "m) " + " >>> " + currentLocation2[1] + " (" + distance2 + "m) "
+                                + "\nCalculated Distance: " + +secondRouteJollibee + "m\n");
+                    } else{
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You make take this route " + currentLocation2[2] + " (" + distance4 + "m) " + ": "
+                        + currentLocation2[3] + " (" + distance8 + "m) " + " >>> " + currentLocation2[5] + " ("
+                        + distance7 + "m) " + " >>> " + currentLocation2[4] + " (" + distance6 + "m) "
+                        + currentLocation2[0] + " (" + distance1 + "m) " + currentLocation2[1] + " (" + distance2 + "m) "
+                        +  "\nCalculated Distance: " + +thirdRouteJollibee + "m\n");
                     }
                 }
 
@@ -890,9 +907,7 @@ public class MapFunctionality {
                     System.out.println();
 
                     if (firstRouteMcdo <= secondRouteMcdo && firstRouteMcdo <= thirdRouteMcdo) {
-                        System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[3]
-                                + " (" + distance4 + "m) " + "\nCalculated Distance: " + +firstRouteMcdo + "m\n");
+                        
                         if (firstRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -901,9 +916,7 @@ public class MapFunctionality {
 
                         }
                     } else if(secondRouteMcdo <= firstRouteMcdo && secondRouteMcdo <= thirdRouteMcdo){
-                        System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + ": " + currentLocation2[5]
-                        + " (" + distance7 + "m) >>> " + currentLocation2[4]+ " (" + distance8 + "m) " +"\nCalculated Distance: " + secondRouteMcdo + "m\n");
+                        
                         if (firstRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
@@ -912,13 +925,7 @@ public class MapFunctionality {
 
                         }
                     } else{
-                        
-                        System.out.println("You may take this route " + currentLocation2[2] +  ": " + currentLocation2[1]
-                        + " (" + distance2 + "m) " + " >>> "+ currentLocation2[0]
-                        + " (" + distance1 + "m) " +" >>> " + currentLocation2[4]
-                        + " (" + distance6 + "m) " +" >>> " + currentLocation2[5]
-                        + " (" + distance7 + "m) " +" >>> " + currentLocation2[3]
-                        + " (" + distance8 + "m) " + "\nCalculated Distance: " + +thirdRouteMcdo + "m\n");
+                       
                         
                         if (thirdRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
@@ -927,6 +934,23 @@ public class MapFunctionality {
                                     "\nThis is the quickest option: " + hours3 + " hour/s and " + minute3 + "  minute/s\n");
 
                         }
+                    }
+
+                    if(firstRouteMcdo <= secondRouteMcdo && firstRouteMcdo <= thirdRouteMcdo){
+                        System.out.println("\nRECOMMENDED!\n");
+                        System.out.println("You may take this route:  " + currentLocation2[2] + " >>> " + ": " + currentLocation2[3]
+                                + " (" + distance4 + "m) " + "\nCalculated Distance: " + +firstRouteMcdo + "m\n");
+                    } else if(secondRouteMcdo <= firstRouteMcdo && secondRouteMcdo <= thirdRouteMcdo){
+                        System.out.println("\nRECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + ": " + currentLocation2[5]
+                        + " (" + distance7 + "m) >>> " + currentLocation2[4]+ " (" + distance8 + "m) " +"\nCalculated Distance: " + secondRouteMcdo + "m\n");
+                    } else{
+                        System.out.println("You may take this route: " + currentLocation2[2] +  ": " + currentLocation2[1]
+                        + " (" + distance2 + "m) " + " >>> "+ currentLocation2[0]
+                        + " (" + distance1 + "m) " +" >>> " + currentLocation2[4]
+                        + " (" + distance6 + "m) " +" >>> " + currentLocation2[5]
+                        + " (" + distance7 + "m) " +" >>> " + currentLocation2[3]
+                        + " (" + distance8 + "m) " + "\nCalculated Distance: " + +thirdRouteMcdo + "m\n");
                     }
                 }
 
@@ -963,10 +987,7 @@ public class MapFunctionality {
                     System.out.println();
 
                     if (firstRouteSM <= secondRouteSM && firstRouteSM <= thirdRouteSM) {
-                        System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance3 + "m) " + ": "
-                        + currentLocation2[1] + " (" + distance2 + "m) >>>" + currentLocation2[0] + " (" + distance1 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "
-                        +firstRouteSM + "m\n");
+
                         if (firstRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -977,23 +998,17 @@ public class MapFunctionality {
                     }
 
                     else if (secondRouteSM <= firstRouteSM && secondRouteSM <= thirdRouteSM) {
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
-                        + currentLocation2[4] + " (" + distance6 + "m)"+
-                        "\nCalculated Distance: " + +secondRouteSM + "m\n");
+
                         
                         if (secondRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance4 + "m) " 
-                        + currentLocation2[3] + " (" + distance8 + "m) >>>" + currentLocation2[5] + " (" + distance7 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "
-                        +thirdRouteSM + "m\n");
+
                         if (thirdRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
@@ -1001,6 +1016,23 @@ public class MapFunctionality {
                                     "\nThis is the quickest option: " + hours3 + " hour/s and " + minute3 + "  minute/s\n");
 
                         }
+                    }
+
+                    if(firstRouteSM <= secondRouteSM && firstRouteSM <= thirdRouteSM){
+                        System.out.println("\nRECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance3 + "m) " + ": "
+                        + currentLocation2[1] + " (" + distance2 + "m) >>>" + currentLocation2[0] + " (" + distance1 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "
+                        +firstRouteSM + "m\n");
+                    } else if(secondRouteSM <= firstRouteSM && secondRouteSM <= thirdRouteSM){
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
+                        + currentLocation2[4] + " (" + distance6 + "m)"+
+                        "\nCalculated Distance: " + +secondRouteSM + "m\n");
+                    } else{
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance4 + "m) " 
+                        + currentLocation2[3] + " (" + distance8 + "m) >>>" + currentLocation2[5] + " (" + distance7 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) " + "\nCalculated Distance: "
+                        +thirdRouteSM + "m\n");
                     }
                 }   
 
@@ -1037,10 +1069,7 @@ public class MapFunctionality {
                     System.out.println();
 
                     if (firstRouteApartment <= secondRouteApartment && firstRouteApartment <= secondRouteApartment) {
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance3 + "m) " + ": "
-                        + currentLocation2[1] + " (" + distance2 + "m) >>>" + currentLocation2[0] + " (" + distance1 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) >>> " +  currentLocation2[5] + " (" + distance7 + "m) "+"\nCalculated Distance: "
-                        + firstRouteApartment + "m\n");
+
                         if (firstRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "  minute/s\n");
                         } else {
@@ -1051,23 +1080,16 @@ public class MapFunctionality {
                     }
 
                     else if (secondRouteApartment <= firstRouteApartment && secondRouteApartment <= thirdRouteApartment) {
-                        System.out.println("RECOMMENDED!\n");
-
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
-                        + currentLocation2[5] + " (" + distance7 + "m)"+
-                        "\nCalculated Distance: " + +secondRouteApartment + "m\n");
+                        
                         if (secondRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "  minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "  minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "  minute/s\n");
                         }
                     }
                     else{
-                        System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation2[2] + " (" + distance4 + "m) " 
-                        + currentLocation2[3] + " (" + distance8 + "m) >>>" + currentLocation2[5] + " (" + distance7 + "m) " + "\nCalculated Distance: "
-                        +thirdRouteApartment + "m\n");
+                        
                         if (thirdRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "  minute/s\n");
                         } else {
@@ -1075,6 +1097,24 @@ public class MapFunctionality {
                                     "\nThis is the quickest option: " + hours3 + " hour/s and " + minute3 + "  minute/s\n");
 
                         }
+                    }
+
+                    if(firstRouteApartment <= secondRouteApartment && firstRouteApartment <= secondRouteApartment){
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance3 + "m) " + ": "
+                        + currentLocation2[1] + " (" + distance2 + "m) >>>" + currentLocation2[0] + " (" + distance1 + "m) >>> " + currentLocation2[4] + " (" + distance6 + "m) >>> " +  currentLocation2[5] + " (" + distance7 + "m) "+"\nCalculated Distance: "
+                        + firstRouteApartment + "m\n");
+                    } else if(secondRouteApartment <= firstRouteApartment && secondRouteApartment <= thirdRouteApartment){
+                        System.out.println("RECOMMENDED!\n");
+
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance5 + "m) " + ": "
+                        + currentLocation2[5] + " (" + distance7 + "m)"+
+                        "\nCalculated Distance: " + +secondRouteApartment + "m\n");
+                    } else{
+                        System.out.println("RECOMMENDED!\n");
+                        System.out.println("You may take this route: " + currentLocation2[2] + " (" + distance4 + "m) " 
+                        + currentLocation2[3] + " (" + distance8 + "m) >>>" + currentLocation2[5] + " (" + distance7 + "m) " + "\nCalculated Distance: "
+                        +thirdRouteApartment + "m\n");
                     }
                 }
 
@@ -1131,7 +1171,7 @@ public class MapFunctionality {
 
                     if (firstRouteSchool <= secondRouteSchool && firstRouteSchool <= thirdRouteSchool && firstRouteSchool <= fourthRouteSchool) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
                         + currentLocation3[2] + " (" + distance3 + "m)  >>> " + currentLocation3[1] + " ("
                         + distance2 + "m)  >>> " + currentLocation3[1] + ">>> " + currentLocation3[0] + "\nCalculated Distance: "
                         + +firstRouteSchool + "m\n");
@@ -1145,7 +1185,7 @@ public class MapFunctionality {
                         }
                     }else if (secondRouteSchool <= firstRouteSchool && secondRouteSchool <= thirdRouteSchool && secondRouteSchool <= fourthRouteSchool) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
                         + currentLocation3[2] + " (" + distance5 + "m) " + " >>> " + currentLocation3[4] + " ("
                         + distance6 + "m) " + " >>> " + currentLocation3[0] + " (" + distance1 + ") "
                         + "\nCalculated Distance: " + secondRouteSchool + "m\n");
@@ -1160,7 +1200,7 @@ public class MapFunctionality {
                     else if(thirdRouteSchool <= firstRouteSchool && thirdRouteSchool <= secondRouteSchool && thirdRouteSchool <= fourthRouteSchool){
                         System.out.println("RECOMMENDED!\n");
                         
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
                         + currentLocation3[4] + " (" + distance7 + "m) " + " >>> " + currentLocation3[5] + " ("
                         + distance6 + "m) " + " >>> " + currentLocation3[0] + " (" + distance1 + ") "
                         + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
@@ -1312,7 +1352,7 @@ public class MapFunctionality {
                     if (firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= fourthRouteJollibee) {
                         System.out.println("\nRECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation3[3] + " >>> " + ": " + currentLocation3[2]
+                        System.out.println("You may take this route: " + currentLocation3[3] + " >>> " + ": " + currentLocation3[2]
                         + " (" + distance4 + "m) " + " >>> " + currentLocation3[1] + " (" + distance3 + "m) "
                         + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
                         if (firstRouteJollibee < 60) {
@@ -1326,7 +1366,7 @@ public class MapFunctionality {
 
                     else if ( secondRouteJollibee <= firstRouteJollibee && secondRouteJollibee <= thirdRouteJollibee && secondRouteJollibee <= fourthRouteJollibee) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
                         + currentLocation3[2] + " (" + distance5 + "m) " + " >>> " + currentLocation3[4] + " ("
                         + distance6 + "m) " + " >>> " + currentLocation3[0] + " (" + distance1 + "m) " + " >>> "
                         + currentLocation3[1] + " (" + distance2 + "m) " + "\nCalculated Distance: "
@@ -1340,7 +1380,7 @@ public class MapFunctionality {
                     }
                     else if(thirdRouteJollibee <= firstRouteJollibee && thirdRouteJollibee <= secondRouteJollibee && thirdRouteJollibee <= fourthRouteJollibee){
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
                         + currentLocation3[5] + " (" + distance7 + "m) " + " >>> " + currentLocation3[2] + " ("
                         + distance5 + "m) " + " >>> " + currentLocation3[1] + " (" + distance3 + "m) " + "\nCalculated Distance: "
                         + +thirdRouteJollibee + "m\n");
@@ -1354,7 +1394,7 @@ public class MapFunctionality {
                     else{
                         System.out.println("\nRECOMMENDED!\n");
                         
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
                         + currentLocation3[5] + " (" + distance7 + "m) " + " >>> " + currentLocation3[4] + " ("
                         + distance6 + "m) " + " >>> " + currentLocation3[0] + " (" + distance1 + "m) " + " >>> "
                         + currentLocation3[1] + " (" + distance2 + "m) " + "\nCalculated Distance: "
@@ -1414,7 +1454,7 @@ public class MapFunctionality {
 
                     if (firstRouteSM <= secondRouteSM && firstRouteSM <= secondRouteSM && firstRouteSM <= fourthRouteSM) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
                         + currentLocation3[2] + " (" + distance5 + "m)  >>> " + currentLocation3[4] + " ("
                         + distance6 + "m) " + "\nCalculated Distance: " + +firstRouteSM + "m\n");
                         if (firstRouteSM < 60) {
@@ -1440,7 +1480,7 @@ public class MapFunctionality {
                     }
                     else if( thirdRouteSM <= firstRouteSM && thirdRouteSM <secondRouteSM && thirdRouteSM <= fourthRouteSM){
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance8 + "m) " + ": "
                         + currentLocation3[5] + " (" + distance7 + "m)  >>> " + currentLocation3[4] + " ("
                         + distance6 + "m) " + "\nCalculated Distance: " + thirdRouteSM + "m\n");
                         if (thirdRouteSM < 60) {
@@ -1501,7 +1541,7 @@ public class MapFunctionality {
                     if (firstRouteMcdo <= secondRouteMcdo && firstRouteMcdo <= thirdRouteMcdo) {
                         System.out.println("\nRECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation3[3] + " ("+distance4+"m) "  + ": " + currentLocation3[2]
+                        System.out.println("You may take this route: " + currentLocation3[3] + " ("+distance4+"m) "  + ": " + currentLocation3[2]
                         + " (" + distance3 + "m) " + " >>> " + currentLocation3[1] + " (" + distance2 + "m)" + " >>> " + currentLocation3[0] + " (" + distance1 + "m)" + " >>> " + currentLocation3[4] + " (" + distance6 + "m)" + " >>> " + currentLocation3[5] + " (" + distance7 + "m)"
                         + "\nCalculated Distance: " + +firstRouteMcdo + "m\n");
 
@@ -1516,7 +1556,7 @@ public class MapFunctionality {
 
                     else if (secondRouteMcdo <= firstRouteMcdo && secondRouteMcdo <= thirdRouteMcdo) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation3[3] + " (" + distance4 + "m) " + ": "
                         + currentLocation3[2] + " (" + distance5 + "m) " + " >>> " + currentLocation3[5] + " ("
                         + distance7 + "m) "+"\nCalculated Distance: "
                         + +secondRouteMcdo + "m\n");
@@ -1529,7 +1569,7 @@ public class MapFunctionality {
                     }
                     else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation3[3] + " ("+distance8+"m) "  + ": " + currentLocation3[5]
+                        System.out.println("You may take this route: " + currentLocation3[3] + " ("+distance8+"m) "  + ": " + currentLocation3[5]
                         + "\nCalculated Distance: " + thirdRouteMcdo + "m\n");
     
                         if (thirdRouteMcdo < 60) {
@@ -1610,7 +1650,7 @@ public class MapFunctionality {
                         }
                         else{
                             System.out.println("RECOMMENDED!\n");
-                            System.out.println("You may take this route " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
+                            System.out.println("You may take this route: " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
                             + currentLocation4[5] + " (" + distance7 + "m) " + " >>> " + currentLocation4[3] + " ("
                             + distance8 + "m) " + " >>> " + currentLocation4[2] + " (" + distance4 + ") >>> " + currentLocation4[1] + " (" + distance3 + ") >>> " +currentLocation4[0] + " (" + distance2 + ") "
                             + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
@@ -1618,7 +1658,7 @@ public class MapFunctionality {
                                 System.out.printf("\nThis is the quickest option: " + minute3 + "   minute/s\n");
                             } else {
                                 System.out
-                                        .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "   minute/s\n");
+                                        .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "   minute/s\n");
                             }
                         }
 
@@ -1687,7 +1727,7 @@ public class MapFunctionality {
                     }
                     else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " >>> " + ": " + currentLocation4[5]
+                        System.out.println("You may take this route: " + currentLocation4[4] + " >>> " + ": " + currentLocation4[5]
                         + " (" + distance7 + "m) " + " >>> " + currentLocation4[3] + " (" + distance8 + "m) "
                         + " >>> " + currentLocation4[2] + " (" + distance4 + "m) " + "\nCalculated Distance: "
                         +thirdRouteHospital + "m\n");
@@ -1727,7 +1767,7 @@ public class MapFunctionality {
                     + +secondRouteMcdo + "m\n");
                     System.out.println("Time: " + hours2 + " hour/s and " + minute2 + "  minute/s\n");
                     System.out.println("Third Route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[5]
-                    + " (" + distance7 + "m) " + " >>> " + currentLocation4[5] + " (" + distance8 + "m)"
+                    + " (" + distance7 + "m) " + " >>> " + currentLocation4[3] + " (" + distance8 + "m)"
                     + "\nCalculated Distance: " + +thirdRouteMcdo + "m\n");
                     System.out.println("Time: " + hours3 + " hour/s and " + minute3 + "  minute/s\n");
                     System.out.println();
@@ -1760,8 +1800,8 @@ public class MapFunctionality {
                         }
                     } else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[5]
-                        + " (" + distance7 + "m) " + " >>> " + currentLocation4[5] + " (" + distance8 + "m)"
+                        System.out.println("You may take this route: " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[5]
+                        + " (" + distance7 + "m) " + " >>> " + currentLocation4[3] + " (" + distance8 + "m)"
                         + "\nCalculated Distance: " + +thirdRouteMcdo + "m\n");
                         if (thirdRouteMcdo < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "   minute/s\n");
@@ -1788,7 +1828,7 @@ public class MapFunctionality {
                     int hours3 = thirdRouteJollibee / 60;
 
                     System.out.println("First Route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[0]
-                    + " (" + distance1 + "m) " + " >>> " + currentLocation4[2] + " (" + distance2 + "m)"
+                    + " (" + distance1 + "m) " + " >>> " + currentLocation4[1] + " (" + distance2 + "m)"
                     + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
                     System.out.println("Time: " + hours + " hour/s and " + minute + "  minute/s\n");
 
@@ -1806,8 +1846,8 @@ public class MapFunctionality {
                     
                      if (firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= thirdRouteJollibee) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[0]
-                        + " (" + distance1 + "m) " + " >>> " + currentLocation4[2] + " (" + distance2 + "m)"
+                        System.out.println("You may take this route: " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[0]
+                        + " (" + distance1 + "m) " + " >>> " + currentLocation4[1] + " (" + distance2 + "m)"
                         + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
                         if (firstRouteJollibee < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "   minute/s\n");
@@ -1819,7 +1859,7 @@ public class MapFunctionality {
                     }
                         else if (secondRouteJollibee <= firstRouteJollibee && secondRouteJollibee <= thirdRouteJollibee) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
                         + currentLocation4[2] + " (" + distance5 + "m) " + " >>> " + currentLocation4[1] + " ("
                         + distance3 + "m) " + "\nCalculated Distance: "
                         + +secondRouteJollibee + "m\n");
@@ -1828,11 +1868,11 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "   minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "   minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "   minute/s\n");
                         }
                     } else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[5]
+                        System.out.println("You may take this route: " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[5]
                         + " (" + distance7 + "m) " + " >>> " + currentLocation4[5] + " (" + distance8 + "m)" + " >>> " + currentLocation4[3] + " (" + distance4 + "m)" + " >>> " + currentLocation4[2] + " (" + distance3 + "m) >> " + currentLocation4[1] +
                         "\nCalculated Distance: " + +thirdRouteJollibee + "m\n");
 
@@ -1840,7 +1880,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "   minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "   minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "   minute/s\n");
                         }
                     }
                 }
@@ -1888,7 +1928,7 @@ public class MapFunctionality {
                     
                      if (firstRouteApartment <= secondRouteApartment && firstRouteApartment <= thirdRouteApartment && firstRouteApartment <= fourthRouteApartment) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " ("+distance6+"m) "  + ": "+ " >>> " + currentLocation4[5]+ " (" + distance7 + "m) "
+                        System.out.println("You may take this route: " + currentLocation4[4] + " ("+distance6+"m) "  + ": "+ " >>> " + currentLocation4[5]+ " (" + distance7 + "m) "
                         + "\nCalculated Distance: " + +firstRouteApartment + "m\n");
                         if (firstRouteApartment < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "   minute/s\n");
@@ -1899,7 +1939,7 @@ public class MapFunctionality {
                     }
                         else if (secondRouteApartment <= firstRouteApartment && secondRouteApartment <= thirdRouteApartment && secondRouteApartment <= fourthRouteApartment) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation4[4] + " (" + distance6 + "m) " + ": "
                         + currentLocation4[0] + " (" + distance1 + "m) " + " >>> " + currentLocation4[1] + " ("
                         + distance2 + "m) " + " >>> " + currentLocation4[2] + " (" + distance3 + "m) " + " >>> "
                         + currentLocation4[5] + " (" + distance5 + "m)" + "(" + distance7 + "m)" + "\nCalculated Distance: "
@@ -1927,7 +1967,7 @@ public class MapFunctionality {
                     }   else{
                         System.out.println("RECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[2]
+                        System.out.println("You may take this route: " + currentLocation4[4] + " ("+distance6+"m) "  + ": " + currentLocation4[2]
                         + " (" + distance5 + "m) " + " >>> " + currentLocation4[3] + " (" + distance4 + "m)" + " >>> " + currentLocation4[5] + " (" + distance8 + "m)"
                         + "\nCalculated Distance: " + +fourthRouteApartment + "m\n");
                         if (fourthRouteApartment < 60) {
@@ -1991,7 +2031,7 @@ public class MapFunctionality {
                     System.out.println();
                         if (firstRouteSchool <= secondRouteSchool && firstRouteSchool <= secondRouteSchool  && firstRouteSchool <= fourthRouteSchool) {
                             System.out.println("\nRECOMMENDED!\n");
-                            System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
+                            System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
                             + currentLocation5[4] + " (" + distance6 + "m) >>> " + currentLocation5[0] + " (" + distance1 + "m) "  + "\nCalculated Distance: "
                             + +firstRouteSchool + "m\n");
                             
@@ -2007,7 +2047,7 @@ public class MapFunctionality {
 
                          else if (secondRouteSchool < firstRouteSchool && secondRouteSchool <= thirdRouteSchool && secondRouteSchool <= fourthRouteSchool) {
                             System.out.println("RECOMMENDED!\n");
-                            System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
+                            System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
                             + currentLocation5[2] + " (" + distance5 + "m) " + " >>> " + currentLocation5[1] + " ("
                             + distance3 + "m) " + " >>> " + currentLocation5[0] + " (" + distance2 + "m) "
                             + "\nCalculated Distance: " + secondRouteSchool + "m\n");
@@ -2021,7 +2061,7 @@ public class MapFunctionality {
 
                         else if (thirdRouteSchool <= firstRouteSchool &&  thirdRouteSchool <= secondRouteSchool && thirdRouteSchool <= fourthRouteSchool) {
                             System.out.println("RECOMMENDED!\n");
-                            System.out.println("You may take this route " +currentLocation5[5] + " (" + distance8 + "m) " + ": "
+                            System.out.println("You may take this route: " +currentLocation5[5] + " (" + distance8 + "m) " + ": "
                             + currentLocation5[3] + " (" + distance4 + "m) " + " >>> " + currentLocation5[2] + " ("
                             + distance3 + "m) " + " >>> " + currentLocation5[1] + " (" + distance2 + ") >>> " + currentLocation5[0]
                             + "\nCalculated Distance: " + thirdRouteSchool + "m\n");
@@ -2036,7 +2076,7 @@ public class MapFunctionality {
                         else{
                             System.out.println("RECOMMENDED!\n");
 
-                            System.out.println("You may take this route " + currentLocation5[5] + " (" + distance8 + "m) :" + currentLocation5[3] + 
+                            System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance8 + "m) :" + currentLocation5[3] + 
                             " (" + distance4 + "m) >>> "  + currentLocation5[2] +  " (" + distance5 + "m) >>> "  + currentLocation5[4] + " (" + distance6 + "m) >>>"  + currentLocation5[0] +" (" + distance1 + "m) " 
                             + "\nCalculated Distance: " + fourthRouteSchool + "m\n");
                             if (fourthRouteSchool < 60) {
@@ -2064,7 +2104,7 @@ public class MapFunctionality {
                     int hours3 = thirdRouteHospital / 60;
 
                     System.out.println("First Route " + currentLocation5[5] + " (" + distance7+ "m) " + ": "
-                    + currentLocation5[2] + " (" + distance5 + "m)" + currentLocation5[2] + "\nCalculated Distance: "
+                    + currentLocation5[2] + " (" + distance5 + "m)"+ "\nCalculated Distance: "
                     +firstRouteHospital + "m\n");
                     System.out.println("Time: " + hours + " hour/s and " + minute + "  minute/s\n");
 
@@ -2083,8 +2123,8 @@ public class MapFunctionality {
                     if (firstRouteHospital <= secondRouteHospital  && firstRouteHospital <= thirdRouteHospital) {
                         System.out.println("\nRECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7+ "m) " + ": "
-                        + currentLocation5[2] + " (" + distance5 + "m)" + currentLocation5[2] + "\nCalculated Distance: "
+                        System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7+ "m) " + ": "
+                        + currentLocation5[2] + " (" + distance5 + "m)"  + "\nCalculated Distance: "
                         +firstRouteHospital + "m\n");
                         if (firstRouteHospital < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute + "   minute/s\n");
@@ -2098,7 +2138,7 @@ public class MapFunctionality {
                     else if (secondRouteHospital <= firstRouteHospital && secondRouteHospital <= thirdRouteHospital) {
                         System.out.println("RECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation5[5]  + ": " + currentLocation5[4]
+                        System.out.println("You may take this route: " + currentLocation5[5]  + ": " + currentLocation5[4]
                         + " (" + distance6 + "m) " + " >>> " + currentLocation5[0] + " (" + distance1 + "m) "
                         + " >>> " + currentLocation5[1] + " (" + distance2 + "m) >>> " + currentLocation5[2] + " (" + distance3 + "m)" + "\nCalculated Distance: "
                         +secondRouteHospital + "m\n");
@@ -2160,7 +2200,7 @@ public class MapFunctionality {
                     
                     if (firstRouteMcdo <= secondRouteMcdo && firstRouteMcdo <= thirdRouteMcdo) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[2]
+                        System.out.println("You may take this route: " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[2]
                         + " (" + distance5 + "m) " + " >>> " + currentLocation5[3] + " (" + distance4 + "m)"
                         + "\nCalculated Distance: " + +firstRouteMcdo + "m\n");
 
@@ -2175,7 +2215,7 @@ public class MapFunctionality {
 
                     else if (secondRouteMcdo <= firstRouteMcdo && secondRouteMcdo <= thirdRouteMcdo) {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
                         + currentLocation5[4] + " (" + distance6 + "m) " + " >>> " + currentLocation5[0] + " ("
                         + distance1 + "m) " + " >>> " + currentLocation5[1] + " (" + distance2 + "m) " + " >>> "
                         + currentLocation5[2] + " (" + distance3 + "m) >>> " + currentLocation5[3] +"\nCalculated Distance: "
@@ -2184,12 +2224,12 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute2 + "   minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours2 + " and " + minute2 + "   minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours2 + "hour/s and " + minute2 + "   minute/s\n");
                         }
                     }
                     else{
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " ("+distance8+"m) "  + ": " + currentLocation5[3]
+                        System.out.println("You may take this route: " + currentLocation5[5] + " ("+distance8+"m) "  + ": " + currentLocation5[3]
                         + "\nCalculated Distance: " + thirdRouteMcdo + "m\n");
     
                         if (thirdRouteMcdo < 60) {
@@ -2197,7 +2237,7 @@ public class MapFunctionality {
                             System.out.printf("\nThis is the quickest option: " + minute3 + "   minute/s\n");
                         } else {
                             System.out
-                                    .printf("\nThis is the quickest option: " + hours3 + " and " + minute3 + "   minute/s\n");
+                                    .printf("\nThis is the quickest option: " + hours3 + "hour/s and " + minute3 + "   minute/s\n");
                         }
                     }
                 }
@@ -2237,7 +2277,7 @@ public class MapFunctionality {
 
                     if (firstRouteJollibee <= secondRouteJollibee && firstRouteJollibee <= thirdRouteJollibee) {
                         System.out.println("\nRECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[2]
+                        System.out.println("You may take this route: " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[2]
                         + " (" + distance5 + "m) >>> " + currentLocation5[1] + " (" + distance3 + "m)"
                         + "\nCalculated Distance: " + +firstRouteJollibee + "m\n");
                         if (firstRouteJollibee < 60) {
@@ -2251,7 +2291,7 @@ public class MapFunctionality {
 
                     else if (secondRouteJollibee <= firstRouteJollibee && secondRouteJollibee <= thirdRouteJollibee)  {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
                         + currentLocation5[4] + " (" + distance6 + "m) " + " >>> " + currentLocation5[0] + " ("
                         + distance1 + "m) >>> " + currentLocation5[1] + " ("
                         + distance2 + "m) " + "\nCalculated Distance: " + +secondRouteJollibee + "m\n");
@@ -2314,14 +2354,14 @@ public class MapFunctionality {
                     + currentLocation5[3] + " (" + distance4 + "m) " + " >>> " + currentLocation5[2] + " ("
                     + distance3 + "m) >>> "  + currentLocation5[1] + " ("
                     + distance2 + "m) >>> " + currentLocation5[0] + " ("
-                    + distance1 + "m)" + currentLocation5[4] +" ("+  distance6 + "m) " +  "\nCalculated Distance: " + fourthRouteSM +"m\n");
+                    + distance1 + "m) >>> " + currentLocation5[4] +" ("+  distance6 + "m) " +  "\nCalculated Distance: " + fourthRouteSM +"m\n");
                     System.out.println("Time: " + hours4 + " hour/s and " + minute4 + "  minute/s\n");
                     System.out.println();
 
                     if (firstRouteSM <= secondRouteSM && firstRouteSM <= thirdRouteSM && firstRouteSM <= fourthRouteSM) {
                         System.out.println("\nRECOMMENDED!\n");
 
-                        System.out.println("You may take this route " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[4]
+                        System.out.println("You may take this route: " + currentLocation5[5] + " ("+distance7+"m) "  + ": " + currentLocation5[4]
                         + " (" + distance6 + "m)"
                         + "\nCalculated Distance: " + +firstRouteSM + "m\n");
                         if (firstRouteSM < 60) {
@@ -2335,7 +2375,7 @@ public class MapFunctionality {
 
                     else if (secondRouteSM <= firstRouteSM && secondRouteSM <= thirdRouteSM && secondRouteSM <= fourthRouteSM)  {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance7 + "m) " + ": "
                         + currentLocation5[2] + " (" + distance5 + "m) " + " >>> " + currentLocation5[1] + " ("
                         + distance3 + "m) >>> " +currentLocation5[0] + " (" + distance2 + "m) " + " >>> " + currentLocation5[4] + " ("
                         + distance1 + "m) (" +  distance6 + "m) " +"\nCalculated Distance: " + secondRouteSM+ "m\n");
@@ -2350,7 +2390,7 @@ public class MapFunctionality {
                     
                     else if (thirdRouteSM <= firstRouteSM && thirdRouteSM <= secondRouteSM && thirdRouteSM <= fourthRouteSM)  {
                         System.out.println("RECOMMENDED!\n");
-                        System.out.println("You may take this route " + currentLocation5[5] + " ("+distance8+"m) "  + ": " + currentLocation5[3]
+                        System.out.println("You may take this route: " + currentLocation5[5] + " ("+distance8+"m) "  + ": " + currentLocation5[3]
                         + " (" + distance4 + "m) >>> " + currentLocation5[2] + " (" + distance5 + "m) >>> " + currentLocation5[4] + " (" + distance6 + "m)"
                         + "\nCalculated Distance: " + +thirdRouteSM + "m\n");
                         if (thirdRouteSM < 60) {
@@ -2362,12 +2402,11 @@ public class MapFunctionality {
                     }
                     else{
                         System.out.println("RECOMMENDED!\n");
-
-                        System.out.println("You may take this route " + currentLocation5[5] + " (" + distance8 + "m) " + ": "
+                        System.out.println("You may take this route: " + currentLocation5[5] + " (" + distance8 + "m) " + ": "
                         + currentLocation5[3] + " (" + distance4 + "m) " + " >>> " + currentLocation5[2] + " ("
                         + distance3 + "m) >>> "  + currentLocation5[1] + " ("
                         + distance2 + "m) >>> " + currentLocation5[0] + " ("
-                        + distance1 + "m)" + currentLocation5[4] +" ("+  distance6 + "m) " +  "\nCalculated Distance: " + fourthRouteSM +"m\n");
+                        + distance1 + "m) >>>" + currentLocation5[4] +" ("+  distance6 + "m) " +  "\nCalculated Distance: " + fourthRouteSM +"m\n");
                         if (fourthRouteSM < 60) {
                             System.out.printf("\nThis is the quickest option: " + minute4 + "   minute/s\n");
                         } else {
