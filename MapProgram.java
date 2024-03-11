@@ -57,7 +57,7 @@ public class MapProgram {
             try {
                 for (int i = 0; i < sim.length(); i++) {
                     System.out.print(sim.charAt(i));
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 }
             } catch (InterruptedException e) {
             }
