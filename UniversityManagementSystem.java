@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
@@ -10,6 +11,7 @@ public class UniversityManagementSystem {
     static List<String[]> forStudents = new ArrayList<>();
     static List<String[]> forSubjects = new ArrayList<>();
     static Boolean isTrue = false;
+    static final int year = 24;
 
 	public static void main(String[] backToMain) {
         
@@ -79,8 +81,8 @@ public class UniversityManagementSystem {
                                 System.out.println("\nThe input is not valid.");
                                 System.out.println("--------------------------------------------------------------------------------------------");
                             }
-                    }while(!isTrue);
-                        break;
+                        }while(isTrue);
+                    break;
                     //Assign For Display
                     case 2:
                         clearScreen();
@@ -114,7 +116,7 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(Exception e){
-                                System.out.println("\nThe input is not valid.");
+                                System.out.println("\nThe input is in valid.");
                                 System.out.println("--------------------------------------------------------------------------------------------");
                             }
                     }while(!isTrue);
@@ -122,6 +124,8 @@ public class UniversityManagementSystem {
                     //Assign For Delete
                     case 3:     
                         clearScreen();
+                        do{
+                            try{
                         System.out.println("DELETE < INFO >");   
                         System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
                         System.out.print("Enter Index 1-3: ");
@@ -130,6 +134,7 @@ public class UniversityManagementSystem {
                         clearScreen();
                         switch(deleteChoice){
                             case 1:
+                                deleteInstructor();
                                 main(backToMain);
                                 break;
                             case 2:
@@ -141,18 +146,28 @@ public class UniversityManagementSystem {
                             case 4:
                                 main(backToMain);
                                 break;
+                            default:
+                                break;
                         }
+                        }catch(Exception e){
+                            System.out.println("\nThe input is in valid.");
+                            System.out.println("--------------------------------------------------------------------------------------------");
+                        }
+                }while(!isTrue);
+                        break;
                     //Assign For Edit
                     case 4:
                         clearScreen();
                         System.out.println("EDIT < INFO >");
                         System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
                         System.out.print("Enter Index 1-3: ");
-                        int editChoice = s.nextInt();
-                        s.nextLine();
+                        String eChoice = s.nextLine();
+                        int editChoice = Integer.parseInt(eChoice);
                         clearScreen();
                         switch(editChoice){
                             case 1:
+                                // editInstructor();
+                                clearScreen();
                                 main(backToMain);
                                 break;
                             case 2:
@@ -164,7 +179,10 @@ public class UniversityManagementSystem {
                             case 4:
                                 main(backToMain);
                                 break;
+                            default:
+                                break;
                         }
+                        break;
                     //Assign For Searching
                     case 5:
                         clearScreen();
@@ -176,6 +194,7 @@ public class UniversityManagementSystem {
                         clearScreen();
                         switch(searchChoice){
                             case 1:
+                                // searchInstructor();
                                 main(backToMain);
                                 break;
                             case 2:
@@ -187,19 +206,23 @@ public class UniversityManagementSystem {
                             case 4:
                                 main(backToMain);
                                 break;
+                            default:
+                                break;
                         }
+                        break;
                     case 6:                
                         System.out.print("\nHello Admin, ");
                         System.err.print("Do you want to end this program?\n[Y] Yes \n[N] No \nChoose From Y/N: ");
                         String yesOrNo = s.next().trim().toUpperCase();
                         if(yesOrNo.equals("Y") || yesOrNo.equals("YES")){
                             System.out.println("You now exiting in program. Thank You");
+                            isTrue = true;
                             break;
                         }else{
                             System.out.println("--------------------------------------------------");
                             main(backToMain);
                         }
-                            break;
+                        break;
                     default:
                         clearScreen();
                         System.out.printf("\nThis [%s] is invalid, Please Enter the valid Choices.", choice);
@@ -233,6 +256,13 @@ public class UniversityManagementSystem {
             subDetails[2] = subsId; 
             forSubjects.add(subDetails);
         }
+    }
+
+    //DELETE SUBJECT
+    private static void deleteSubject(){
+        Scanner forDelete = new Scanner(System.in);
+        System.out.print("\b Instructor ID must enter in this space: ST"+ year);    
+        String delOp = forDelete.nextInt();
     }
 
     //SUBJECT DATA GETTER
@@ -286,6 +316,7 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR SUBJECTS
     static void getDataForSubjects(List<String[]> takeDataForSubjects){
             List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);  
+            System.out.println("\t\t\t\t\t\t DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
             System.out.print("|            SUBJECT CODE          |             Subject Title        |                 Subject Description                    |");
             for(String[] getData: getDataOfSubs){
                 if(getData.length >= 2){
@@ -327,7 +358,7 @@ public class UniversityManagementSystem {
         }
 
         else{
-            System.out.println("The isntructor was been enrolled in.");
+            System.out.println("The instructor was been enrolled in.");
             ins.instantiateOfInstructor();
             String insId = ins.getTheInstructorId();
             iDetails[5] = insId;
@@ -335,6 +366,222 @@ public class UniversityManagementSystem {
         }
         
     }
+
+    //DELETE INSTRUCTOR METHOD
+    private static void deleteInstructor() {
+        Scanner delScanner = new Scanner(System.in);
+        System.out.print("\nEnter the Instructor ID (e.g., INS" + year + "-1234) with only 4 digits: ");
+        String deleteID = delScanner.nextLine();
+
+        boolean isFound = false;
+
+        for(int i = forInstructors.size() -1; i >= 0; i--){
+            ThisIsForInstructor newIns = forInstructors.get(i);
+            String deletionOfInstructor = newIns.getTheInstructorId();
+
+                if(deletionOfInstructor.endsWith(deleteID)){
+                    isFound = true;
+                    System.out.println("INS24-"+deleteID+" ID is processing... for deleting .");
+                    System.out.println();
+                    String adminConfirmation;
+                    System.out.printf("Admin: Are you sure you want to delete this profile we need as confirmation.");
+                    adminConfirmation = delScanner.nextLine();
+
+                    if(adminConfirmation.equalsIgnoreCase("Y")){
+                        forInstructors.remove(i);
+                        System.out.println("This instructor profile is now confirm deleted." );
+                    } else{
+                        System.out.println("This instructor profile is not confirm deleted in database");
+                    }
+                    break;
+                }
+        }
+
+        if (!isFound) {
+            System.out.println("This instructor is not existing.");
+        }
+
+        delScanner.close();
+    }
+
+    
+    
+    
+        // for (int i = 0; i < forInstructors.size(); i++) {
+        //     String[] deleteInformationForAll = forInstructors.get(i);
+        //     String insID = deleteInformationForAll[5];
+        //     String the4dig = insID.substring(insID.length() - 4); // Extract last 4 digits
+        //     if (the4dig.equals(delOp)) { // Compare with input
+        //         forInstructors.remove(i);
+        //         isFlag = true;
+        //         System.out.println("\nInstructor no." + i + ": INS" + year + "-" + delOp + " , was officially deleted.");
+        //         return;
+        //     } 
+        // }
+    
+        // if (!isFlag) {
+        //     System.out.println("This Instructor ID (" + delOp + ") does not exist in the program.");
+        // }
+    
+    
+
+    // //EDITING INSTRUCTOR METHOD
+    private static void editInstructor() {
+        Scanner editScanner = new Scanner(System.in);
+        System.out.print("\nEnter the Instructor ID (e.g., INS" + year + "-1234) with only 4 digits: ");
+        String editID = editScanner.nextLine();
+    
+        // Validate the input format
+        if (!editID.matches("\\d{4}$")) {
+            System.out.println("Invalid input format. Instructor ID should contain only 4 digits.");
+            editScanner.close();
+            return;
+        } 
+        boolean isFound = false;
+
+        for(String insDetails[]: forInstructors){
+            String edID = insDetails[5];
+            String passID = edID.substring(Math.max(0,edID.length()-4)); 
+            if(passID.equals(editID)){
+                isFound = true;
+                System.out.println("\n< The instructor is in the database > ");
+                System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
+                System.out.println();
+
+                    System.out.print("\nDo you want to edit this instructor?\n[Y] Yes, i want to edit it\n[N] No, maybe later\n");
+                    String eIns =  editScanner.nextLine();
+
+                    if(eIns.equalsIgnoreCase("Y") || eIns == "Y".trim()){
+                        System.out.println("Proceed to edit your profile");
+
+                        while(!isFound){
+                            System.out.print("Enter your First Name: ");
+                            String newInstructorFirstName = s.nextLine();
+                
+                            if(newInstructorFirstName.isBlank()){
+                                System.out.println("First name is empty, Fill it");
+                            } else if(newInstructorFirstName.matches(".*\\d.*")){
+                                System.out.println("First name can't contain any number");
+                            }else{
+                                insDetails[0] = newInstructorFirstName;
+                                break;
+                            }
+                        }
+                
+                        while(!isFound){
+                            System.out.print("Enter your Last Name: ");
+                            String newInstructorLastName = s.nextLine();
+                
+                            if(newInstructorLastName.isBlank()){
+                                System.out.println("Last name is empty, Fill it");
+                            } else if(newInstructorLastName.matches(".*\\d.*")){
+                                System.out.println("Last name can't contain any number");
+                            } else{
+                                insDetails[1] = newInstructorLastName; 
+                                break;
+                            }
+                        }
+                
+                        while(!isFound){
+                            System.out.print("Enter your Middle Name (Optional): ");
+                            String newInstructorMiddleName = s.nextLine();
+                            if(newInstructorMiddleName.matches(".*\\d.*")){
+                                System.out.println("Middle name can't contain any number");
+                            }else{
+                                insDetails[2] = newInstructorMiddleName; 
+                                break;
+                            }
+                        }
+                        
+                        while(!isFound){
+                            System.out.print("Enter your Address: ");
+                            String newInstructorAddress = s.nextLine();
+                
+                            if(newInstructorAddress.isBlank()){
+                                System.out.println("Address is empty, Fill it");
+                            } else if(newInstructorAddress.matches(".*\\d.*")){
+                                System.out.println("Address can't contain any number");
+                            } else{
+                                insDetails[3] = newInstructorAddress; 
+                                break;
+                            }
+                        }
+                        
+                
+                        while(!isFound){
+                        System.out.print("Enter your Age: ");
+                        String newInsAgeInput = s.nextLine(); 
+                            try {
+                                int newAge = Integer.parseInt(newInsAgeInput);
+                                if(newAge >= 24 && newAge <= 100){
+                                    insDetails[4] = newInsAgeInput;
+                                    break;
+                                }else{
+                                    if(newAge >= 24 && newAge <= 100){
+                                    System.out.println("You're age must be 24 to 100 y/olds.");
+                                    } else{
+                                        System.out.println("Age doesn't meet the requirement for instructor.");
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.printf("This [%s] is invalid, Please Enter the valid Choices.\n", newInsAgeInput);
+                            }
+                            
+                            int updAge = Integer.parseInt(insDetails[4]);
+                            if(updAge >= 24  && updAge <= 100){
+                                System.out.println("You're a Instructor.");
+                            }
+                        }
+
+                        System.out.println("Your profile was succesfully updated.");
+                    } else if(eIns.equalsIgnoreCase("N")){
+                        System.out.println("Your editing profile is not updated.");
+                        break;
+                    }  else{
+                        System.out.println("Invalid Input.");
+                    }
+            }
+            break;
+            }
+
+        if(!isFound){
+            System.out.println("This ID is not existing, try to add first");
+
+        }
+        
+        editScanner.close();
+        return;
+    }
+    
+
+    //SEARCHING INSTRUCTOR METHOD
+    static Scanner forSearch = new Scanner(System.in);
+    private static void searchInstructor(){
+        System.out.print("\n Instructor ID must enter in this space provide, example (ST\"+ year+\"-1234) only the 4 digit: ");
+        String searchID = forSearch.nextLine();
+
+
+        if(searchID.length() != 4 || !searchID.matches(".\\d{4}")){
+        } else{
+
+            boolean isFlag = false;
+            for(String[] insDetails : forInstructors){
+                if(insDetails[5].equals(searchID)){
+                    isFlag = true;
+                    System.out.println("\n< The instructor is in the data > ");
+                    System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
+                    break;
+                }
+        
+            
+            }
+
+            if(!isFlag){
+                System.out.println("This Insstructor id ("+searchID+") is not existing in the progam.");
+            }
+        }
+    }
+
 
     //INSTRUCTOR DATA GETTER
 	static String[] insInformation(String dataInformation) {
@@ -459,6 +706,7 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR INSTRUCTOR
     static void getDataForInstructors(List<String[]> takeDataForInstructor){
             List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);  
+            System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
             for(String[] getData: getDataOfIns){
                 if(getData.length >= 5){
 
@@ -469,9 +717,9 @@ public class UniversityManagementSystem {
                 String insAge = getData[4];
                 String instructorIdentity = getData[5];
 
-                System.out.println("DISPLAYING DATA OF  INSTRUCTOR/S\n");
+                
 
-                System.out.print("INSTRUCTOR ID:"+instructorIdentity+"\n|First Name: " +insFname+" | Last Name: "+insLname+" | Middle Name: "+insMname+" | Address: "+insAddress+" | Age: "+insAge+" |\n");
+                System.out.print("INSTRUCTOR ID:"+instructorIdentity+" |First Name: " +insFname+" | Last Name: "+insLname+" | Middle Name: "+insMname+" | Address: "+insAddress+" | Age: "+insAge+" |\n");
                 }
             }
             
@@ -610,6 +858,7 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR STUDENTS
     static void getDataForStudents(List<String[]> takeDataForStudent){
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
+        System.out.println("\t\t\t\t\t\t DISPLAYING ALL STUDENTS THAT EXISTING IN DATABASE");
         for(String[] getData: getDataOfStudent){
             if(getData.length >= 5){
 
@@ -620,7 +869,7 @@ public class UniversityManagementSystem {
             String stAge = getData[4];
             String studentIdentity = getData[5];
 
-            System.out.println("DISPLAYING DATA OF  STUDENT/S\n");
+            
             System.out.print("STUDENT ID:"+studentIdentity+"\n|First Name: "+stFname+" | Last Name: " +stLname +" | Middle Name: "+stMname+" | Address: "+stAddress+" | Age: "+stAge+" |\n");
             }else{}
         }
@@ -647,7 +896,6 @@ class ThisIsForStudent extends UniversityManagementSystem{
     }
 
     private String r4d(List<String[]> forSubject){
-        final int year = 24;
         final Random r = new Random();
         final int student4Digit = r.nextInt(1000,10000);
         String stFormat = String.format("(ST"+ year +"-%04d)%n", student4Digit);
@@ -667,15 +915,19 @@ class ThisIsForInstructor extends UniversityManagementSystem{
 
     void instantiateOfInstructor(){
         this.idOFInstructor = r4d(forInstructors);
+        dataBaseForID(idOFInstructor);
     }
 
     private String r4d(List<String[]> forInstructor){
-        final int year = 24;
         final Random r = new Random();
         final int instuctor4Digit = r.nextInt(1000,10000);
         String insFormat = String.format("(INS"+ year +"-%04d)%n", instuctor4Digit);
         forInstructors.add(new String[]{insFormat});
         return insFormat;
+    }
+
+    private void dataBaseForID(String insIdentity){
+        forInstructors.add(new String[]{insIdentity});
     }
 
     public String getTheInstructorId(){
