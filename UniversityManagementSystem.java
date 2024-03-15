@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
@@ -14,28 +13,35 @@ public class UniversityManagementSystem {
     static final int year = 24;
 
 	public static void main(String[] backToMain) {
-        
+        // Subject thisSubject = new Subject();
+        // Subject.ThisIsForSubject subIdentification = thisSubject.new ThisIsForSubject();
+
+        // Instructor thisInstructor = new Instructor();
+        // Instructor.ThisIsForInstructor insIdentification = thisInstructor.new ThisIsForInstructor();
+
+        // Student thisStudent = new Student();
+        // Student.ThisIsForStudent stIdentification = thisStudent.new ThisIsForStudent();
         
 		// UNIVERSITY MANAGEMENT SYSTEM
-        String umpsArt = """
-            \n
-            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-            .-..-.  .-..-.  .-.  .-..-.   .--.   .---.    .--.   .-.  .-----.  .-..-.  .-..-.   .--.   .-..-.   .--.    .--.    .--.   .-..-.   .--.   .-..-.  .-----.  
-            : :: :  : `: :  : :  : :: :  : .--'  : .; :  : .--'  : :  `-. .-'  : :: :  : `' :  : .; :  : `: :  : .; :  : .--'  : .--'  : `' :  : .--'  : `: :  `-. .-'  
-            : :: :  : .` :  : :  : :: :  : `;    :   .'  `. `.   : :    : :    `.  .'  : .. :  :    :  : .` :  :    :  : : _   : `;    : .. :  : `;    : .` :    : :    
-            : :; :  : :. :  : :  : `' ;  : :__   : :.`.   _`, :  : :    : :     .' ;   : :; :  : :: :  : :. :  : :: :  : :; :  : :__   : :; :  : :__   : :. :    : :    
-            `.__.'  :_;:_;  :_;   `.,'   `.__.'  :_;:_;  `.__.'  :_;    :_;    :_,'    :_;:_;  :_;:_;  :_;:_;  :_;:_;  `.__.'  `.__.'  :_;:_;  `.__.'  :_;:_;    :_;    
-                                                                                                                                                                        
-                                                                                                                                                                        
-            .---.   .---.    .--.   .---.   .-.  .-.     .-.  .-..-.   .--.    .--.   .-..-.   .--.   .-----.   .--.   .-..-.                                           
-            : .; :  : .; :  : ,. :  : .--'  : :  : :     : :  : `: :  : .--'  : .--'  : :: :  : .--'  `-. .-'  : .--'  : `' :                                           
-            :  _.'  :   .'  : :: :  : `;    : :  : :     : :  : .` :  : : _   `. `.   `.  .'  `. `.     : :    : `;    : .. :                                           
-            : :     : :.`.  : :; :  : :     : :  : :__   : :  : :. :  : :; :   _`, :   .' ;    _`, :    : :    : :__   : :; :                                           
-            :_;     :_;:_;  `.__.'  :_;     :_;  :___.'  :_;  :_;:_;  `.__.'  `.__.'  :_,'    `.__.'    :_;    `.__.'  :_;:_;                                                                                                                        
-            -----------------------------------------------------------------------------------------------------------------------------------------------------------------    
-                \n""";
-
-        System.out.print(umpsArt);
+//        String umpsArt = """
+//            \n
+//            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//            .-..-.  .-..-.  .-.  .-..-.   .--.   .---.    .--.   .-.  .-----.  .-..-.  .-..-.   .--.   .-..-.   .--.    .--.    .--.   .-..-.   .--.   .-..-.  .-----.
+//            : :: :  : `: :  : :  : :: :  : .--'  : .; :  : .--'  : :  `-. .-'  : :: :  : `' :  : .; :  : `: :  : .; :  : .--'  : .--'  : `' :  : .--'  : `: :  `-. .-'
+//            : :: :  : .` :  : :  : :: :  : `;    :   .'  `. `.   : :    : :    `.  .'  : .. :  :    :  : .` :  :    :  : : _   : `;    : .. :  : `;    : .` :    : :
+//            : :; :  : :. :  : :  : `' ;  : :__   : :.`.   _`, :  : :    : :     .' ;   : :; :  : :: :  : :. :  : :: :  : :; :  : :__   : :; :  : :__   : :. :    : :
+//            `.__.'  :_;:_;  :_;   `.,'   `.__.'  :_;:_;  `.__.'  :_;    :_;    :_,'    :_;:_;  :_;:_;  :_;:_;  :_;:_;  `.__.'  `.__.'  :_;:_;  `.__.'  :_;:_;    :_;
+//
+//
+//            .---.   .---.    .--.   .---.   .-.  .-.     .-.  .-..-.   .--.    .--.   .-..-.   .--.   .-----.   .--.   .-..-.
+//            : .; :  : .; :  : ,. :  : .--'  : :  : :     : :  : `: :  : .--'  : .--'  : :: :  : .--'  `-. .-'  : .--'  : `' :
+//            :  _.'  :   .'  : :: :  : `;    : :  : :     : :  : .` :  : : _   `. `.   `.  .'  `. `.     : :    : `;    : .. :
+//            : :     : :.`.  : :; :  : :     : :  : :__   : :  : :. :  : :; :   _`, :   .' ;    _`, :    : :    : :__   : :; :
+//            :_;     :_;:_;  `.__.'  :_;     :_;  :___.'  :_;  :_;:_;  `.__.'  `.__.'  :_,'    `.__.'    :_;    `.__.'  :_;:_;
+//            -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                \n""";
+//
+//        System.out.print(umpsArt);
 
         do{
             try{
@@ -60,6 +66,7 @@ public class UniversityManagementSystem {
                                     case 1:
                                         addingInstructor(); 
                                         main(backToMain);
+                                        
                                         break;
                                     case 2:
                                         addingStudent();
@@ -88,7 +95,7 @@ public class UniversityManagementSystem {
                         clearScreen();
                         do{
                             try{
-                                System.out.println("DISPLAYING < INFO >");
+                                System.out.println("DISPLAYING < INFORMATION >");
                                 System.out.println("\n[1]Display Instructor\n[2]Display Student\n[3]Display Subject\n[4]Back");
                                 System.out.print("Enter Index 1-3: ");
                                 String dChoice = s.nextLine();
@@ -105,6 +112,7 @@ public class UniversityManagementSystem {
                                         break;
                                     case 3:
                                         displayingDataOfSubjects();
+                                        
                                         main(backToMain);
                                         break;
                                     case 4:
@@ -126,7 +134,7 @@ public class UniversityManagementSystem {
                         clearScreen();
                         do{
                             try{
-                        System.out.println("DELETE < INFO >");   
+                        System.out.println("DELETE < INFORMATION >");
                         System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
                         System.out.print("Enter Index 1-3: ");
                         int deleteChoice = s.nextInt();
@@ -158,7 +166,7 @@ public class UniversityManagementSystem {
                     //Assign For Edit
                     case 4:
                         clearScreen();
-                        System.out.println("EDIT < INFO >");
+                        System.out.println("EDIT < INFORMATION >");
                         System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
                         System.out.print("Enter Index 1-3: ");
                         String eChoice = s.nextLine();
@@ -186,7 +194,8 @@ public class UniversityManagementSystem {
                     //Assign For Searching
                     case 5:
                         clearScreen();
-                        System.out.println("SEARCHING < INFO >");
+                        System.out.println("SEARCHING < INFORMATION" +
+                                " >");
                         System.out.println("\n[1]Search Instructor\n[2]Search Student\n[3]Search Subject\n[4]Back");
                         System.out.print("Enter Index 1-3: ");
                         int searchChoice = s.nextInt();
@@ -240,33 +249,52 @@ public class UniversityManagementSystem {
         s.close();
 	}
 
+    //Overloading Method For All
+    public static void addAgain(){
+        String addAgainC;
+        do{
+            System.out.println("\nDo you want to add again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            addAgainC  = s.nextLine().toUpperCase();
+            if(addAgainC.equalsIgnoreCase("Y")){
+                return True;
+            } else{
+                
+            }
+        }while(true);
+        return;
+    }
+
     /*SUBJECTS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
     static ThisIsForSubject subs = new ThisIsForSubject();
 
     //ADDING SUBJECTS METHOD
     private static void addingSubject(){
-        String [] subDetails = subjectInformation("SubjectDetails");
 
-        if(subDetails.length == 0){
-            System.out.print("The subject must cancelled.");
-        } else{
-            System.out.print("The subject must added");
-            subs.instantiateOfSubject();
-            String subsId = subs.getTheSubjectId();
-            subDetails[2] = subsId; 
-            forSubjects.add(subDetails);
-        }
+        do{
+            String[] subDetails = subjectInformation("SubjectDetails");
+
+            if(subDetails.length == 0){
+                System.out.print("The subject must cancelled.");
+            } else{
+                System.out.print("The subject must added");
+                subs.instantiateOfSubject();
+                String subsId = subs.getTheSubjectId();
+                subDetails[2] = subsId; 
+                forSubjects.add(subDetails);
+                
+            }
+        }while(addAgain());
     }
 
     //DELETE SUBJECT
     private static void deleteSubject(){
         Scanner forDelete = new Scanner(System.in);
         System.out.print("\b Instructor ID must enter in this space: ST"+ year);    
-        String delOp = forDelete.nextInt();
+        String delOp = forDelete.nextLine();
     }
 
     //SUBJECT DATA GETTER
-    static String[] subjectInformation(String sub){
+    public static String[] subjectInformation(String sub){
         String subjectForAll[] = new String[3];
         System.out.println("CREATE SUBJECT/S\n");
 
@@ -317,7 +345,9 @@ public class UniversityManagementSystem {
     static void getDataForSubjects(List<String[]> takeDataForSubjects){
             List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);  
             System.out.println("\t\t\t\t\t\t DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
-            System.out.print("|            SUBJECT CODE          |             Subject Title        |                 Subject Description                    |");
+            System.out.println("=============================================================================================================================================================");
+            System.out.println("| \tSUBJECT CODE\t | \tSUBJECT TITLE\t | \tSUBJECT DESCRIPTION\t |");
+            System.out.println("=============================================================================================================================================================");
             for(String[] getData: getDataOfSubs){
                 if(getData.length >= 2){
 
@@ -325,7 +355,7 @@ public class UniversityManagementSystem {
                 String sDescription = getData[1];
                 String sIdentity = getData[2];
 
-                System.out.print("\n|"+sIdentity+"|: "+sTitle+"|"+sDescription+"|");
+                System.out.print("|\t "+sIdentity+" \t| \t"+sTitle+" \t| \t"+sDescription+" \t|");
                 }
             }
             
@@ -337,9 +367,52 @@ public class UniversityManagementSystem {
             System.out.println("There's no subject Available, Try to add");
             return;
         } 
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         getDataForSubjects(forSubjects);
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+        String extraInDisplay;
+        do{
+            System.out.println();
+            System.out.println("Do you want assign/add subject?");
+            System.out.println("[I] Assigning subject to Instructor");
+            System.out.println("[S] Adding subject to Student");
+            System.out.println("[E] Type \"E\" if you want to back to main \nChoices: ");
+            extraInDisplay = s.nextLine().toUpperCase();
+                if(extraInDisplay.equalsIgnoreCase("I")){
+                    System.out.print("\nEnter the Instructor ID (e.g., INS"+ year + "-1234) with only 4 digits: ");
+                    String assignSubj = s.nextLine();
+                    if(assignSubj.equals(forInstructors)){
+                    System.out.println("Processing for assigning...");
+                    System.out.println("Enter Subject Code you want to assign in student: ");
+                    String insSub = s.nextLine();
+                    } else {
+                        System.out.println("There's no instructor existing with this ID, try to add first");
+                    }
+                        if(inSub.equals(forSubjects)){
+                            forInstructors.add();
+                        } else{
+                            System.out.println("There's no subject existing with this code, try to add first");
+                        }
+                } else if(extraInDisplay.equalsIgnoreCase("S")){
+                    System.out.print("\nEnter the Student ID (e.g., ST"+year + "-1234) with only 4 digits: ");
+                    String addSubj = s.nextLine();
+                    if(addSubj.equals(forStudents)){
+                    System.out.println("Processing for adding...");
+                    System.out.println("Enter Subject Code you want to add in student: ");
+                    String stSub = s.nextLine();
+                    } else{
+                        System.out.println("There's no student existing with this ID, try to add first");
+                    }
+                        if(stSub.equals(forSubjects)){
+
+                        } else{
+                            System.out.println("There's no subject existing with this code, try to add first");
+                        }
+                } else if(extraInDisplay.equalsIgnoreCase("E")){
+                    break;
+                } else{
+                    System.out.println("Invalid input please try again.");
+                }
+            }while(extraInDisplay != "E");                                   
+                                        
         return;
     }
 
@@ -350,20 +423,22 @@ public class UniversityManagementSystem {
     static ThisIsForInstructor ins = new ThisIsForInstructor();
 
     private static void addingInstructor(){
-        String[] iDetails = insInformation("instructorDeatails");
+        do{
+            String[] iDetails = insInformation("instructorDeatails");
 
-        if(iDetails.length == 0){
-            System.out.println("The instructor cancelled application");
-            return;
-        }
+            if(iDetails.length == 0){
+                System.out.println("The instructor cancelled application");
+                return;
+            }
 
-        else{
-            System.out.println("The instructor was been enrolled in.");
-            ins.instantiateOfInstructor();
-            String insId = ins.getTheInstructorId();
-            iDetails[5] = insId;
-            forInstructors.add(iDetails);
-        }
+            else{
+                System.out.println("The instructor was been enrolled in.");
+                ins.instantiateOfInstructor();
+                String insId = ins.getTheInstructorId();
+                iDetails[5] = insId;
+                forInstructors.add(iDetails);
+            }
+        }while(addAgain());
         
     }
 
@@ -376,8 +451,8 @@ public class UniversityManagementSystem {
         boolean isFound = false;
 
         for(int i = forInstructors.size() -1; i >= 0; i--){
-            ThisIsForInstructor newIns = forInstructors.get(i);
-            String deletionOfInstructor = newIns.getTheInstructorId();
+            String[] ins = forInstructors.get(i);
+            // String deletionOfInstructor = ins.getTheInstructorId();
 
                 if(deletionOfInstructor.endsWith(deleteID)){
                     isFound = true;
@@ -448,7 +523,7 @@ public class UniversityManagementSystem {
                 System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
                 System.out.println();
 
-                    System.out.print("\nDo you want to edit this instructor?\n[Y] Yes, i want to edit it\n[N] No, maybe later\n");
+                    System.out.print("\nDo you want to edit this instructor?\n[Y] Yes, I want to edit it\n[N] No, maybe later\n");
                     String eIns =  editScanner.nextLine();
 
                     if(eIns.equalsIgnoreCase("Y") || eIns == "Y".trim()){
@@ -577,13 +652,13 @@ public class UniversityManagementSystem {
             }
 
             if(!isFlag){
-                System.out.println("This Insstructor id ("+searchID+") is not existing in the progam.");
+                System.out.println("This Instructor id ("+searchID+") is not existing in the progam.");
             }
         }
     }
 
 
-    //INSTRUCTOR DATA GETTER
+    //INSTRUCTOR DATA SETTER
 	static String[] insInformation(String dataInformation) {
         System.out.print("CREATE INSTRUCTOR/S FORM\n");
 		String informationForAll[] = new String[6];
@@ -635,8 +710,7 @@ public class UniversityManagementSystem {
 
             if(instructorAddress.isBlank()){
                 System.out.println("Address is empty, Fill it");
-            } else if(instructorAddress.matches(".*\\d.*")){
-                System.out.println("Address can't contain any number");
+                
             } else{
                 informationForAll[3] = instructorAddress; 
                 break;
@@ -695,18 +769,19 @@ public class UniversityManagementSystem {
             System.out.println("There's no Instructor Available, Try to Add");
             return;
         }
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         getDataForInstructors(forInstructors);
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
         // System.out.println("\nSUBJECT HANDLE");
         // getDataForSubjects(forSubjects);
 
     }
 
-    //SETTER DATA FOR INSTRUCTOR
-    static void getDataForInstructors(List<String[]> takeDataForInstructor){
+    //GETTER DATA FOR INSTRUCTOR
+    private static void getDataForInstructors(List<String[]> takeDataForInstructor){
             List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);  
-            System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
+            System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");         
+            System.out.println("=============================================================================================================================================================");
+            System.out.println("| \tINSTRUCTOR ID\t | \tFIRST NAME\t | \ttLAST NAME\t | \tMIDDLE NAME\t | \tADDRESS\t | \tAGE\t | \tSUBJECT CODE\t | \tSUBJECT TITLE\t | \tSUBJECT DESCRIPTION\t |");
+            System.out.println("=============================================================================================================================================================");
             for(String[] getData: getDataOfIns){
                 if(getData.length >= 5){
 
@@ -717,9 +792,8 @@ public class UniversityManagementSystem {
                 String insAge = getData[4];
                 String instructorIdentity = getData[5];
 
-                
-
-                System.out.print("INSTRUCTOR ID:"+instructorIdentity+" |First Name: " +insFname+" | Last Name: "+insLname+" | Middle Name: "+insMname+" | Address: "+insAddress+" | Age: "+insAge+" |\n");
+                System.out.print("|\t"+instructorIdentity+"\t    |\t " +insFname.toUpperCase()+"     \t| \t"+insLname.toUpperCase()+"\t     | \t "+insMname.toUpperCase()+" \t | \t "+insAddress.toUpperCase()+" \t | \t "+insAge+" \t|\n");
+                System.out.println("============================================================================================================================================================");
                 }
             }
             
@@ -742,11 +816,12 @@ public class UniversityManagementSystem {
             String stId = st.getTheStudentId();
             sDetails[5] = stId;
             forStudents.add(sDetails);
+            addAgain();
         }
     }
 
     //STUDENTS DATA GETTER
-    static String[] stInformation(String dataInformation) {
+    public static String[] stInformation(String dataInformation) {
 		String informationForAll[] = new String[6];
         System.out.println("CREATE STUDENT/S FORM\n");
 
@@ -849,28 +924,33 @@ public class UniversityManagementSystem {
                 System.out.println("There's no Student Available, Try to Add");
                 return;
             }
-            System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+
             getDataForStudents(forStudents);
-            System.out.println("\n---------------------------------------------------------------------------------------------------------------------");
+
     }
 
 
     //SETTER DATA FOR STUDENTS
-    static void getDataForStudents(List<String[]> takeDataForStudent){
+    private static void getDataForStudents(List<String[]> takeDataForStudent){
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
-        System.out.println("\t\t\t\t\t\t DISPLAYING ALL STUDENTS THAT EXISTING IN DATABASE");
-        for(String[] getData: getDataOfStudent){
+        System.out.println("\t\t\t\t DISPLAYING ALL STUDENTS THAT EXISTING IN DATABASE");   
+        System.out.println("====================================================================================================================");   
+        System.out.println("| \tSTUDENT ID\t | \tFIRST NAME\t | \ttLAST NAME\t | \tMIDDLE NAME\t | \tADDRESS\t | \tAGE\t |");
+        System.out.println("===================================================================================================================="); 
+
+        for(String[] getDatas: getDataOfStudent){
             if(getData.length >= 5){
 
-            String stFname = getData[0];
-            String stLname = getData[1];
-            String stMname = getData[2];
-            String stAddress = getData[3];
-            String stAge = getData[4];
-            String studentIdentity = getData[5];
+            String stFname = getDatas[0];
+            String stLname = getDatas[1];
+            String stMname = getDatas[2];
+            String stAddress = getDatas[3];
+            String stAge = getDatas[4];
+            String studentIdentity = getDatas[5];
 
             
-            System.out.print("STUDENT ID:"+studentIdentity+"\n|First Name: "+stFname+" | Last Name: " +stLname +" | Middle Name: "+stMname+" | Address: "+stAddress+" | Age: "+stAge+" |\n");
+            System.out.print("| "+studentIdentity+" | "+stFname+" |  " +stLname +" |  "+stMname+" |  "+stAddress+" |  "+stAge+" |\n");
+            System.out.println("=================================================================================================");
             }else{}
         }
     }
@@ -884,75 +964,81 @@ public class UniversityManagementSystem {
     }
 
 }
-/*CLASSES FOR UNIVERSITY MANAGEMENT SYSTEM ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+//CLASSES FOR UNIVERSITY MANAGEMENT SYSTEM ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
 //CLASS FOR STUDENTS
 class ThisIsForStudent extends UniversityManagementSystem{
-    private String idOFstudent;
-    
-    void instantiateOfStudents(){
-        this.idOFstudent = r4d(forStudents);
-    }
+   private String idOFstudent;
 
-    private String r4d(List<String[]> forSubject){
-        final Random r = new Random();
-        final int student4Digit = r.nextInt(1000,10000);
-        String stFormat = String.format("(ST"+ year +"-%04d)%n", student4Digit);
-        forStudents.add(new String[]{stFormat});
-        return stFormat;
-    }
+   void instantiateOfStudents(){
+       this.idOFstudent = r4d(forStudents);
+   }
 
-    public String getTheStudentId(){
-        return idOFstudent;
-    }
+   private String r4d(List<String[]> forSubject){
+       final Random r = new Random();
+       final int student4Digit = r.nextInt(1000,10000);
+       String stFormat = String.format(" ST"+ year +"-%04d%n", student4Digit);
+       forStudents.add(new String[]{stFormat});
+       return stFormat;
+   }
+
+   public String getTheStudentId(){
+       return idOFstudent;
+   }
 }
 
+//import java.util.List;
+//import java.util.Random;
+//
+//public class Instructor {
 //CLASS FOR INSTRUCTORS
-class ThisIsForInstructor extends UniversityManagementSystem{
+   class ThisIsForInstructor extends UniversityManagementSystem{
 
-    private String idOFInstructor;
+       private String idOFInstructor;
 
-    void instantiateOfInstructor(){
-        this.idOFInstructor = r4d(forInstructors);
-        dataBaseForID(idOFInstructor);
-    }
+       void instantiateOfInstructor(){
+           this.idOFInstructor = r4d(forInstructors);
+           dataBaseForID(idOFInstructor);
+       }
 
-    private String r4d(List<String[]> forInstructor){
-        final Random r = new Random();
-        final int instuctor4Digit = r.nextInt(1000,10000);
-        String insFormat = String.format("(INS"+ year +"-%04d)%n", instuctor4Digit);
-        forInstructors.add(new String[]{insFormat});
-        return insFormat;
-    }
+       private String r4d(List<String[]> forInstructor){
+           final Random r = new Random();
+           final int instuctor4Digit = r.nextInt(1000,10000);
+           String insFormat = String.format(" INS"+ year +"-%04d", instuctor4Digit);
+           forInstructors.add(new String[]{insFormat});
+           return insFormat;
+       }
 
-    private void dataBaseForID(String insIdentity){
-        forInstructors.add(new String[]{insIdentity});
-    }
+       private void dataBaseForID(String insIdentity){
+           forInstructors.add(new String[]{insIdentity});
+       }
 
-    public String getTheInstructorId(){
-        return idOFInstructor;
-    }
-} 
+       public String getTheInstructorId(){
+           return idOFInstructor;
+       }
+   }
+
+
 
 //CLASS FOR SUBJECTS
 class ThisIsForSubject extends UniversityManagementSystem {
 
-    private String idOFSubject;
+   private String idOFSubject;
 
-    void instantiateOfSubject(){
-        this.idOFSubject = r4d(forSubjects);
-    }
+   void instantiateOfSubject(){
+       this.idOFSubject = r4d(forSubjects);
+   }
 
-    private String r4d(List<String[]> forSubject){
-        final Random r = new Random();
-        final int subject4Digit = r.nextInt(1000,10000);
-        String subFormat = String.format("(SUB"+ "-%04d)%n", subject4Digit);
-        forSubjects.add(new String[]{subFormat});
-        return subFormat;
-    }
+   private String r4d(List<String[]> forSubject){
+       final Random r = new Random();
+       final int subject4Digit = r.nextInt(1000,10000);
+       String subFormat = String.format(" SUB"+ "-%04d", subject4Digit);
+       forSubjects.add(new String[]{subFormat});
+       return subFormat;
+   }
 
-    public String getTheSubjectId(){
+   public String getTheSubjectId(){
         return idOFSubject;
-    }
+   }
 }
