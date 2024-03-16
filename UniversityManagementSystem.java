@@ -1,20 +1,25 @@
 import java.util.Scanner;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Calendar;
 
 public class UniversityManagementSystem {
-	static final Scanner s = new Scanner(System.in);
+    static final Scanner s = new Scanner(System.in);
 
     static List<String[]> forInstructors = new ArrayList<>();
     static List<String[]> forStudents = new ArrayList<>();
     static List<String[]> forSubjects = new ArrayList<>();
     static Boolean isTrue = false;
-    static final int year = 24;
+    static final int year = yearAtFure();
+    static Scanner delScanner = new Scanner(System.in);
 
-	public static void main(String[] backToMain) {
-        
-		// UNIVERSITY MANAGEMENT SYSTEM
+    public static void main(String[] backToMain) {
+
+        // UNIVERSITY MANAGEMENT SYSTEM
 //        String umpsArt = """
 //            \n
 //            ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,12 +58,12 @@ public class UniversityManagementSystem {
                                 String cAddChoice = s.nextLine();
                                 int addChoice = Integer.parseInt(cAddChoice);
                                 clearScreen();
-                            
+
                                 switch(addChoice){
                                     case 1:
-                                        addingInstructor(); 
+                                        addingInstructor();
                                         main(backToMain);
-                                        
+
                                         break;
                                     case 2:
                                         addingStudent();
@@ -77,11 +82,13 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(NumberFormatException e){
-                                System.out.println("\nThe input is not valid.");
-                                System.out.println("--------------------------------------------------------------------------------------------");
+                                // System.out.println("\nThe input is not valid.");
+                                // System.out.println("--------------------------------------------------------------------------------------------");
+                                e.printStackTrace();
+                                return;
                             }
                         }while(isTrue);
-                    break;
+                        break;
                     //Assign For Display
                     case 2:
                         clearScreen();
@@ -94,7 +101,7 @@ public class UniversityManagementSystem {
                                 int displayChoice = Integer.parseInt(dChoice);
                                 clearScreen();
                                 switch(displayChoice){
-                                    case 1: 
+                                    case 1:
                                         displayingDataOfInstructors();
                                         main(backToMain);
                                         break;
@@ -104,7 +111,7 @@ public class UniversityManagementSystem {
                                         break;
                                     case 3:
                                         displayingDataOfSubjects();
-                                        
+
                                         main(backToMain);
                                         break;
                                     case 4:
@@ -116,103 +123,125 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(Exception e){
-                                System.out.println("\nThe input is in valid.");
-                                System.out.println("--------------------------------------------------------------------------------------------");
+                                // System.out.println("\nThe input is in valid.");
+                                // System.out.println("--------------------------------------------------------------------------------------------");
+                                e.printStackTrace();
+                                return;
                             }
-                    }while(!isTrue);
+                        }while(!isTrue);
                         break;
                     //Assign For Delete
-                    case 3:     
+                    case 3:
                         clearScreen();
                         do{
                             try{
-                        System.out.println("DELETE < INFORMATION >");
-                        System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
-                        System.out.print("Enter Index 1-3: ");
-                        int deleteChoice = s.nextInt();
-                        s.nextLine();
-                        clearScreen();
-                        switch(deleteChoice){
-                            case 1:
-                                deleteInstructor();
-                                main(backToMain);
-                                break;
-                            case 2:
-                                main(backToMain);
-                                break;
-                            case 3:
-                                main(backToMain);
-                                break;
-                            case 4:
-                                main(backToMain);
-                                break;
-                            default:
-                                break;
-                        }
-                        }catch(Exception e){
-                            System.out.println("\nThe input is in valid.");
-                            System.out.println("--------------------------------------------------------------------------------------------");
-                        }
-                }while(!isTrue);
+                                System.out.println("DELETE < INFORMATION >");
+                                System.out.println("\n[1]Delete Instructor\n[2]Delete Student\n[3]Delete Subject\n[4]Back");
+                                System.out.print("Enter Index 1-3: ");
+                                String dChoice = s.nextLine();
+                                int deleteChoice = Integer.parseInt(dChoice);
+                                clearScreen();
+                                switch(deleteChoice){
+                                    case 1:
+                                        deleteInstructor();
+                                        main(backToMain);
+                                        break;
+                                    case 2:
+                                        deleteStudent();
+                                        main(backToMain);
+                                        break;
+                                    case 3:
+                                        deleteSubject();
+                                        main(backToMain);
+                                        break;
+                                    case 4:
+                                        main(backToMain);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }catch(Exception e){
+                                // System.out.println("\nThe input is in valid.");
+                                // System.out.println("--------------------------------------------------------------------------------------------");
+                                e.printStackTrace();
+                                return;
+                            }
+                        }while(!isTrue);
                         break;
                     //Assign For Edit
                     case 4:
                         clearScreen();
-                        System.out.println("EDIT < INFORMATION >");
-                        System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
-                        System.out.print("Enter Index 1-3: ");
-                        String eChoice = s.nextLine();
-                        int editChoice = Integer.parseInt(eChoice);
-                        clearScreen();
-                        switch(editChoice){
-                            case 1:
-                                editInstructor();
-                                main(backToMain);
-                                break;
-                            case 2:
-                                main(backToMain);
-                                break;
-                            case 3:
-                                main(backToMain);
-                                break;
-                            case 4:
-                                main(backToMain);
-                                break;
-                            default:
-                                break;
+                        do{
+                            try{
+                            System.out.println("EDIT < INFORMATION >");
+                            System.out.println("\n[1]Edit Instructor\n[2]Edit Student\n[3]Edit Subject\n[4]Back");
+                            System.out.print("Enter Index 1-3: ");
+                            String eChoice = s.nextLine();
+                            int editChoice = Integer.parseInt(eChoice);
+                            clearScreen();
+                                switch(editChoice){
+                                    case 1:
+                                        editInstructor();
+                                        main(backToMain);
+                                        break;
+                                    case 2:
+                                        editStudent();
+                                        main(backToMain);
+                                        break;
+                                    case 3:
+                                        editSubject();
+                                        main(backToMain);
+                                        break;
+                                    case 4:
+                                        main(backToMain);
+                                        break;
+                                    default:
+                                        break;
+                                    }
+                            }catch(Exception e){
+                                    e.printStackTrace();
+                                    return;
+                            }
                         }
+                        while(!isTrue);
                         break;
                     //Assign For Searching
                     case 5:
                         clearScreen();
-                        System.out.println("SEARCHING < INFORMATION" +
-                                " >");
-                        System.out.println("\n[1]Search Instructor\n[2]Search Student\n[3]Search Subject\n[4]Back");
-                        System.out.print("Enter Index 1-3: ");
-                        int searchChoice = s.nextInt();
-                        s.nextLine();
-                        clearScreen();
-                        switch(searchChoice){
-                            case 1:
-                                searchInstructor();
-                                main(backToMain);
-                                break;
-                            case 2:
-                                searchStudent();
-                                main(backToMain);
-                                break;
-                            case 3:
-                                searchSubject();
-                                main(backToMain);
-                                break;
-                            case 4:
-                                main(backToMain);
-                                break;
-                            default:
-                                break;
-                        }
+                        do{
+                            try{
+                                System.out.println("SEARCHING < INFORMATION >");
+                                System.out.println("\n[1]Search Instructor\n[2]Search Student\n[3]Search Subject\n[4]Back");
+                                System.out.print("Enter Index 1-3: ");
+                                int searchChoice = s.nextInt();
+                                s.nextLine();
+                                clearScreen();
+                                switch(searchChoice){
+                                    case 1:
+                                        searchInstructor();
+                                        main(backToMain);
+                                        break;
+                                    case 2:
+                                        searchStudent();
+                                        main(backToMain);
+                                        break;
+                                    case 3:
+                                        searchSubject();
+                                        main(backToMain);
+                                        break;
+                                    case 4:
+                                        main(backToMain);
+                                        break;
+                                    default:
+                                        break;
+                                    }
+                            }catch(Exception e){
+                                e.printStackTrace();
+                                return;
+                            }
+                        }while(!isTrue);
                         break;
-                    case 6:                
+                    case 6:
                         System.out.print("\nHello Admin, ");
                         System.err.print("Do you want to end this program?\n[Y] Yes \n[N] No \nChoose From Y/N: ");
                         String yesOrNo = s.next().trim().toUpperCase();
@@ -228,21 +257,23 @@ public class UniversityManagementSystem {
                     default:
                         clearScreen();
                         System.out.printf("\nThis [%s] is invalid, Please Enter the valid Choices.", choice);
-                            main(backToMain);
-                            break;
-                    
+                        main(backToMain);
+                        break;
+
                 }
-            }catch(NumberFormatException e){
-                System.out.println("\nThe input must be valid and program didn't allowed it.");
-                System.out.println("--------------------------------------------------------------------------------------------");
+            }catch(Exception e){
+                // System.out.println("\nThe input must be valid and program didn't allowed it.");
+                // System.out.println("--------------------------------------------------------------------------------------------");
+                e.printStackTrace();
+                
+                return;
             }
- 
+
 
         }while(!isTrue);
-        s.close();
-	}
+    }
 
-    
+
 
 
     //Overloading Method For All Add
@@ -261,16 +292,16 @@ public class UniversityManagementSystem {
 
     //Overloading Method For All edit
     public static Boolean editAgain(){
-            String addAgainC;
-            do{
-                System.out.println("\nDo you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
-                addAgainC  = s.nextLine().toUpperCase();
-                if(addAgainC.equalsIgnoreCase("Y")){
-                    return true;
-                } else if(addAgainC.equalsIgnoreCase("N")){
-                    return false;
-                }
-            }while(true);
+        String addAgainC;
+        do{
+            System.out.println("\nDo you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            addAgainC  = s.nextLine().toUpperCase();
+            if(addAgainC.equalsIgnoreCase("Y")){
+                return true;
+            } else if(addAgainC.equalsIgnoreCase("N")){
+                return false;
+            }
+        }while(true);
     }
 
     //Overloading Method For All edit
@@ -289,18 +320,18 @@ public class UniversityManagementSystem {
 
     //Overloading Method For All edit
     public static Boolean searchAgain(){
-            String addAgainC;
-            do{
-                System.out.println("\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
-                addAgainC  = s.nextLine().toUpperCase();
-                if(addAgainC.equalsIgnoreCase("Y")){
-                    return true;
-                } else if(addAgainC.equalsIgnoreCase("N")){
-                    return false;
-                }
-            }while(true);
+        String addAgainC;
+        do{
+            System.out.println("\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            addAgainC  = s.nextLine().toUpperCase();
+            if(addAgainC.equalsIgnoreCase("Y")){
+                return true;
+            } else if(addAgainC.equalsIgnoreCase("N")){
+                return false;
+            }
+        }while(true);
     }
-    
+
 
     /*SUBJECTS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
     static ThisIsForSubject subs = new ThisIsForSubject();
@@ -317,7 +348,7 @@ public class UniversityManagementSystem {
                 System.out.print("The subject must added");
                 subs.instantiateOfSubject();
                 String subsId = subs.getTheSubjectId();
-                subDetails[2] = subsId; 
+                subDetails[2] = subsId;
                 forSubjects.add(subDetails);
             }
         }while(addAgain());
@@ -325,26 +356,59 @@ public class UniversityManagementSystem {
 
     //DELETE SUBJECT
     private static void deleteSubject(){
-        Scanner forDelete = new Scanner(System.in);
-        System.out.print("\b Instructor ID must enter in this space: ST"+ year);    
-        String delOp = forDelete.nextLine();
+       
+        System.out.print("\nEnter the Student ID \"ST" +year+ "-1234\" with only 4 digits: ");
+        String deleteCode = delScanner.nextLine().trim();
+
+        boolean isFound = false;
+
+        for(int i = forSubjects.size() - 1; i >= 0; i--){
+            String[] subject = forSubjects.get(i);
+
+            if(subject.length >= 3){
+            String deletionOfSubject = subject[2];
+
+                if(deletionOfSubject.endsWith(deleteCode)){
+                    isFound = true;
+                    System.out.println(deleteCode+" Code is processing... for deleting .");
+                    System.out.println();
+                    String adminConfirmation;
+                    System.out.printf("Admin: Are you sure you want to delete this subject we need as confirmation.\nChoice [Y/N]: ");
+                    adminConfirmation = delScanner.nextLine().trim();
+
+                    if(adminConfirmation.equalsIgnoreCase("Y")){
+                        forStudents.remove(i);
+                        System.out.println("This student profile is now confirm deleted." );
+                    } else{
+                        System.out.println("This student is not confirm deleted in database");
+                        
+                    }
+                    break;
+                } 
+            }   
+           
+        }
+        if (!isFound) {
+            System.out.println("This student with this id \""+deleteCode+"\" is not existing.");
+        }
     }
 
+    //SEARCH SUBJECT
     private static void searchSubject() {
         Scanner searchSub = new Scanner(System.in);
         System.out.println("Search Subject: ");
-        String subjectSearched = searchSub.nextLine();
+        String subjectSearched = searchSub.nextLine().toUpperCase().trim();
 
         boolean found = false;
         for (String[] subject : forSubjects) {
             if (subject.length >= 3 &&
-                    (subject[0].toUpperCase().contains(subjectSearched.toUpperCase()) || // Title
-                            subject[1].toUpperCase().contains(subjectSearched.toUpperCase()) || // Description
-                            subject[2].equals(subjectSearched))) { // ID
+                    (subject[0].toUpperCase().contains(subjectSearched.toUpperCase()) ||
+                            subject[1].toUpperCase().contains(subjectSearched.toUpperCase()) ||
+                            subject[2] != null && subject[2].toUpperCase().contains(subjectSearched))) {
                 System.out.println("Subject Found:");
                 System.out.println("Title: " + subject[0]);
                 System.out.println("Description: " + subject[1]);
-                System.out.println("ID: " + subject[2]);
+                System.out.println("Subject Code: " + (subject[2] != null ? subject[2] : " "));
                 found = true;
             }
         }
@@ -354,14 +418,86 @@ public class UniversityManagementSystem {
         }
     }
 
+    //EDIT SUBJECT
+    private static Scanner editScanner = new Scanner(System.in);
+    private static void editSubject() {
+        
+        System.out.print("\nEnter the Instructor ID  \"SUB-1234\": ");
+        String editCode = editScanner.nextLine().trim();
+
+        if (!editCode.matches("SUB-\\d{4}$") && !editCode.isBlank()) {
+            System.out.println("Invalid input format. Subject Code should contain only 4 digits.");
+            editScanner.close();
+            return;
+        } 
+        
+        boolean isFound = false;
+
+        for(String []subDetails : forSubjects){
+            for(String fSub : subDetails){
+                if(fSub.equalsIgnoreCase(editCode)){
+                    isFound = true;
+                    System.out.println("\n< The subject is in the database > ".toUpperCase());
+                    System.out.print("\n|" +subDetails[0]+" |  "+subDetails[1]+" |\n");
+                    System.out.println();
+                    System.out.print("\nDo you want to edit this instructor?\n[Y] Yes, I want to edit it\n[N] No, maybe later\n");
+                    String eIns = editScanner.nextLine().trim().toUpperCase();
+
+                    boolean editForAll = false;
+                    if(eIns.equalsIgnoreCase("Y")){
+                        System.out.println("Proceed to edit your profile");
+
+
+                        while(!editForAll){
+                            System.out.print("Enter your Subject Title: ");
+                            String newTitle = editScanner.nextLine();
+
+                            if(newTitle.isBlank()){
+                                System.out.println("First name is empty, Fill it");
+                            } else{
+                                subDetails[0] = newTitle;
+                                break;
+                            }
+                        }
+
+                        while(!editForAll){
+                            System.out.print("Enter your Subject Description: ");
+                            String newDescription = editScanner.nextLine();
+
+                            if(newDescription.isBlank()){
+                                System.out.println("Address is empty, Fill it");
+                            } else{
+                                subDetails[1] = newDescription;
+                                break;
+                            }
+                        }
+
+                        System.out.println("Your profile was succesfully updated.");
+                        
+                    } else if(eIns.equalsIgnoreCase("N")){
+                        System.out.println("Your editing profile is not updated.");
+                    }  else{
+                        System.out.println("Invalid Input.");
+                    }
+                    break;
+                }
+            }   
+
+        }
+            if(!isFound){
+            System.out.println("This Code is not existing, try to add first");
+        }
+    }
+
+
     //SUBJECT DATA GETTER
     public static String[] subjectInformation(String sub){
         String subjectForAll[] = new String[3];
         System.out.println("CREATE SUBJECT/S\n");
 
         while(!isTrue){
-        System.out.print("Enter subject title: ");
-        String sTitles = s.nextLine();
+            System.out.print("Enter subject title: ");
+            String sTitles = s.nextLine();
             if(sTitles.isBlank()){
                 System.out.println("Subject title is empty, Fill it");
             } else if(sTitles.matches(".*\\d.*")){
@@ -373,8 +509,8 @@ public class UniversityManagementSystem {
         }
 
         while(!isTrue){
-        System.out.print("Enter subject description: ");
-        String sDes = s.nextLine();
+            System.out.print("Enter subject description: ");
+            String sDes = s.nextLine();
             if(sDes.isBlank()){
                 System.out.println("Subject description is empty, Fill it");
             } else if(sDes.matches(".*\\d.*")){
@@ -387,9 +523,9 @@ public class UniversityManagementSystem {
 
         System.out.print("\nDo you want to add this subject?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
         while(!isTrue){
-        System.out.print("Choices [Y/N]: ");
-        String subC = s.nextLine().toUpperCase();
-            
+            System.out.print("Choices [Y/N]: ");
+            String subC = s.nextLine().toUpperCase();
+
             if(subC.equals("Y")){
                 break;
             } else if(subC.equals("N")){
@@ -397,20 +533,20 @@ public class UniversityManagementSystem {
             } else{
                 System.out.println("Invalid input");
             }
-        }    
+        }
 
         return subjectForAll;
     }
 
     //SETTER DATA FOR SUBJECTS
     static void getDataForSubjects(List<String[]> takeDataForSubjects){
-            List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);  
-            System.out.println("\t\t\t\t\t\t DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
-            System.out.println("=============================================================================================================================================================");
-            System.out.println("| \tSUBJECT CODE\t | \tSUBJECT TITLE\t | \tSUBJECT DESCRIPTION\t |");
-            System.out.println("=============================================================================================================================================================");
-            for(String[] getData: getDataOfSubs){
-                if(getData.length >= 2){
+        List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);
+        System.out.println("\t\t\t\t\t\t DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
+        System.out.println("=============================================================================================================================================================");
+        System.out.println("| \tSUBJECT CODE\t | \tSUBJECT TITLE\t | \tSUBJECT DESCRIPTION\t |");
+        System.out.println("=============================================================================================================================================================");
+        for(String[] getData: getDataOfSubs){
+            if(getData.length >= 3){
 
                 String sTitle = getData[0];
                 String sDescription = getData[1];
@@ -421,17 +557,19 @@ public class UniversityManagementSystem {
                 String newSIdentity = textBehaviour(sIdentity, 12);
 
                 System.out.print("|\t "+newSIdentity+" \t| \t"+newStitle+" \t| \t"+newSDescription+" \t|");
-                }
             }
-            
-        
+        }
+
+
     }
+    
     //DISPLAY DATA FOR SUBJECTS
     private static void displayingDataOfSubjects(){
         if(forSubjects.isEmpty()){
             System.out.println("There's no subject Available, Try to add");
             return;
-        } 
+        }
+
         getDataForSubjects(forSubjects);
         String extraInDisplay;
         do{
@@ -441,48 +579,49 @@ public class UniversityManagementSystem {
             System.out.println("[S] Adding subject to Student");
             System.out.println("[E] Type \"E\" if you want to back to main \nChoices: ");
             extraInDisplay = s.nextLine().toUpperCase();
-                if(extraInDisplay.equalsIgnoreCase("I")){
-                    System.out.print("\nEnter the Instructor ID (e.g., INS"+ year + "-1234) with only 4 digits: ");
-                    String assignSubj = s.nextLine();
-                    if(assignSubj.equals(forInstructors)){
+            if(extraInDisplay.equalsIgnoreCase("I")){
+                System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\" : ");
+                String assignSubj = s.nextLine();
+                if(forInstructors.contains(assignSubj)){
                     System.out.println("Processing for assigning...");
                     System.out.println("Enter Subject Code you want to assign in student: ");
                     String insSub = s.nextLine();
-                    } else {
-                        System.out.println("There's no instructor existing with this ID, try to add first");
-                    }
-                        if(inSub.equals(forSubjects)){
-                            forInstructors.add();
-                        } else{
-                            System.out.println("There's no subject existing with this code, try to add first");
-                        }
-                } else if(extraInDisplay.equalsIgnoreCase("S")){
-                    System.out.print("\nEnter the Student ID (e.g., ST"+year + "-1234) with only 4 digits: ");
-                    String addSubj = s.nextLine();
-                    if(addSubj.equals(forStudents)){
+
+                    ThisIsForInstructor insToSub = new ThisIsForInstructor();
+                    insToSub.subjectToAssign(assignSubj,insSub);
+                    break;
+                } else {
+                    System.out.println("There's no instructor existing with this ID, try to add first");
+                }
+            } else if(extraInDisplay.equalsIgnoreCase("S")){
+                System.out.print("\nEnter the Student ID \"ST"+year + "-1234\": ");
+                String addSubj = s.nextLine();
+                if(forStudents.contains(addSubj)){
                     System.out.println("Processing for adding...");
                     System.out.println("Enter Subject Code you want to add in student: ");
                     String stSub = s.nextLine();
+                    if(forSubjects.contains(stSub)){
+                        ThisIsForStudent student = new ThisIsForStudent();
+                        student.sujectToAdd(addSubj, stSub);
+                        break;
                     } else{
-                        System.out.println("There's no student existing with this ID, try to add first");
+                        System.out.println("There's no subject existing with this code, try to add first");
                     }
-                        if(stSub.equals(forSubjects)){
-
-                        } else{
-                            System.out.println("There's no subject existing with this code, try to add first");
-                        }
-                } else if(extraInDisplay.equalsIgnoreCase("E")){
-                    break;
                 } else{
-                    System.out.println("Invalid input please try again.");
+                    System.out.println("There's no student existing with this ID, try to add first");
                 }
-            }while(extraInDisplay != "E");                                   
-                                        
+            } else if(extraInDisplay.equalsIgnoreCase("E")){
+                break;
+            } else{
+                System.out.println("Invalid input please try again.");
+            }
+        }while(extraInDisplay != "E");
+
         return;
     }
 
     /*INSTRUCTOR ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-	
+
 
     // ADDING INSTRUCTORS METHOD
     static ThisIsForInstructor ins = new ThisIsForInstructor();
@@ -504,68 +643,70 @@ public class UniversityManagementSystem {
                 forInstructors.add(iDetails);
             }
         }while(addAgain());
-        
+
     }
 
     //DELETE INSTRUCTOR METHOD
-    private static void deleteInstructor() {
-        Scanner delScanner = new Scanner(System.in);
-        System.out.print("\nEnter the Instructor ID (e.g., INS" + year + "-1234) with only 4 digits: ");
-        String deleteID = delScanner.nextLine();
+    private static void deleteInstructor(){
+        System.out.print("\nEnter the Instructor ID \"INS" +year+ "-1234\" with only 4 digits: ");
+        String deleteInsID = delScanner.nextLine().trim();
 
         boolean isFound = false;
 
-        for(int i = forInstructors.size() -1; i >= 0; i--){
-            String[] ins = forInstructors.get(i);
-            String deletionOfInstructor = forInstructors.get(i);
+        for(int i = forInstructors.size() - 1; i >= 0; i--){
+            String[] instructor = forInstructors.get(i);
 
-                if(deletionOfInstructor.endsWith(deleteID)){
+            if(instructor.length >= 6){
+            String deletionOfInstructor = instructor[5];
+
+                if(deletionOfInstructor.endsWith(deleteInsID)){
                     isFound = true;
-                    System.out.println("INS24-"+deleteID+" ID is processing... for deleting .");
+                    System.out.println(deleteInsID+" Code is processing... for deleting .");
                     System.out.println();
                     String adminConfirmation;
-                    System.out.printf("Admin: Are you sure you want to delete this profile we need as confirmation.");
-                    adminConfirmation = delScanner.nextLine();
+                    System.out.printf("Admin: Are you sure you want to delete this instructor data we need as confirmation.\nChoice [Y/N]: ");
+                    adminConfirmation = delScanner.nextLine().trim();
 
                     if(adminConfirmation.equalsIgnoreCase("Y")){
-                        forInstructors.remove(i);
+                        forStudents.remove(i);
                         System.out.println("This instructor profile is now confirm deleted." );
+                        delScanner.close();
                     } else{
-                        System.out.println("This instructor profile is not confirm deleted in database");
+                        System.out.println("This instructor is not confirm deleted in database");
+                        
                     }
                     break;
-                }
+                } 
+            }   
+           
         }
-
         if (!isFound) {
-            System.out.println("This instructor is not existing.");
+            System.out.println("This instructor with this id \""+deleteInsID+"\" is not existing.");
         }
+    }
 
-        delScanner.close();
-    }    
-
-    // //EDITING INSTRUCTOR METHOD
+    //EDITING INSTRUCTOR METHOD
     private static void editInstructor() {
         Scanner editScanner = new Scanner(System.in);
         System.out.print("\nEnter the Instructor ID (e.g., INS" + year + "-1234) with only 4 digits: ");
         String editID = editScanner.nextLine();
-    
+
         if (!editID.matches("\\d{4}$")) {
             System.out.println("Invalid input format. Instructor ID should contain only 4 digits.");
             editScanner.close();
             return;
-        } 
+        }
         boolean isFound = false;
 
         for(String insDetails[]: forInstructors){
-  
+
             for(String fI : insDetails){
 
-            if(fI.contains(editID)){
-                isFound = true;
-                System.out.println("\n< The instructor is in the database > ");
-                System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
-                System.out.println();
+                if(fI.contains(editID)){
+                    isFound = true;
+                    System.out.println("\n< The instructor is in the database > ");
+                    System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
+                    System.out.println();
 
                     System.out.print("\nDo you want to edit this instructor?\n[Y] Yes, I want to edit it\n[N] No, maybe later\n");
                     String eIns = editScanner.nextLine().trim().toUpperCase();
@@ -575,11 +716,11 @@ public class UniversityManagementSystem {
                     if(eIns.equalsIgnoreCase("Y")){
                         System.out.println("Proceed to edit your profile");
 
-                        
+
                         while(!editForAll){
                             System.out.print("Enter your First Name: ");
                             String newInstructorFirstName = s.nextLine();
-                
+
                             if(newInstructorFirstName.isBlank()){
                                 System.out.println("First name is empty, Fill it");
                             } else if(newInstructorFirstName.matches(".*\\d.*")){
@@ -589,48 +730,48 @@ public class UniversityManagementSystem {
                                 break;
                             }
                         }
-                
+
                         while(!editForAll){
                             System.out.print("Enter your Last Name: ");
                             String newInstructorLastName = s.nextLine();
-                
+
                             if(newInstructorLastName.isBlank()){
                                 System.out.println("Last name is empty, Fill it");
                             } else if(newInstructorLastName.matches(".*\\d.*")){
                                 System.out.println("Last name can't contain any number");
                             } else{
-                                insDetails[1] = newInstructorLastName; 
+                                insDetails[1] = newInstructorLastName;
                                 break;
                             }
                         }
-                
+
                         while(!editForAll){
                             System.out.print("Enter your Middle Name (Optional): ");
                             String newInstructorMiddleName = s.nextLine();
                             if(newInstructorMiddleName.matches(".*\\d.*")){
                                 System.out.println("Middle name can't contain any number");
                             }else{
-                                insDetails[2] = newInstructorMiddleName; 
+                                insDetails[2] = newInstructorMiddleName;
                                 break;
                             }
                         }
-                        
+
                         while(!editForAll){
                             System.out.print("Enter your Address: ");
                             String newInstructorAddress = s.nextLine();
-                
+
                             if(newInstructorAddress.isBlank()){
                                 System.out.println("Address is empty, Fill it");
                             } else{
-                                insDetails[3] = newInstructorAddress; 
+                                insDetails[3] = newInstructorAddress;
                                 break;
                             }
                         }
-                        
-                
+
+
                         while(!editForAll){
-                        System.out.print("Enter your Age: ");
-                        String newInsAgeInput = s.nextLine(); 
+                            System.out.print("Enter your Age: ");
+                            String newInsAgeInput = s.nextLine();
                             try {
                                 int newAge = Integer.parseInt(newInsAgeInput);
                                 if(newAge >= 24 && newAge <= 100){
@@ -638,7 +779,7 @@ public class UniversityManagementSystem {
                                     break;
                                 }else{
                                     if(newAge >= 24 && newAge <= 100){
-                                    System.out.println("You're age must be 24 to 100 y/olds.");
+                                        System.out.println("You're age must be 24 to 100 y/olds.");
                                     } else{
                                         System.out.println("Age doesn't meet the requirement for instructor.");
                                     }
@@ -646,7 +787,7 @@ public class UniversityManagementSystem {
                             } catch (Exception e) {
                                 System.out.printf("This [%s] is invalid, Please Enter the valid Choices.\n", newInsAgeInput);
                             }
-                            
+
                             int updAge = Integer.parseInt(insDetails[4]);
                             if(updAge >= 24  && updAge <= 100){
                                 System.out.println("You're a Instructor.");
@@ -668,28 +809,28 @@ public class UniversityManagementSystem {
         if(!isFound){
             System.out.println("This ID is not existing, try to add first");
         }
-        
+
 
         return;
     }
-    
+
 
     //SEARCHING INSTRUCTOR METHOD
     private static void searchInstructor() {
         Scanner insSearch = new Scanner(System.in);
         System.out.println("Search Instructors: ");
         String instructorSearched = insSearch.nextLine();
-    
+
         boolean found = false;
         for (String[] instructor : forInstructors) {
             if (instructor.length >= 6 &&
-                    (instructor[0].toUpperCase().contains(instructorSearched.toUpperCase()) || 
-                    instructor[1].toUpperCase().contains(instructorSearched.toUpperCase()) || 
-                    (instructor[2] != null && instructor[2].toLowerCase().contains(instructorSearched.toLowerCase())) || 
-                    instructor[3].toUpperCase().contains(instructorSearched.toUpperCase()) || 
-                    (instructor[4] != null && instructor[4].equals(instructorSearched)) || 
-                    (instructor[5] != null && instructor[5].equals(String.format("INS%s-%04d", year, Integer.parseInt(instructorSearched))))
-                     )) {
+                    (instructor[0].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                            instructor[1].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                            (instructor[2] != null && instructor[2].toUpperCase().contains(instructorSearched.toUpperCase())) ||
+                            instructor[3].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                            (instructor[4] != null && instructor[4].contains(instructorSearched)) ||
+                            (instructor[5] != null && instructor[5].toUpperCase().contains(instructorSearched))))
+            {
                 System.out.println("Instructor Found:");
                 System.out.println("First Name: " + instructor[0]);
                 System.out.println("Last Name: " + instructor[1]);
@@ -698,11 +839,11 @@ public class UniversityManagementSystem {
                 System.out.println("Age: " + (instructor[4] != null ? instructor[4] : ""));
                 System.out.println("ID: " + (instructor[5] != null ? instructor[5] : ""));
 
-    
+
                 found = true;
             }
         }
-    
+
         if (!found) {
             System.out.println("No instructor found.");
         }
@@ -710,9 +851,9 @@ public class UniversityManagementSystem {
 
 
     //INSTRUCTOR DATA SETTER
-	static String[] insInformation(String dataInformation) {
+    static String[] insInformation(String dataInformation) {
         System.out.print("CREATE INSTRUCTOR/S FORM\n");
-		String informationForAll[] = new String[6];
+        String informationForAll[] = new String[6];
 
 
 
@@ -739,7 +880,7 @@ public class UniversityManagementSystem {
             } else if(instructorLastName.matches(".*\\d.*")){
                 System.out.println("Last name can't contain any number");
             } else{
-                informationForAll[1] = instructorLastName; 
+                informationForAll[1] = instructorLastName;
                 break;
             }
         }
@@ -750,28 +891,28 @@ public class UniversityManagementSystem {
             if(instructorMiddleName.matches(".*\\d.*")){
                 System.out.println("Middle name can't contain any number");
             }else{
-                informationForAll[2] = instructorMiddleName; 
+                informationForAll[2] = instructorMiddleName;
                 break;
             }
         }
-        
+
         while(!isTrue){
             System.out.print("Enter your Address: ");
             String instructorAddress = s.nextLine();
 
             if(instructorAddress.isBlank()){
                 System.out.println("Address is empty, Fill it");
-                
+
             } else{
-                informationForAll[3] = instructorAddress; 
+                informationForAll[3] = instructorAddress;
                 break;
             }
         }
-        
+
 
         while(!isTrue){
-		System.out.print("Enter your Age: ");
-        String insAgeInput = s.nextLine(); 
+            System.out.print("Enter your Age: ");
+            String insAgeInput = s.nextLine();
             try {
                 int insAge = Integer.parseInt(insAgeInput);
                 if(insAge >= 24 && insAge <= 100){
@@ -779,7 +920,7 @@ public class UniversityManagementSystem {
                     break;
                 }else{
                     if(insAge >= 24 && insAge <= 100){
-                    System.out.println("You're age must be 24 to 100 y/olds.");
+                        System.out.println("You're age must be 24 to 100 y/olds.");
                     } else{
                         System.out.println("Age doesn't meet the requirement for instructor.");;
                     }
@@ -788,7 +929,7 @@ public class UniversityManagementSystem {
                 System.out.printf("This [%s] is invalid, Please Enter the valid Choices.\n", insAgeInput);
             }
         }
-		int insAge = Integer.parseInt(informationForAll[4]);
+        int insAge = Integer.parseInt(informationForAll[4]);
         if(insAge >= 24  && insAge <= 100){
             System.out.println("You're a Instructor.");
         }
@@ -796,9 +937,9 @@ public class UniversityManagementSystem {
 
         System.out.print("\nDo you want to add this instructor?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
         while(!isTrue){
-        System.out.print("Choices [Y/N]: ");
-        String insC = s.nextLine().toUpperCase();
-            
+            System.out.print("Choices [Y/N]: ");
+            String insC = s.nextLine().toUpperCase();
+
             if(insC.equals("Y")){
                 break;
             } else if(insC.equals("N")){
@@ -806,11 +947,11 @@ public class UniversityManagementSystem {
             } else{
                 System.out.println("Invalid input");
             }
-        }    
+        }
         return informationForAll;
-    
-}
-    
+
+    }
+
 
 
 
@@ -828,14 +969,14 @@ public class UniversityManagementSystem {
 
     //GETTER DATA FOR INSTRUCTOR
     private static void getDataForInstructors(List<String[]> takeDataForInstructor){
-            List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);  
-            System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");         
-            System.out.println("=============================================================================================================================================================");
-            System.out.printf("| %-10s | %-10s | %-10s | %-8s | %-25s | %-4s | %-15s | %-15s | %-30s |\n", 
-            "INSTRUCTOR ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE", "SUBJECT CODE", "SUBJECT TITLE", "SUBJECT DESCRIPTION");
-            System.out.println("=============================================================================================================================================================");
-            for(String[] getData: getDataOfIns){
-                if(getData.length >= 5){
+        List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);
+        System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
+        System.out.println("=============================================================================================================================================================");
+        System.out.printf("| %-10s | %-10s | %-10s | %-8s | %-25s | %-4s | %-15s | %-15s | %-30s |\n",
+                "INSTRUCTOR ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE", "SUBJECT CODE", "SUBJECT TITLE", "SUBJECT DESCRIPTION");
+        System.out.println("=============================================================================================================================================================");
+        for(String[] getData: getDataOfIns){
+            if(getData.length >= 5){
 
                 String insFname = getData[0];
                 String insLname = getData[1];
@@ -845,15 +986,16 @@ public class UniversityManagementSystem {
                 String instructorIdentity = getData[5];
 
                 String newInsAddress = textBehaviour(insAddress, 7);
-                System.out.printf("| %-10s | %-10s | %-10s | %-8s | %-25s | %-4s |\n", instructorIdentity, insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(), newInsAddress.toUpperCase(), insAge);System.out.println("============================================================================================================================================================");
-                }
+                System.out.printf("| %-10s | %-10s | %-10s | %-8s | %-25s | %-4s |\n", instructorIdentity, insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(), newInsAddress.toUpperCase(), insAge);
+                System.out.println("============================================================================================================================================================");
             }
-            
-        
+        }
+
+
     }
 
     /*STUDENTS ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-    
+
     //ADDING STUDENTS METHOD
     static ThisIsForStudent st = new ThisIsForStudent();
 
@@ -873,6 +1015,176 @@ public class UniversityManagementSystem {
         }while(addAgain());
     }
 
+    //DELETE STUDENT
+    private static void deleteStudent(){
+        System.out.print("\nEnter the Student ID \"ST" +year+ "-1234\" with only 4 digits: ");
+        String deleteStID = delScanner.nextLine().trim();
+
+        boolean isFound = false;
+
+        for(int i = forStudents.size() - 1; i >= 0; i--){
+            String[] student = forStudents.get(i);
+
+            if(student.length >= 6){
+            String deletionOfStudent = student[5];
+
+                if(deletionOfStudent.endsWith(deleteStID)){
+                    isFound = true;
+                    System.out.println(deleteStID+" Code is processing... for deleting .");
+                    System.out.println();
+                    String adminConfirmation;
+                    System.out.printf("Admin: Are you sure you want to delete this student profile we need as confirmation.\nChoice [Y/N]: ");
+                    adminConfirmation = delScanner.nextLine().trim();
+
+                    if(adminConfirmation.equalsIgnoreCase("Y")){
+                        forStudents.remove(i);
+                        System.out.println("This student profile is now confirm deleted." );
+                        delScanner.close();
+                    } else{
+                        System.out.println("This student is not confirm deleted in database");
+                        
+                    }
+                    break;
+                } 
+            }   
+           
+        }
+        if (!isFound) {
+            System.out.println("This student with this id \""+deleteStID+"\" is not existing.");
+        }
+    }
+
+    //EDIT STUDENTS
+
+    private static void editStudent() {
+        Scanner editScanner = new Scanner(System.in);
+        System.out.print("\nEnter the Instructor ID (e.g., INS" + year + "-1234) with only 4 digits: ");
+        String editID = editScanner.nextLine();
+
+        if (!editID.matches("\\d{4}$")) {
+            System.out.println("Invalid input format. Instructor ID should contain only 4 digits.");
+            editScanner.close();
+            return;
+        }
+        boolean isFound = false;
+
+        for(String insDetails[]: forStudents){
+
+            for(String fI : insDetails){
+
+                if(fI.contains(editID)){
+                    isFound = true;
+                    System.out.println("\n< The instructor is in the database > ");
+                    System.out.print("\n|First Name: " +insDetails[0]+" | Last Name: "+insDetails[1]+" | Middle Name: "+insDetails[2]+" | Address: "+insDetails[3]+" | Age: "+insDetails[4]+" |\n");
+                    System.out.println();
+
+                    System.out.print("\nDo you want to edit this Student?\n[Y] Yes, I want to edit it\n[N] No, maybe later\n");
+                    String eIns = editScanner.nextLine().trim().toUpperCase();
+                    editScanner.nextLine();
+
+                    boolean editForAll = false;
+                    if(eIns.equalsIgnoreCase("Y")){
+                        System.out.println("Proceed to edit your profile");
+
+
+                        while(!editForAll){
+                            System.out.print("Enter your First Name: ");
+                            String newInstructorFirstName = s.nextLine();
+
+                            if(newInstructorFirstName.isBlank()){
+                                System.out.println("First name is empty, Fill it");
+                            } else if(newInstructorFirstName.matches(".*\\d.*")){
+                                System.out.println("First name can't contain any number");
+                            }else{
+                                insDetails[0] = newInstructorFirstName;
+                                break;
+                            }
+                        }
+
+                        while(!editForAll){
+                            System.out.print("Enter your Last Name: ");
+                            String newInstructorLastName = s.nextLine();
+
+                            if(newInstructorLastName.isBlank()){
+                                System.out.println("Last name is empty, Fill it");
+                            } else if(newInstructorLastName.matches(".*\\d.*")){
+                                System.out.println("Last name can't contain any number");
+                            } else{
+                                insDetails[1] = newInstructorLastName;
+                                break;
+                            }
+                        }
+
+                        while(!editForAll){
+                            System.out.print("Enter your Middle Name (Optional): ");
+                            String newInstructorMiddleName = s.nextLine();
+                            if(newInstructorMiddleName.matches(".*\\d.*")){
+                                System.out.println("Middle name can't contain any number");
+                            }else{
+                                insDetails[2] = newInstructorMiddleName;
+                                break;
+                            }
+                        }
+
+                        while(!editForAll){
+                            System.out.print("Enter your Address: ");
+                            String newInstructorAddress = s.nextLine();
+
+                            if(newInstructorAddress.isBlank()){
+                                System.out.println("Address is empty, Fill it");
+                            } else{
+                                insDetails[3] = newInstructorAddress;
+                                break;
+                            }
+                        }
+
+
+                        while(!editForAll){
+                            System.out.print("Enter your Age: ");
+                            String newInsAgeInput = s.nextLine();
+                            try {
+                                int newAge = Integer.parseInt(newInsAgeInput);
+                                if(newAge >= 24 && newAge <= 100){
+                                    insDetails[4] = newInsAgeInput;
+                                    break;
+                                }else{
+                                    if(newAge >= 24 && newAge <= 100){
+                                        System.out.println("You're age must be 24 to 100 y/olds.");
+                                    } else{
+                                        System.out.println("Age doesn't meet the requirement for instructor.");
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.printf("This [%s] is invalid, Please Enter the valid Choices.\n", newInsAgeInput);
+                            }
+
+                            int updAge = Integer.parseInt(insDetails[4]);
+                            if(updAge >= 24  && updAge <= 100){
+                                System.out.println("You're a Student.");
+                            }
+                        }
+
+                        System.out.println("Your profile was succesfully updated.");
+                        break;
+                    } else if(eIns.equalsIgnoreCase("N")){
+                        System.out.println("Your editing profile is not updated.");
+                        break;
+                    }  else{
+                        System.out.println("Invalid Input.");
+                    }
+                    editScanner.close();
+                }
+            }
+        }
+        if(!isFound){
+            System.out.println("This ID is not existing, try to add first");
+        }
+
+
+        return;
+    }
+
+    //SEARCH STUDENTS
     private static void searchStudent() {
         Scanner searchStudent = new Scanner(System.in);
         System.out.println("Search Student: ");
@@ -881,12 +1193,12 @@ public class UniversityManagementSystem {
         boolean found = false;
         for (String[] student : forStudents) {
             if (student.length >= 6 &&
-                    (student[0].toUpperCase().contains(studentSearched.toUpperCase()) || 
-                            student[1].toUpperCase().contains(studentSearched.toUpperCase()) || 
-                            (student[2] != null && student[2].toUpperCase().contains(studentSearched.toUpperCase())) || 
+                    (student[0].toUpperCase().contains(studentSearched.toUpperCase()) ||
+                            student[1].toUpperCase().contains(studentSearched.toUpperCase()) ||
+                            (student[2] != null && student[2].toUpperCase().contains(studentSearched.toUpperCase())) ||
                             student[3].toLowerCase().contains(studentSearched.toUpperCase()) ||
                             (student[4] != null && student[4].equals(studentSearched)) ||
-                            (student[5] != null && student[5].equals(String.format("ST%s-%04d", year, Integer.parseInt(studentSearched)))))) {
+                            (student[5] != null && student[5].toUpperCase().contains(studentSearched)))) {
                 System.out.println("Student Found:");
                 System.out.println("First Name: " + student[0]);
                 System.out.println("Last Name: " + student[1]);
@@ -905,12 +1217,12 @@ public class UniversityManagementSystem {
 
     //STUDENTS DATA GETTER
     public static String[] stInformation(String dataInformation) {
-		String informationForAll[] = new String[6];
+        String informationForAll[] = new String[6];
         System.out.println("CREATE STUDENT/S FORM\n");
 
         while(!isTrue){
-		System.out.print("Enter your First Name: ");
-		String stFname = s.nextLine();
+            System.out.print("Enter your First Name: ");
+            String stFname = s.nextLine();
             if(stFname.isBlank()){
                 System.out.println("First name is empty, Fill it");
             } else if(stFname.matches(".*\\d.*")){
@@ -923,8 +1235,8 @@ public class UniversityManagementSystem {
         }
 
         while(!isTrue){
-		System.out.print("Enter your Last Name: ");
-		String stLname = s.nextLine();
+            System.out.print("Enter your Last Name: ");
+            String stLname = s.nextLine();
             if(stLname.isBlank()){
                 System.out.println("Last name is empty, fill it");
             } else if(stLname.matches(".*\\d.*")){
@@ -936,19 +1248,19 @@ public class UniversityManagementSystem {
         }
 
         while(!isTrue){
-		System.out.print("Enter your Middle Name (Optional): ");
-        String stMname = s.nextLine();
+            System.out.print("Enter your Middle Name (Optional): ");
+            String stMname = s.nextLine();
             if(stMname.matches(".*\\d.*")){
                 System.out.println("Middle name can't contain any number");
             } else{
-                informationForAll[2] = stMname; 
+                informationForAll[2] = stMname;
                 break;
             }
         }
 
         while(!isTrue){
-		System.out.print("Enter your Address: ");
-        String  stAddress = s.nextLine();
+            System.out.print("Enter your Address: ");
+            String  stAddress = s.nextLine();
             if(stAddress.isBlank()){
                 System.out.println("Address is empty, Fill it");
             } else{
@@ -958,8 +1270,8 @@ public class UniversityManagementSystem {
         }
 
         while(true){
-		System.out.print("Enter your Age: ");
-        String insAgeInput = s.nextLine(); 
+            System.out.print("Enter your Age: ");
+            String insAgeInput = s.nextLine();
             try {
                 int insAge = Integer.parseInt(insAgeInput);
                 if(insAge >= 17 && insAge <= 23){
@@ -967,7 +1279,7 @@ public class UniversityManagementSystem {
                     break;
                 }else{
                     if(insAge >= 17 && insAge <= 23){
-                    System.out.println("You're age must be 17 to 23 y/olds.");
+                        System.out.println("You're age must be 17 to 23 y/olds.");
                     } else{
                         System.out.println("Age doesn't meet the requirement for students");
                     }
@@ -976,7 +1288,7 @@ public class UniversityManagementSystem {
                 System.out.printf("This [%s] is invalid, Please Enter the valid Choices.\n", insAgeInput);
             }
         }
-		int insAge = Integer.parseInt(informationForAll[4]);
+        int insAge = Integer.parseInt(informationForAll[4]);
         if(insAge >= 17  && insAge <=23){
             System.out.println("You're a Student.");
         }
@@ -984,9 +1296,9 @@ public class UniversityManagementSystem {
         System.out.print("\nDo you want to add this student?\n[Y] Yes, i want to add it\n[N] No, maybe later\n");
 
         while(!isTrue){
-        System.out.print("Choices [Y/N]: ");
-        String sC = s.nextLine().toUpperCase();
-            
+            System.out.print("Choices [Y/N]: ");
+            String sC = s.nextLine().toUpperCase();
+
             if(sC.equals("Y")){
                 break;
             } else if(sC.equals("N")){
@@ -994,19 +1306,19 @@ public class UniversityManagementSystem {
             } else{
                 System.out.println("Invalid input");
             }
-        }  
+        }
 
-		return informationForAll;
-	}
+        return informationForAll;
+    }
 
     //DISPLAYING DATA FOR STUDENTS
-        private static void displayingDataOfStudents(){
-            if(forStudents.isEmpty() || forStudents == null){
-                System.out.println("There's no Student Available, Try to Add");
-                return;
-            }
+    private static void displayingDataOfStudents(){
+        if(forStudents.isEmpty() || forStudents == null){
+            System.out.println("There's no Student Available, Try to Add");
+            return;
+        }
 
-            getDataForStudents(forStudents);
+        getDataForStudents(forStudents);
 
     }
 
@@ -1017,9 +1329,8 @@ public class UniversityManagementSystem {
         System.out.println("\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
         System.out.println("====================================================================================================================");
         System.out.printf("| %-14s | %-14s | %-14s | %-14s | %-14s | %-8s |\n"
-        , "STUDENT ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE");
+                , "STUDENT ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE");
         System.out.println("====================================================================================================================");
-    
         for (String[] getDatas : getDataOfStudent) {
             if (getDatas.length >= 5) {
                 String studentIdentity = getDatas[5];
@@ -1030,14 +1341,14 @@ public class UniversityManagementSystem {
                 String stAge = getDatas[4];
 
                 String newAddress = textBehaviour(stAddress, 20);
-    
-                System.out.printf("| %-12s | %-12s | %-14s | %-14s | %-14s | %-8s |", studentIdentity, stFname, stLname, stMname, newAddress, stAge);
+
+                System.out.printf("| %-12s | %-12s | %-14s | %-14s | %-14s | %-8s |\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
                 System.out.println("====================================================================================================================");
             }
         }
     }
 
-/*METHOD CLS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+    /*ANOTEHER PROVIDER METHOD ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
     //METHODS FOR CLEARING SYSTEM SCREEN
     static void clearScreen(){
@@ -1045,107 +1356,154 @@ public class UniversityManagementSystem {
         System.out.flush();
     }
 
-    //TEXT ELLIPSIS THE LONG LINE
+    //METHOD FOR TEXT ABBREVIATION
     public static String textBehaviour(String text, int maxOfText) {
         if (text.length() <= maxOfText) {
             return text;
         }
-    
+
         StringBuilder cBuilder = new StringBuilder();
         int len = 0;
-    
+
         for (char tparts : text.toCharArray()) {
             cBuilder.append(tparts);
             len++;
-    
+
             if (tparts == ' ' && len >= maxOfText) {
                 break;
-            } 
+            }
         }
 
         while (cBuilder.charAt(cBuilder.length() - 1) == ' ') {
             cBuilder.deleteCharAt(cBuilder.length() - 1);
         }
-    
+
         cBuilder.append("...");
         return cBuilder.toString();
     }
-    
+
+    //METHOD FOR CALENDAR
+
+    public static int yearAtFure(){
+        Calendar yearInCalendar = Calendar.getInstance();
+        int yearNow = yearInCalendar.get(Calendar.YEAR) % 100;
+        return yearNow;
+    }
+
 }
 //CLASSES FOR UNIVERSITY MANAGEMENT SYSTEM ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
 //CLASS FOR STUDENTS
 class ThisIsForStudent extends UniversityManagementSystem{
-   private String idOFstudent;
+    private String idOFstudent;
 
-   void instantiateOfStudents(){
-       this.idOFstudent = r4d(forStudents);
-   }
+    void instantiateOfStudents(){
+        this.idOFstudent = r4d(forStudents);
+        dataBaseForID(idOFstudent);
+    }
 
-   private String r4d(List<String[]> forSubject){
-       final Random r = new Random();
-       final int student4Digit = r.nextInt(9000) + 999;
-       String stFormat = String.format("ST"+ year +"-%04d", student4Digit);
-       forStudents.add(new String[]{stFormat});
-       return stFormat;
-   }
+    private String r4d(List<String[]> forSubject){
+        final Random r = new Random();
+        final int student4Digit = r.nextInt(9000) + 999;
+        String stFormat = String.format("ST"+ year +"-%04d", student4Digit);
+        forStudents.add(new String[]{stFormat});
+        return stFormat;
+    }
 
-   public String getTheStudentId(){
-       return idOFstudent;
-   }
+    private void dataBaseForID(String stIdentity){
+        forStudents.add(new String[]{stIdentity});
+    }
+
+    public String getTheStudentId(){
+        return idOFstudent;
+    }
+
+    public void sujectToAdd(String StId, String subjCode){
+        for(String student[] : forStudents){
+            if(student[0].contains(StId)){
+                if(!Arrays.asList(student).contains(subjCode)){
+                    List<String> updateDataOfStudent = new ArrayList<>(Arrays.asList(student));
+                    updateDataOfStudent.add(subjCode);
+                    forStudents.remove(student);
+                    forStudents.add(updateDataOfStudent.toArray(new String[1-1]));
+                    System.out.println("This subject " + subjCode + " added to student " + StId);
+                }else{
+                System.out.print("This student" +  StId + "already have this subject code" + subjCode);
+                }
+            return;
+            }
+        }
+        System.out.println("This student" + StId + "was not existing in database");
+    }
 }
+
+//CLASS FOR INSTRUCTORS
 
 class ThisIsForInstructor extends UniversityManagementSystem{
 
-       private String idOFInstructor;
+    private String idOFInstructor;
 
-       void instantiateOfInstructor(){
-           this.idOFInstructor = r4d(forInstructors);
-           dataBaseForID(idOFInstructor);
-       }
+    void instantiateOfInstructor(){
+        this.idOFInstructor = r4d(forInstructors);
+        dataBaseForID(idOFInstructor);
+    }
 
-       private String r4d(List<String[]> forInstructor){
-           final Random r = new Random();
-           final int instuctor4Digit = r.nextInt(9000) + 999;
-           String insFormat = String.format("INS"+ year +"-%04d", instuctor4Digit);
-           forInstructors.add(new String[]{insFormat});
-           return insFormat;
-       }
+    private String r4d(List<String[]> forInstructor){
+        final Random r = new Random();
+        final int instuctor4Digit = r.nextInt(9000) + 999;
+        String insFormat = String.format("INS"+ year +"-%04d", instuctor4Digit);
+        forInstructors.add(new String[]{insFormat});
+        return insFormat;
+    }
 
-       private void dataBaseForID(String insIdentity){
-           forInstructors.add(new String[]{insIdentity});
-       }
+    private void dataBaseForID(String insIdentity){
+        forInstructors.add(new String[]{insIdentity});
+    }
 
-       public findInstructorId(){
-          return idOFInstructor;
-       }
+    public String getTheInstructorId(){
+        return idOFInstructor;
+    }
 
-       public String getTheInstructorId(){
-           return idOFInstructor;
-       }
-   }
+    public void subjectToAssign(String insId, String subjCode ){
+        for(String [] insPassSub : forInstructors){
+            if(insPassSub[0].equals(idOFInstructor)){
+                insPassSub[1] = subjCode;
+                System.out.print("This subject was assigning to "+ idOFInstructor);
+                return;
+            }
+        } 
+        System.out.printf("Instructor %s not found", idOFInstructor);  
+    }
 
-
+    public boolean checkerOfSubject (String subjCode){
+        for(String ins[] : forInstructors){
+            if(ins[0].equals(idOFInstructor) && ins.length > 1 && ins[1].equals(subjCode)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
 
 //CLASS FOR SUBJECTS
 class ThisIsForSubject extends UniversityManagementSystem {
 
-   private String idOFSubject;
+    private String idOFSubject;
 
-   void instantiateOfSubject(){
-       this.idOFSubject = r4d(forSubjects);
-   }
+    void instantiateOfSubject(){
+        this.idOFSubject = r4d(forSubjects);
+    }
 
-   private String r4d(List<String[]> forSubject){
-       final Random r = new Random();
-       final int subject4Digit = r.nextInt(9000) + 999;
-       String subFormat = String.format("SUB"+ "-%04d", subject4Digit);
-       forSubjects.add(new String[]{subFormat});
-       return subFormat;
-   }
+    private String r4d(List<String[]> forSubject){
+        final Random r = new Random();
+        final int subject4Digit = r.nextInt(9000) + 999;
+        String subFormat = String.format("SUB"+ "-%04d", subject4Digit);
+        forSubjects.add(new String[]{subFormat});
+        return subFormat;
+    }
 
-   public String getTheSubjectId(){
+    public String getTheSubjectId(){
         return idOFSubject;
-   }
+    }
 }
