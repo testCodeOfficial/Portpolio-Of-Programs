@@ -595,7 +595,7 @@ public class UniversityManagementSystem {
                     String insSub = s.nextLine().trim();
 
                     ThisIsForInstructor insToSub = new ThisIsForInstructor();
-                    insToSub.subjectToAssign(assignSubj,insSub);
+                    insToSub.subjectToAssign(assignSubj, insSub);
                     break;
                 } else {
                     System.out.println("There's no instructor existing with this subject, try to add first");
@@ -1001,13 +1001,10 @@ public class UniversityManagementSystem {
 
             if(!instructorHolder.isEmpty()){
                 int count = 0;
-                for(String[] insSub : instructorHolder){
-                    if(insSub.length >= 3){
-                    String subjectCode =  insSub[2];
-                    if(!subjectCode.isEmpty()){
+                for(String[] insS : instructorHolder){
+                    if(insS.length >= 3 && insS[2] != null){
                         count++;
                         }
-                    }
                 }
                 System.out.printf(" | %-14s |", count);
                 System.out.println("\n=========================================================================================================================================================");
@@ -1376,29 +1373,18 @@ public class UniversityManagementSystem {
 
                 System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
                 System.out.println("==================================================================================================================================================");
-                List<String> addedSubjectCode = new ArrayList<>();
-                List<String> addedSubjectTitle = new ArrayList<>();
-                List<String> addedSubjectDescription = new ArrayList<>();
+                   
                 for(String[] added : takeSubjectData){
-                    if(added.length >= 4 && added[3].equals(studentIdentity)){
-                        addedSubjectCode.add(added[3]);
-                        addedSubjectTitle.add(added[0]);
-                        addedSubjectDescription.add(added[1]);
+                //  System.out.println("Subject data: " + Arrays.toString(added));  
+                   if(added != null && added.length > 5 && added != null && added[5].equals(studentIdentity)){
+                        System.out.printf(" %-12s | %-12s | %-12s|\n", Arrays.toString(added));
+                        System.out.println("===================================================================================================================="); 
                     }
                 }
-
-                for(int i = 0; i < addedSubjectTitle.size(); i++){
-                System.out.printf(" %-12s | %-12s | %-12s|\n",addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
-                System.out.println("====================================================================================================================");
-                }
-
-                System.out.println("Size of addedSubjectCode list: " + addedSubjectCode.size());
-                System.out.println("Size of addedSubjectTitle list: " + addedSubjectTitle.size());
-                System.out.println("Size of addedSubjectDescription list: " + addedSubjectDescription.size());
-                
             }
         }
     }
+    
 
     /*ANOTEHER PROVIDER METHOD ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -1543,13 +1529,13 @@ class ThisIsForInstructor extends UniversityManagementSystem{
 
     public void subjectToAssign(String insId, String subjCode ){
         for(String [] insPassSub : forInstructors){
-            if(insPassSub[0].equals(idOFInstructor)){
+            if(insPassSub.length >= 6 && insPassSub[5].equals(insId)){
                 insPassSub[6] = subjCode;
-                System.out.print("This subject was assigning to "+ idOFInstructor);
+                System.out.print("This subject was assigning to "+ insId);
                 return;
             }
         } 
-        System.out.print("Instructor not found "+ idOFInstructor); 
+        System.out.print("Instructor not found "+ insId); 
     }
 
     public boolean checkerOfSubject (String subjCode){
