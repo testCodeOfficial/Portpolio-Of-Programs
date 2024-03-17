@@ -1,10 +1,8 @@
 import java.util.Scanner;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Calendar;
 
 public class UniversityManagementSystem {
@@ -81,10 +79,8 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(NumberFormatException e){
-                                // System.out.println("\nThe input is not valid.");
-                                // System.out.println("--------------------------------------------------------------------------------------------");
-                                e.printStackTrace();
-                                return;
+                                // e.printStackTrace();
+                                // return;
                             }
                         }while(isTrue);
                         break;
@@ -122,10 +118,10 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(Exception e){
-                                // System.out.println("\nThe input is in valid.");
-                                // System.out.println("--------------------------------------------------------------------------------------------");
-                                e.printStackTrace();
-                                return;
+                                System.out.println("\nThe input is in valid.");
+                                System.out.println("--------------------------------------------------------------------------------------------");
+                                // e.printStackTrace();
+                                // return;
                             }
                         }while(!isTrue);
                         break;
@@ -160,10 +156,10 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(Exception e){
-                                // System.out.println("\nThe input is in valid.");
-                                // System.out.println("--------------------------------------------------------------------------------------------");
-                                e.printStackTrace();
-                                return;
+                                System.out.println("\nThe input is in valid.");
+                                System.out.println("--------------------------------------------------------------------------------------------");
+                                // e.printStackTrace();
+                                // return;
                             }
                         }while(!isTrue);
                         break;
@@ -198,8 +194,10 @@ public class UniversityManagementSystem {
                                         break;
                                     }
                             }catch(Exception e){
-                                    e.printStackTrace();
-                                    return;
+                                    // e.printStackTrace();
+                                    // return;
+                                    System.out.println("\nThe input is in valid.");
+                                    System.out.println("--------------------------------------------------------------------------------------------");
                             }
                         }
                         while(!isTrue);
@@ -235,8 +233,10 @@ public class UniversityManagementSystem {
                                         break;
                                     }
                             }catch(Exception e){
-                                e.printStackTrace();
-                                return;
+                                // e.printStackTrace();
+                                // return;
+                                System.out.println("\nThe input is in valid.");
+                                System.out.println("--------------------------------------------------------------------------------------------");
                             }
                         }while(!isTrue);
                         break;
@@ -260,10 +260,10 @@ public class UniversityManagementSystem {
                         break;
 
                 }
-            }catch(Exception e){
-                // System.out.println("\nThe input must be valid and program didn't allowed it.");
-                // System.out.println("--------------------------------------------------------------------------------------------");
-                e.printStackTrace();
+            }catch(NumberFormatException e){
+                System.out.println("\nThe input must be valid and program didn't allowed it.");
+                System.out.println("--------------------------------------------------------------------------------------------");
+                // e.printStackTrace();
                 
                 return;
             }
