@@ -279,7 +279,7 @@ public class UniversityManagementSystem {
     public static Boolean addAgain(){
         String addAgainC;
         do{
-            System.out.println("\nDo you want to add again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n\nDo you want to add again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC  = s.nextLine().toUpperCase();
             if(addAgainC.equalsIgnoreCase("Y")){
                 return true;
@@ -293,7 +293,7 @@ public class UniversityManagementSystem {
     public static Boolean editAgain(){
         String addAgainC;
         do{
-            System.out.println("\nDo you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n\nDo you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC  = s.nextLine().toUpperCase();
             if(addAgainC.equalsIgnoreCase("Y")){
                 return true;
@@ -307,7 +307,7 @@ public class UniversityManagementSystem {
     public static Boolean deleteAgain(){
         String addAgainC;
         do{
-            System.out.println("\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC  = s.nextLine().toUpperCase();
             if(addAgainC.equalsIgnoreCase("Y")){
                 return true;
@@ -321,7 +321,7 @@ public class UniversityManagementSystem {
     public static Boolean searchAgain(){
         String addAgainC;
         do{
-            System.out.println("\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n\nDo you want to search again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC  = s.nextLine().toUpperCase();
             if(addAgainC.equalsIgnoreCase("Y")){
                 return true;
@@ -355,7 +355,7 @@ public class UniversityManagementSystem {
 
     //DELETE SUBJECT
     private static void deleteSubject(){
-       
+    do{
         System.out.print("\nEnter the Student ID \"SUB-1234\": ");
         String deleteCode = s.nextLine().trim();
 
@@ -391,10 +391,12 @@ public class UniversityManagementSystem {
         if (!isFound) {
             System.out.println("This student with this id \""+deleteCode+"\" is not existing.");
         }
+    }while(deleteAgain());
     }
 
     //SEARCH SUBJECT
     private static void searchSubject() {
+    do{
         System.out.println("Search Subject: ");
         String subjectSearched = s.nextLine().toUpperCase().trim();
 
@@ -415,13 +417,14 @@ public class UniversityManagementSystem {
         if (!found) {
             System.out.println("No subject found.");
         }
+    }while(searchAgain());
     }
 
     //EDIT SUBJECT
     // private static Scanner editScanner = new Scanner(System.in);
 
     private static void editSubject() {
-        
+    do{
         System.out.print("\nEnter the subject code \"SUB-1234\": ");
         String editCode = s.nextLine().trim();
 
@@ -489,6 +492,7 @@ public class UniversityManagementSystem {
             System.out.println("This Code is not existing, try to add first");
         }
     }
+    }while(editAgain());
     }
 
 
@@ -584,8 +588,8 @@ public class UniversityManagementSystem {
             extraInDisplay = s.nextLine().toUpperCase().trim();
             if(extraInDisplay.equalsIgnoreCase("I")){
                 System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\": ");
-                String assignSubj = s.nextLine();
-                if(matching(assignSubj)){
+                String assignSubj = s.nextLine().trim();
+                if(matchingInstructor(assignSubj)){
                     System.out.println("Processing for assigning...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to assign in instructor: ");
                     String insSub = s.nextLine().trim();
@@ -595,22 +599,22 @@ public class UniversityManagementSystem {
                     System.out.println("Subject was assigning to the instructor" + assignSubj);
                     break;
                 } else {
-                    System.out.println("There's no instructor existing with this ID, try to add first");
+                    System.out.println("There's no instructor existing with this subject, try to add first");
                 }
             } else if(extraInDisplay.equalsIgnoreCase("S")){
                 System.out.print("\nEnter the Student ID \"ST"+year + "-1234\": ");
                 String addSubj = s.nextLine().trim();
-                if(forStudents.equals(addSubj)){
+                if(matchingStudent(addSubj)){
                     System.out.println("Processing for adding...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to add in student: ");
-                    String stSub = s.nextLine();
+                    String stSub = s.nextLine().trim();
 
                         ThisIsForStudent student = new ThisIsForStudent();
                         student.sujectToAdd(addSubj, stSub);
                         System.out.println("Subject was added in this student"+addSubj);
                         break;
                 } else{
-                        System.out.println("There's no student existing with this ID, try to add first");
+                        System.out.println("There's no student existing with this subject, try to add first");
                 }
             } else if(extraInDisplay.equalsIgnoreCase("E")){
                 break;
@@ -619,7 +623,7 @@ public class UniversityManagementSystem {
             }
         }while(extraInDisplay != "E");
     }
-    }
+}
 
     /*INSTRUCTOR ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -649,6 +653,7 @@ public class UniversityManagementSystem {
 
     //DELETE INSTRUCTOR METHOD
     private static void deleteInstructor(){
+        do{
         System.out.print("\nEnter the Instructor ID \"INS" +year+ "-1234\": ");
         String deleteInsID = s.nextLine().trim();
 
@@ -684,10 +689,12 @@ public class UniversityManagementSystem {
         if (!isFound) {
             System.out.println("This instructor with this id \""+deleteInsID+"\" is not existing.");
         }
+    }while(deleteAgain());
     }
 
     //EDITING INSTRUCTOR METHOD
     private static void editInstructor() {
+    do{
         // Scanner editScanner = new Scanner(System.in);
         System.out.print("\nEnter the Instructor ID \"INS" + year + "-1234\" : ");
         String editInsID = s.nextLine().trim();
@@ -808,11 +815,13 @@ public class UniversityManagementSystem {
             System.out.println("This ID is not existing, try to add first");
         }
     }
+    }while(editAgain());
     }
 
 
     //SEARCHING INSTRUCTOR METHOD
     private static void searchInstructor() {
+        do{
         // Scanner insSearch = new Scanner(System.in);
         System.out.println("Search Instructors: ");
         String instructorSearched = s.nextLine();
@@ -843,6 +852,7 @@ public class UniversityManagementSystem {
         if (!found) {
             System.out.println("No instructor found.");
         }
+    }while(searchAgain());
     }
 
 
@@ -963,7 +973,7 @@ public class UniversityManagementSystem {
     //GETTER DATA FOR INSTRUCTOR
     private static void getDataForInstructors(List<String[]> takeDataForInstructor, List<String[]> assigningSubject){
         List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);
-        String [] textTitle = {"|INSTRUCTOR ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE", "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|"};
+        String [] textTitle = {"|INSTRUCTOR ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE", "SUBJECT HOLD"};
         System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
         System.out.println("=============================================================================================================================================================");
         for(String text : textTitle){
@@ -986,22 +996,26 @@ public class UniversityManagementSystem {
 
             List<String[]> instructorHolder = new ArrayList<>();
             for(String[] insSub : assigningSubject){
-                if(insSub.length > 5 && insSub[5].contains(instructorIdentity)){
+                if(insSub.length > 5 && insSub[5].equals(instructorIdentity)){
                     instructorHolder.add(insSub);
                 }
             }
 
             if(!instructorHolder.isEmpty()){
+                int count = 0;
                 for(String[] insSub : instructorHolder){
-                    String subjectCode =  insSub[0];
-                    String subjectTitle =  insSub[1];
-                    String subjectDescription =  insSub[2];
-                    System.out.printf(" | %-14s | %-14s | %-14s    |", subjectCode, subjectTitle, subjectDescription);
-                    System.out.println("\n=========================================================================================================================================================");
-            
+                    if(insSub.length >= 3){
+                    String subjectCode =  insSub[2];
+                    if(!subjectCode.isEmpty()){
+                        count++;
+                        }
+                    }
                 }
+                System.out.printf(" | %-14s |", count);
+                System.out.println("\n=========================================================================================================================================================");
+                        
             } else {
-                System.out.printf(" | %-14s | %-14s | %-14s    |", " ", " " ," ");
+                System.out.printf(" | %-14s |", "N/A");
                 System.out.println("\n=============================================================================================================================================================");
             
             }
@@ -1035,6 +1049,7 @@ public class UniversityManagementSystem {
 
     //DELETE STUDENT
     private static void deleteStudent(){
+    do{
         System.out.print("\nEnter the Student ID \"ST" +year+ "-1234\" : ");
         String deleteStID = s.nextLine().trim();
 
@@ -1070,11 +1085,13 @@ public class UniversityManagementSystem {
         if (!isFound) {
             System.out.println("This student with this id \""+deleteStID+"\" is not existing.");
         }
+    }while(deleteAgain());
     }
 
     //EDIT STUDENTS
 
     private static void editStudent() {
+        do{
         // Scanner editScanner = new Scanner(System.in);
         System.out.print("\nEnter the Student ID \"ST" + year + "-1234\": ");
         String editStID = s.nextLine().trim();
@@ -1193,10 +1210,12 @@ public class UniversityManagementSystem {
             System.out.println("This ID is not existing, try to add first");
         }
     }
+    }while(editAgain());
     }
 
     //SEARCH STUDENTS
     private static void searchStudent() {
+        do{
         // Scanner searchStudent = new Scanner(System.in);
         System.out.println("Search Student: ");
         String studentSearched = s.nextLine();
@@ -1224,6 +1243,7 @@ public class UniversityManagementSystem {
         if (!found) {
             System.out.println("No student found.");
         }
+    }while(searchAgain());
     }
 
     //STUDENTS DATA GETTER
@@ -1327,15 +1347,15 @@ public class UniversityManagementSystem {
         if(forStudents.isEmpty() || forStudents == null){
             System.out.println("There's no Student Available, Try to Add");
             return;
+        } else {
+
+        getDataForStudents(forStudents,forSubjects) ;
         }
-
-        getDataForStudents(forStudents); //forSubjects;
-
     }
 
 
     //SETTER DATA FOR STUDENTS
-    private static void getDataForStudents(List<String[]> takeDataForStudent) { //List<String[]> takeSubjectData
+    private static void getDataForStudents(List<String[]> takeDataForStudent, List<String[]> takeSubjectData) {
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
         String[] textTitle = {"|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE" , "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|\n"};
         System.out.println("\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
@@ -1346,7 +1366,7 @@ public class UniversityManagementSystem {
         }
         System.out.println("==============================================================================================================================================");
         for (String[] getDatas : getDataOfStudent) {
-            if (getDatas.length >= 5) {
+            if (getDatas.length >= 6) {
                 String studentIdentity = getDatas[5];
                 String stFname = getDatas[0];
                 String stLname = getDatas[1];
@@ -1358,22 +1378,22 @@ public class UniversityManagementSystem {
 
                 System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
                 System.out.println("==================================================================================================================================================");
-                // List<String> addedEnrolledSubject = new ArrayList<>();
-                // List<String> addedSubjectCode = new ArrayList<>();
-                // List<String> addedSubjectTitle = new ArrayList<>();
-                // List<String> addedSubjectDescription = new ArrayList<>();
-                // for(String[] added : takeSubjectData){
-                //     if(added.length >= 3 && added[0].contains(studentIdentity)){
-                //         addedSubjectCode.add(added[1]);
-                //         addedSubjectTitle.add(added[2]);
-                //         addedSubjectDescription.add(added[3]);
-                //     }
-                // }
+                List<String> addedSubjectCode = new ArrayList<>();
+                List<String> addedSubjectTitle = new ArrayList<>();
+                List<String> addedSubjectDescription = new ArrayList<>();
+                for(String[] added : takeSubjectData){
+                    if(added.length >= 4 && added[3].equals(studentIdentity)){
+                        addedSubjectCode.add(added[3]);
+                        addedSubjectTitle.add(added[0]);
+                        addedSubjectDescription.add(added[1]);
+                    }
+                }
 
-                // for(int i = 0; i < addedEnrolledSubject.size(); i++){
-                // System.out.printf("| %-12s | %-12s | %-14s | %-14s | %-14s | %-8s | %-12s | %-12s | %-12s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge, addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
-                // }
-                // System.out.println("====================================================================================================================");
+                for(int i = 0; i < addedSubjectTitle.size(); i++){
+                System.out.printf(" %-12s | %-12s | %-12s|\n",addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
+                System.out.println("====================================================================================================================");
+                }
+                
             }
         }
     }
@@ -1421,11 +1441,21 @@ public class UniversityManagementSystem {
     }
 
     //METHOD FOR MATCHING ID
-    static boolean matching(String id) {
-        for (int i = 0; i < forInstructors.size(); i++) {
-            String[] ins = forInstructors.get(i);
-            for (int j = 0; j < ins.length; j++) {
+    static boolean matchingInstructor(String id) {
+        for(String[] ins : forInstructors){
+            for (int j = 5; j < ins.length; j++) {
                 if (ins[j].equals(id)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static boolean matchingStudent(String id) {
+        for(String [] st : forStudents){
+            for (int j = 5; j < st.length; j++) {
+                if (st[j].equals(id)) {
                     return true;
                 }
             }
@@ -1518,7 +1548,7 @@ class ThisIsForInstructor extends UniversityManagementSystem{
                 return;
             }
         } 
-        System.out.printf("Instructor %s not found", idOFInstructor);  
+        System.out.print("Instructor not found"+ idOFInstructor);  
     }
 
     public boolean checkerOfSubject (String subjCode){
