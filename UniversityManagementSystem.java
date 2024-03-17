@@ -79,8 +79,8 @@ public class UniversityManagementSystem {
                                         break;
                                 }
                             }catch(NumberFormatException e){
-                                // e.printStackTrace();
-                                // return;
+                                e.printStackTrace();
+                                return;
                             }
                         }while(isTrue);
                         break;
@@ -120,8 +120,8 @@ public class UniversityManagementSystem {
                             }catch(Exception e){
                                 System.out.println("\nThe input is in valid.");
                                 System.out.println("--------------------------------------------------------------------------------------------");
-                                // e.printStackTrace();
-                                // return;
+                                e.printStackTrace();
+                                return;
                             }
                         }while(!isTrue);
                         break;
@@ -158,8 +158,8 @@ public class UniversityManagementSystem {
                             }catch(Exception e){
                                 System.out.println("\nThe input is in valid.");
                                 System.out.println("--------------------------------------------------------------------------------------------");
-                                // e.printStackTrace();
-                                // return;
+                                e.printStackTrace();
+                                return;
                             }
                         }while(!isTrue);
                         break;
@@ -194,10 +194,11 @@ public class UniversityManagementSystem {
                                         break;
                                     }
                             }catch(Exception e){
-                                    // e.printStackTrace();
-                                    // return;
                                     System.out.println("\nThe input is in valid.");
                                     System.out.println("--------------------------------------------------------------------------------------------");
+                                    e.printStackTrace();
+                                    return;
+                                    
                             }
                         }
                         while(!isTrue);
@@ -233,10 +234,10 @@ public class UniversityManagementSystem {
                                         break;
                                     }
                             }catch(Exception e){
-                                // e.printStackTrace();
-                                // return;
                                 System.out.println("\nThe input is in valid.");
                                 System.out.println("--------------------------------------------------------------------------------------------");
+                                e.printStackTrace();
+                                return;
                             }
                         }while(!isTrue);
                         break;
@@ -263,7 +264,7 @@ public class UniversityManagementSystem {
             }catch(NumberFormatException e){
                 System.out.println("\nThe input must be valid and program didn't allowed it.");
                 System.out.println("--------------------------------------------------------------------------------------------");
-                // e.printStackTrace();
+                e.printStackTrace();
                 
                 return;
             }
@@ -569,6 +570,7 @@ public class UniversityManagementSystem {
 
     }
     static ThisIsForStudent student = new ThisIsForStudent();
+    static ThisIsForInstructor insToSub = new ThisIsForInstructor();
     //DISPLAY DATA FOR SUBJECTS
     private static void displayingDataOfSubjects(){
         if(forSubjects.isEmpty()){
@@ -588,28 +590,31 @@ public class UniversityManagementSystem {
             extraInDisplay = s.nextLine().toUpperCase().trim();
             if(extraInDisplay.equalsIgnoreCase("I")){
                 System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\": ");
-                String assignSubj = s.nextLine().trim();
+                String assignSubj = s.nextLine().trim().toUpperCase();
                 if(matchingInstructor(assignSubj)){
                     System.out.println("Processing for assigning...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to assign in instructor: ");
-                    String insSub = s.nextLine().trim();
-                    ThisIsForInstructor insToSub = new ThisIsForInstructor();
+                    String insSub = s.nextLine().trim().toUpperCase();
+                    System.out.println("Subject"+insSub+"was assign to instructor"+assignSubj);
                     insToSub.subjectToAssign(assignSubj, insSub);
                     break;
                 } else {
                     System.out.println("There's no instructor existing with this subject, try to add first");
+                    return;
                 }
             } else if(extraInDisplay.equalsIgnoreCase("S")){
                 System.out.print("\nEnter the Student ID \"ST"+year + "-1234\": ");
-                String addSubj = s.nextLine().trim();
+                String addSubj = s.nextLine().trim().toUpperCase();
                 if(matchingStudent(addSubj)){
                     System.out.println("Processing for adding...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to add in student: ");
-                    String stSub = s.nextLine().trim();
-                        student.subjectToAdd(addSubj, stSub);
-                        System.out.println("Subject was added.");
+                    String stSub = s.nextLine().trim().toUpperCase();
+                    System.out.println("Subject "+stSub+" was processing added in student "+addSubj);
+                    student.subjectToAdd(addSubj, stSub);
+                    break;
                 } else{
                         System.out.println("There's no student existing with this subject, try to add first");
+                        return;
                 }
             } else if(extraInDisplay.equalsIgnoreCase("E")){
                 break;
@@ -1349,14 +1354,16 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR STUDENTS
     private static void getDataForStudents(List<String[]> takeDataForStudent, List<String[]> takeSubjectData) {
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
-        String[] textTitle = {"|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE" , "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|\n"};
-        System.out.println("\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
+        List<String[]> addSubjectFromStudent = new ArrayList<>(takeSubjectData);
+        String[] textTitle = {"|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE "};
+        String[] textSub = {"|SUBJECT CODE", "|SUBJECT TITLE","|SUBJECT DESCRIPTION|\n"};
+       System.out.println("\n\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
         System.out.println("==============================================================================================================================================");
 
         for(String together: textTitle){
             System.out.printf("%-17s", together);   
         }
-        System.out.println("==============================================================================================================================================");
+        System.out.println("\n==============================================================================================================================================");
         for (String[] getDatas : getDataOfStudent) {
             if (getDatas.length >= 6) {
                 String studentIdentity = getDatas[5];
@@ -1368,18 +1375,31 @@ public class UniversityManagementSystem {
 
                 String newAddress = textBehaviour(stAddress, 20);
 
-                System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
-                System.out.println("==================================================================================================================================================");
-                   
-                for (String[] added : takeSubjectData) {
-                    if (added != null && added.length > 5 && added[5].equals(studentIdentity)) {
+                System.out.printf("\r|%-17s| %-17s| %-17s| %-17s| %-17s| %-17s|", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
+                System.out.println("\n==================================================================================================================================================");
+                  
+                boolean subjectAppear = false;
+                for (String[] added : addSubjectFromStudent) {
+                    if (added != null && added.length >= 6 && added[5].equals(studentIdentity)) {
+                        if(!subjectAppear){
+                            System.out.println("\n===+==========================================================================================================================================");
+                             subjectAppear = true;
+                        }
                         String subjectCode = added[2];
                         String subjectName = added[0];
                         String subjectCredits = added[1];
                         
-                        System.out.printf(" %-12s | %-12s | %-12s|\n", subjectCode, subjectName, subjectCredits);
-                        System.out.println("===================================================================================================================="); 
+                        System.out.printf("%-17s | %-17s | %-17s|", subjectCode, subjectName, subjectCredits);
                     }
+                }
+
+                if(!subjectAppear){
+                    for(String subtext : textSub){
+                        System.out.printf("%-17s", subtext);
+                    }
+                    System.out.println("============================================================");
+                    System.out.printf("%-12s| %-12s | %-12s |", "N/A","N/A","N/A");
+                    System.out.println("\n==========================================================");
                 }
                 
             }
@@ -1483,7 +1503,7 @@ class ThisIsForStudent extends UniversityManagementSystem{
 
     public void subjectToAdd(String StId, String subjCode){
         for(String student[] : forStudents){
-            if(student[5].equals(idOFstudent) && student.length >= 6){
+            if(student.length >= 1 && student[0].equals(StId)){
                 if(!Arrays.asList(student).contains(subjCode)){
                     List<String> updateDataOfStudent = new ArrayList<>(Arrays.asList(student));
                     updateDataOfStudent.add(subjCode);
