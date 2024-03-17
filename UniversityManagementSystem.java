@@ -586,15 +586,16 @@ public class UniversityManagementSystem {
             System.out.println("[E] Type \"E\" if you want to back to main \nChoices: ");
             extraInDisplay = s.nextLine().toUpperCase().trim();
             if(extraInDisplay.equalsIgnoreCase("I")){
-                System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\" : ");
+                System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\": ");
                 String assignSubj = s.nextLine();
                 if(forInstructors.contains(assignSubj)){
                     System.out.println("Processing for assigning...");
-                    System.out.println("Enter Subject Code you want to assign in student: ");
+                    System.out.println("Enter Subject Code \"SUB-1234\" you want to assign in instructor: ");
                     String insSub = s.nextLine().trim();
 
                     ThisIsForInstructor insToSub = new ThisIsForInstructor();
                     insToSub.subjectToAssign(assignSubj,insSub);
+                    System.out.println("Subject was assigning to the instructor" + assignSubj);
                     break;
                 } else {
                     System.out.println("There's no instructor existing with this ID, try to add first");
@@ -604,11 +605,12 @@ public class UniversityManagementSystem {
                 String addSubj = s.nextLine().trim();
                 if(forStudents.contains(addSubj)){
                     System.out.println("Processing for adding...");
-                    System.out.println("Enter Subject Code you want to add in student: ");
+                    System.out.println("Enter Subject Code \"SUB-1234\" you want to add in student: ");
                     String stSub = s.nextLine();
 
                         ThisIsForStudent student = new ThisIsForStudent();
                         student.sujectToAdd(addSubj, stSub);
+                        System.out.println("Subject was added in this student"+addSubj);
                         break;
                 } else{
                         System.out.println("There's no student existing with this ID, try to add first");
