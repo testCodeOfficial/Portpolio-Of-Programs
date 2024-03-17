@@ -585,7 +585,7 @@ public class UniversityManagementSystem {
             if(extraInDisplay.equalsIgnoreCase("I")){
                 System.out.print("\nEnter the Instructor ID \"INS"+ year + "-1234\": ");
                 String assignSubj = s.nextLine();
-                if(forInstructors.contains(assignSubj)){
+                if(matching(assignSubj)){
                     System.out.println("Processing for assigning...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to assign in instructor: ");
                     String insSub = s.nextLine().trim();
@@ -600,7 +600,7 @@ public class UniversityManagementSystem {
             } else if(extraInDisplay.equalsIgnoreCase("S")){
                 System.out.print("\nEnter the Student ID \"ST"+year + "-1234\": ");
                 String addSubj = s.nextLine().trim();
-                if(forStudents.contains(addSubj)){
+                if(forStudents.equals(addSubj)){
                     System.out.println("Processing for adding...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to add in student: ");
                     String stSub = s.nextLine();
@@ -1420,6 +1420,19 @@ public class UniversityManagementSystem {
         return yearNow;
     }
 
+    //METHOD FOR MATCHING ID
+    static boolean matching(String id) {
+        for (int i = 0; i < forInstructors.size(); i++) {
+            String[] ins = forInstructors.get(i);
+            for (int j = 0; j < ins.length; j++) {
+                if (ins[j].equals(id)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
 //CLASSES FOR UNIVERSITY MANAGEMENT SYSTEM ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -1466,6 +1479,8 @@ class ThisIsForStudent extends UniversityManagementSystem{
         }
         System.out.println("This student" + StId + "was not existing in database");
     }
+
+    
 }
 
 //CLASS FOR INSTRUCTORS
