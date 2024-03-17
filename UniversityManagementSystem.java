@@ -596,7 +596,6 @@ public class UniversityManagementSystem {
 
                     ThisIsForInstructor insToSub = new ThisIsForInstructor();
                     insToSub.subjectToAssign(assignSubj,insSub);
-                    System.out.println("Subject was assigning to the instructor" + assignSubj);
                     break;
                 } else {
                     System.out.println("There's no instructor existing with this subject, try to add first");
@@ -611,7 +610,6 @@ public class UniversityManagementSystem {
 
                         ThisIsForStudent student = new ThisIsForStudent();
                         student.sujectToAdd(addSubj, stSub);
-                        System.out.println("Subject was added in this student"+addSubj);
                         break;
                 } else{
                         System.out.println("There's no student existing with this subject, try to add first");
@@ -1393,6 +1391,10 @@ public class UniversityManagementSystem {
                 System.out.printf(" %-12s | %-12s | %-12s|\n",addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
                 System.out.println("====================================================================================================================");
                 }
+
+                System.out.println("Size of addedSubjectCode list: " + addedSubjectCode.size());
+                System.out.println("Size of addedSubjectTitle list: " + addedSubjectTitle.size());
+                System.out.println("Size of addedSubjectDescription list: " + addedSubjectDescription.size());
                 
             }
         }
@@ -1494,12 +1496,11 @@ class ThisIsForStudent extends UniversityManagementSystem{
 
     public void sujectToAdd(String StId, String subjCode){
         for(String student[] : forStudents){
-            if(student[0].contains(StId)){
+            if(student[0].equals(StId)){
                 if(!Arrays.asList(student).contains(subjCode)){
                     List<String> updateDataOfStudent = new ArrayList<>(Arrays.asList(student));
                     updateDataOfStudent.add(subjCode);
-                    forStudents.remove(student);
-                    forStudents.add(updateDataOfStudent.toArray(new String[1-1]));
+                    forStudents.set(forStudents.indexOf(student), updateDataOfStudent.toArray(new String[0]));
                     System.out.println("This subject " + subjCode + " added to student " + StId);
                 }else{
                 System.out.print("This student" +  StId + "already have this subject code" + subjCode);
@@ -1543,17 +1544,17 @@ class ThisIsForInstructor extends UniversityManagementSystem{
     public void subjectToAssign(String insId, String subjCode ){
         for(String [] insPassSub : forInstructors){
             if(insPassSub[0].equals(idOFInstructor)){
-                insPassSub[1] = subjCode;
+                insPassSub[6] = subjCode;
                 System.out.print("This subject was assigning to "+ idOFInstructor);
                 return;
             }
         } 
-        System.out.print("Instructor not found"+ idOFInstructor);  
+        System.out.print("Instructor not found "+ idOFInstructor); 
     }
 
     public boolean checkerOfSubject (String subjCode){
         for(String ins[] : forInstructors){
-            if(ins[0].equals(idOFInstructor) && ins.length > 1 && ins[1].equals(subjCode)){
+            if(ins[5].equals(idOFInstructor) && ins.length > 1 && ins[0].equals(subjCode)){
                 return true;
             }
         }
