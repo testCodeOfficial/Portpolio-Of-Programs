@@ -568,7 +568,7 @@ public class UniversityManagementSystem {
 
 
     }
-    
+    static ThisIsForStudent student = new ThisIsForStudent();
     //DISPLAY DATA FOR SUBJECTS
     private static void displayingDataOfSubjects(){
         if(forSubjects.isEmpty()){
@@ -593,7 +593,6 @@ public class UniversityManagementSystem {
                     System.out.println("Processing for assigning...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to assign in instructor: ");
                     String insSub = s.nextLine().trim();
-
                     ThisIsForInstructor insToSub = new ThisIsForInstructor();
                     insToSub.subjectToAssign(assignSubj, insSub);
                     break;
@@ -607,10 +606,8 @@ public class UniversityManagementSystem {
                     System.out.println("Processing for adding...");
                     System.out.println("Enter Subject Code \"SUB-1234\" you want to add in student: ");
                     String stSub = s.nextLine().trim();
-
-                        ThisIsForStudent student = new ThisIsForStudent();
-                        student.sujectToAdd(addSubj, stSub);
-                        break;
+                        student.subjectToAdd(addSubj, stSub);
+                        System.out.println("Subject was added.");
                 } else{
                         System.out.println("There's no student existing with this subject, try to add first");
                 }
@@ -958,7 +955,7 @@ public class UniversityManagementSystem {
 
 
 
-
+    static ThisIsForInstructor  to = new ThisIsForInstructor();
     //DISPLAY DATA FOR INSTRUCTOR
     private static void displayingDataOfInstructors(){
         if(forInstructors.isEmpty() || forInstructors == null){
@@ -1374,13 +1371,17 @@ public class UniversityManagementSystem {
                 System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
                 System.out.println("==================================================================================================================================================");
                    
-                for(String[] added : takeSubjectData){
-                //  System.out.println("Subject data: " + Arrays.toString(added));  
-                   if(added != null && added.length > 5 && added != null && added[5].equals(studentIdentity)){
-                        System.out.printf(" %-12s | %-12s | %-12s|\n", Arrays.toString(added));
+                for (String[] added : takeSubjectData) {
+                    if (added != null && added.length > 5 && added[5].equals(studentIdentity)) {
+                        String subjectCode = added[2];
+                        String subjectName = added[0];
+                        String subjectCredits = added[1];
+                        
+                        System.out.printf(" %-12s | %-12s | %-12s|\n", subjectCode, subjectName, subjectCredits);
                         System.out.println("===================================================================================================================="); 
                     }
                 }
+                
             }
         }
     }
@@ -1443,7 +1444,7 @@ public class UniversityManagementSystem {
     static boolean matchingStudent(String id) {
         for(String [] st : forStudents){
             for (int j = 5; j < st.length; j++) {
-                if (st[j].equals(id)) {
+                if (st[j].contains(id)) {
                     return true;
                 }
             }
@@ -1472,29 +1473,26 @@ class ThisIsForStudent extends UniversityManagementSystem{
         return stFormat;
     }
 
-    private void dataBaseForID(String stIdentity){
-        forStudents.add(new String[]{stIdentity});
-    }
+    // private void dataBaseForID(String stIdentity){
+    //     forStudents.add(new String[]{stIdentity});
+    // }
 
     public String getTheStudentId(){
         return idOFstudent;
     }
 
-    public void sujectToAdd(String StId, String subjCode){
+    public void subjectToAdd(String StId, String subjCode){
         for(String student[] : forStudents){
-            if(student[0].equals(StId)){
+            if(student[5].equals(idOFstudent) && student.length >= 6){
                 if(!Arrays.asList(student).contains(subjCode)){
                     List<String> updateDataOfStudent = new ArrayList<>(Arrays.asList(student));
                     updateDataOfStudent.add(subjCode);
                     forStudents.set(forStudents.indexOf(student), updateDataOfStudent.toArray(new String[0]));
                     System.out.println("This subject " + subjCode + " added to student " + StId);
-                }else{
-                System.out.print("This student" +  StId + "already have this subject code" + subjCode);
+                    return;
                 }
-            return;
             }
         }
-        System.out.println("This student" + StId + "was not existing in database");
     }
 
     
@@ -1519,23 +1517,28 @@ class ThisIsForInstructor extends UniversityManagementSystem{
         return insFormat;
     }
 
-    private void dataBaseForID(String insIdentity){
-        forInstructors.add(new String[]{insIdentity});
-    }
+    // private void dataBaseForID(String insIdentity){
+    //     forInstructors.add(new String[]{insIdentity});
+    // }
 
     public String getTheInstructorId(){
         return idOFInstructor;
     }
 
-    public void subjectToAssign(String insId, String subjCode ){
+    public void subjectToAssign(String insId, String subjCode){
+        boolean insFound = false;
         for(String [] insPassSub : forInstructors){
-            if(insPassSub.length >= 6 && insPassSub[5].contains(idOFInstructor)){
-                insPassSub[2] = subjCode;
+            if(insPassSub.length > 0 && insPassSub[0].equals(idOFInstructor)){
+                insPassSub[0] = subjCode;
                 System.out.print("This subject was assigning to "+ insId);
-                return;
+                insFound = true;
+                break;
             }
         } 
+
+        if(!insFound){
         System.out.print("Instructor not found "+ insId); 
+        }
     }
 
 }
