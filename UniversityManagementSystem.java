@@ -502,8 +502,6 @@ public class UniversityManagementSystem {
             String sTitles = s.nextLine();
             if(sTitles.isBlank()){
                 System.out.println("Subject title is empty, Fill it");
-            } else if(sTitles.matches(".*\\d.*")){
-                System.out.println("Subject title can't contain any number");
             } else{
                 subjectForAll[0] = sTitles;
                 break;
@@ -515,8 +513,6 @@ public class UniversityManagementSystem {
             String sDes = s.nextLine();
             if(sDes.isBlank()){
                 System.out.println("Subject description is empty, Fill it");
-            } else if(sDes.matches(".*\\d.*")){
-                System.out.println("Subject description can't contain any number");
             } else{
                 subjectForAll[1] = sDes;
                 break;
@@ -543,14 +539,15 @@ public class UniversityManagementSystem {
     //SETTER DATA FOR SUBJECTS
     static void getDataForSubjects(List<String[]> takeDataForSubjects){
         List<String[]> getDataOfSubs= new ArrayList<>(takeDataForSubjects);
-        String [] textTitle = {"SUBJECT CODE", "SUBJECT TITLE", "SUBJECT DESCRIPTION"};
-        System.out.println("\t\t\t\t\t\t DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
-        System.out.println("=============================================================================================================================================================");
+        String [] textTitle = {"|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|"};
+        System.out.println(" DISPLAYING ALL SUBJECTS THAT EXISTING IN DATABASE");
+        System.out.println("=======================================================");
         for(String textSub : textTitle){
-            System.out.printf("%-14s", textSub);
+            System.out.printf("%-17s", textSub);
         }
+        System.out.println("\n=======================================================");
         for(String[] getData: getDataOfSubs){
-            if(getData.length >= 3){
+            if(getData.length > 2){
 
                 String sTitle = getData[0];
                 String sDescription = getData[1];
@@ -560,8 +557,8 @@ public class UniversityManagementSystem {
                 String newSDescription = textBehaviour(sDescription, 12);
                 String newSIdentity = textBehaviour(sIdentity, 12);
 
-                System.out.print("|\t "+newSIdentity+" \t| \t"+newStitle+" \t| \t"+newSDescription+" \t|");
-                System.out.println("=============================================================================================================================================================");
+                System.out.printf("\r|%-16s|%-16s|%-16s   |",newSIdentity,newStitle,newSDescription);
+                System.out.println("\n=======================================================");
             }
         }
 
@@ -966,13 +963,13 @@ public class UniversityManagementSystem {
     //GETTER DATA FOR INSTRUCTOR
     private static void getDataForInstructors(List<String[]> takeDataForInstructor, List<String[]> assigningSubject){
         List<String[]> getDataOfIns= new ArrayList<>(takeDataForInstructor);
-        String [] textTitle = {"INSTRUCTOR ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE", "SUBJECT CODE", "SUBJECT TITLE", "SUBJECT DESCRIPTION"};
+        String [] textTitle = {"|INSTRUCTOR ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE", "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|"};
         System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
         System.out.println("=============================================================================================================================================================");
         for(String text : textTitle){
-            System.out.printf("%-14s", text);
+            System.out.printf("%-17s", text);
         }
-        System.out.println("=============================================================================================================================================================");
+        System.out.println("\n=============================================================================================================================================================");
         for(String[] getData: getDataOfIns){
             if(getData.length >= 5){
 
@@ -984,8 +981,7 @@ public class UniversityManagementSystem {
                 String instructorIdentity = getData[5];
 
                 String newInsAddress = textBehaviour(insAddress, 7);
-                System.out.printf("| %-14s | %-14s | %-14s | %-14s | %-14s | %-14s |", instructorIdentity, insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(), newInsAddress.toUpperCase(), insAge);
-                System.out.println("============================================================================================================================================================");
+                System.out.printf("\r| %-14s | %-14s | %-14s | %-14s | %-14s | %-14s", instructorIdentity, insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(), newInsAddress.toUpperCase(), insAge);
             
 
             List<String[]> instructorHolder = new ArrayList<>();
@@ -1000,10 +996,14 @@ public class UniversityManagementSystem {
                     String subjectCode =  insSub[0];
                     String subjectTitle =  insSub[1];
                     String subjectDescription =  insSub[2];
-                    System.out.printf("| %-14s | %-14s | %-14s |\n", subjectCode, subjectTitle, subjectDescription);
+                    System.out.printf(" | %-14s | %-14s | %-14s    |", subjectCode, subjectTitle, subjectDescription);
+                    System.out.println("\n=========================================================================================================================================================");
+            
                 }
             } else {
-                System.out.printf("| %-14s | %-14s | %-14s |\n", " ", " " ," ");
+                System.out.printf(" | %-14s | %-14s | %-14s    |", " ", " " ," ");
+                System.out.println("\n=============================================================================================================================================================");
+            
             }
 
             }
@@ -1329,21 +1329,22 @@ public class UniversityManagementSystem {
             return;
         }
 
-        getDataForStudents(forStudents , forSubjects);
+        getDataForStudents(forStudents); //forSubjects;
 
     }
 
 
     //SETTER DATA FOR STUDENTS
-    private static void getDataForStudents(List<String[]> takeDataForStudent , List<String[]> takeSubjectData) {
+    private static void getDataForStudents(List<String[]> takeDataForStudent) { //List<String[]> takeSubjectData
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
-        String[] textTitle = {"STUDENT ID", "FIRST NAME", "LAST NAME", "MIDDLE NAME", "ADDRESS", "AGE" , "SUBJECT CODE", "SUBJECT TITLE", "SUBJECT DESCRIPTION"};
+        String[] textTitle = {"|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE" , "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|\n"};
         System.out.println("\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
-        System.out.println("====================================================================================================================");
+        System.out.println("==============================================================================================================================================");
+
         for(String together: textTitle){
-            System.out.printf("%-14s", together);
+            System.out.printf("%-17s", together);   
         }
-        System.out.println("====================================================================================================================");
+        System.out.println("==============================================================================================================================================");
         for (String[] getDatas : getDataOfStudent) {
             if (getDatas.length >= 5) {
                 String studentIdentity = getDatas[5];
@@ -1353,24 +1354,26 @@ public class UniversityManagementSystem {
                 String stAddress = getDatas[3];
                 String stAge = getDatas[4];
 
-                List<String> addedEnrolledSubject = new ArrayList<>();
-                List<String> addedSubjectCode = new ArrayList<>();
-                List<String> addedSubjectTitle = new ArrayList<>();
-                List<String> addedSubjectDescription = new ArrayList<>();
-                for(String[] added : takeSubjectData){
-                    if(added.length >= 3 && added[0].contains(studentIdentity)){
-                        addedSubjectCode.add(added[1]);
-                        addedSubjectTitle.add(added[2]);
-                        addedSubjectDescription.add(added[3]);
-                    }
-                }
-
                 String newAddress = textBehaviour(stAddress, 20);
 
-                for(int i = 0; i < addedEnrolledSubject.size(); i++){
-                System.out.printf("| %-12s | %-12s | %-14s | %-14s | %-14s | %-8s | %-12s | %-12s | %-12s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge, addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
-                }
-                System.out.println("====================================================================================================================");
+                System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge);
+                System.out.println("==================================================================================================================================================");
+                // List<String> addedEnrolledSubject = new ArrayList<>();
+                // List<String> addedSubjectCode = new ArrayList<>();
+                // List<String> addedSubjectTitle = new ArrayList<>();
+                // List<String> addedSubjectDescription = new ArrayList<>();
+                // for(String[] added : takeSubjectData){
+                //     if(added.length >= 3 && added[0].contains(studentIdentity)){
+                //         addedSubjectCode.add(added[1]);
+                //         addedSubjectTitle.add(added[2]);
+                //         addedSubjectDescription.add(added[3]);
+                //     }
+                // }
+
+                // for(int i = 0; i < addedEnrolledSubject.size(); i++){
+                // System.out.printf("| %-12s | %-12s | %-14s | %-14s | %-14s | %-8s | %-12s | %-12s | %-12s|\n", studentIdentity, stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(), stAge, addedSubjectCode.get(i), addedSubjectTitle.get(i), addedSubjectDescription.get(i));
+                // }
+                // System.out.println("====================================================================================================================");
             }
         }
     }
