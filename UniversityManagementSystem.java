@@ -1529,8 +1529,8 @@ class ThisIsForInstructor extends UniversityManagementSystem{
 
     public void subjectToAssign(String insId, String subjCode ){
         for(String [] insPassSub : forInstructors){
-            if(insPassSub.length >= 6 && insPassSub[5].equals(insId)){
-                insPassSub[6] = subjCode;
+            if(insPassSub.length >= 6 && insPassSub[5].contains(idOFInstructor)){
+                insPassSub[2] = subjCode;
                 System.out.print("This subject was assigning to "+ insId);
                 return;
             }
@@ -1538,14 +1538,6 @@ class ThisIsForInstructor extends UniversityManagementSystem{
         System.out.print("Instructor not found "+ insId); 
     }
 
-    public boolean checkerOfSubject (String subjCode){
-        for(String ins[] : forInstructors){
-            if(ins[5].equals(idOFInstructor) && ins.length > 1 && ins[0].equals(subjCode)){
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 //CLASS FOR SUBJECTS
