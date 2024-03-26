@@ -52,43 +52,43 @@ public class StudentManagement extends UMPS implements forMethodInStudent {
         do {
             System.out.print("\nEnter the Student ID \"ST" + year + "-1234\" : ");
             String deleteStID = s.nextLine().trim();
-            if(deleteStID.isBlank()){
+            if (deleteStID.isBlank()) {
                 System.out.println("The student id can't be blank.");
-            } else{
-            boolean isFound = false;
+            } else {
+                boolean isFound = false;
 
-            for (int i = forStudents.size() - 1; i >= 0; i--) {
-                String[] student = forStudents.get(i);
+                for (int i = forStudents.size() - 1; i >= 0; i--) {
+                    String[] student = forStudents.get(i);
 
-                if (student.length > 5) {
-                    String deletionOfStudent = student[5];
+                    if (student.length > 5) {
+                        String deletionOfStudent = student[5];
 
-                    if (deletionOfStudent.endsWith(deleteStID)) {
-                        isFound = true;
-                        System.out.println(deleteStID + " Code is processing... for deleting .");
-                        System.out.println();
-                        String adminConfirmation;
-                        System.out.printf(
-                                "Admin: Are you sure you want to delete this student profile we need as confirmation.\nChoice [Y/N]: ");
-                        adminConfirmation = s.nextLine().trim();
+                        if (deletionOfStudent.endsWith(deleteStID)) {
+                            isFound = true;
+                            System.out.println(deleteStID + " Code is processing... for deleting .");
+                            System.out.println();
+                            String adminConfirmation;
+                            System.out.printf(
+                                    "Admin: Are you sure you want to delete this student profile we need as confirmation.\nChoice [Y/N]: ");
+                            adminConfirmation = s.nextLine().trim();
 
-                        if (adminConfirmation.equalsIgnoreCase("Y")) {
-                            forStudents.remove(i);
-                            System.out.println("This student profile is now confirm deleted.");
+                            if (adminConfirmation.equalsIgnoreCase("Y")) {
+                                forStudents.remove(i);
+                                System.out.println("This student profile is now confirm deleted.");
+                                break;
+                            } else {
+                                System.out.println("This student is not confirm deleted in database");
+
+                            }
                             break;
-                        } else {
-                            System.out.println("This student is not confirm deleted in database");
-
                         }
-                        break;
                     }
-                }
 
+                }
+                if (!isFound) {
+                    System.out.println("This student with this id \"" + deleteStID + "\" is not existing.");
+                }
             }
-            if (!isFound) {
-                System.out.println("This student with this id \"" + deleteStID + "\" is not existing.");
-            }
-        }
         } while (deleteAgain());
     }
 
@@ -226,49 +226,56 @@ public class StudentManagement extends UMPS implements forMethodInStudent {
             // Scanner searchStudent = new Scanner(System.in);
             System.out.println("Search Student: ");
             String studentSearched = s.nextLine();
-            if(studentSearched.isBlank()){
+            if (studentSearched.isBlank()) {
                 System.out.println("The student id can't be blank.");
-            } else{
-            boolean found = false;
-            for (String[] student : forStudents) {
-                if (student.length > 5 &&
-                        (student[0].toUpperCase().contains(studentSearched.toUpperCase()) ||
-                                student[1].toUpperCase().contains(studentSearched.toUpperCase()) ||
-                                (student[2] != null && student[2].toUpperCase().contains(studentSearched.toUpperCase()))
-                                ||
-                                student[3].toLowerCase().contains(studentSearched.toUpperCase()) ||
-                                (student[4] != null && student[4].equals(studentSearched)) ||
-                                (student[5] != null && student[5].toUpperCase().contains(studentSearched)))) {
-                    System.out.println("Student Found:");
-                    System.out.println("First Name: " + student[0]);
-                    System.out.println("Last Name: " + student[1]);
-                    System.out.println("Middle Name: " + (student[2] != null ? student[2] : ""));
-                    System.out.println("Address: " + student[3]);
-                    System.out.println("Age: " + (student[4] != null ? student[4] : ""));
-                    System.out.println("ID: " + (student[5] != null ? student[5] : ""));
-                    found = true;
-                    for(String sub[] : forSubjects){
-                        if(sub.length > 2 && sub[0] != null && sub[0].toUpperCase().contains(studentSearched.toUpperCase()) || sub[1] != null &&
-                        sub[1].toUpperCase().contains(studentSearched.toUpperCase()) || sub[2] != null || sub[2].toUpperCase().contains(studentSearched)){
-                            System.out.println("Subject  Title:      " + (sub[0] != null ? sub[0] : ""));
-                            System.out.println("Subject Description:      " + (sub[1] != null ? sub[1] : ""));
-                    System.out.println("SUBJECT  CODE:      " + (sub[2] != null ? sub[2] : ""));
+            } else {
+                boolean found = false;
+                for (String[] student : forStudents) {
+                    if (student.length > 5 &&
+                            (student[0].toUpperCase().contains(studentSearched.toUpperCase()) ||
+                                    student[1].toUpperCase().contains(studentSearched.toUpperCase()) ||
+                                    (student[2] != null
+                                            && student[2].toUpperCase().contains(studentSearched.toUpperCase()))
+                                    ||
+                                    student[3].toLowerCase().contains(studentSearched.toUpperCase()) ||
+                                    (student[4] != null && student[4].equals(studentSearched)) ||
+                                    (student[5] != null && student[5].toUpperCase().contains(studentSearched)))) {
+                        System.out.println("\nStudent Found");
+                        System.out.println("First Name:     " + student[0].toUpperCase());
+                        System.out.println("Last Name:      " + student[1].toUpperCase());
+                        System.out.println("Middle Name:    "
+                                + (student[2].toUpperCase() != null ? student[2].toUpperCase() : ""));
+                        System.out.println("Address:        " + student[3].toUpperCase());
+                        System.out.println("Age:            " + (student[4] != null ? student[4] : ""));
+                        System.out.println("ID:             " + (student[5] != null ? student[5] : ""));
+                        found = true;
+                        for (String sub[] : forSubjects) {
+                            if (sub.length > 2 && sub[0] != null
+                                    && sub[0].toUpperCase().contains(studentSearched.toUpperCase())
+                                    || sub[1] != null &&
+                                            sub[1].toUpperCase().contains(studentSearched.toUpperCase())
+                                    || sub[2] != null || sub[2].toUpperCase().contains(studentSearched)) {
+                                System.out.println("Subject  Title:         "
+                                        + (sub[0].toUpperCase() != null ? sub[0].toUpperCase() : ""));
+                                System.out.println("Subject Description:    "
+                                        + (sub[1].toUpperCase() != null ? sub[1].toUpperCase() : ""));
+                                System.out.println("SUBJECT  CODE:          " + (sub[2] != null ? sub[2] : ""));
+                            }
                         }
                     }
                 }
-            }
 
-            if (!found) {
-                System.out.println("No student found.");
+                if (!found) {
+                    System.out.println("No student found.");
+                }
             }
-        }
         } while (searchAgain());
     }
 
     // STUDENTS DATA GETTER
     public static String[] stInformation(String dataInformation) {
         String informationForAll[] = new String[6];
-        System.out.println("CREATE STUDENT/S FORM\n");
+        System.out.println("\nCREATE STUDENT/S FORM\n");
 
         while (!isTrue) {
             System.out.print("Enter your First Name: ");
@@ -378,17 +385,17 @@ public class StudentManagement extends UMPS implements forMethodInStudent {
         List<String[]> getDataOfStudent = new ArrayList<>(takeDataForStudent);
         // List<String[]> addSubjectFromStudent = new ArrayList<>(takeSubjectData);
         String[] updateSubject = new String[forSubjects.size()];
-        String[] textTitle = { "|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE " };
+        String[] textTitle = { "|STUDENT ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE      |" };
         String[] textSub = { "|SUBJECT CODE", "|SUBJECT TITLE", "|SUBJECT DESCRIPTION|\n" };
-        System.out.println("\n\t\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
+        System.out.println("\n\t\t\t DISPLAYING ALL STUDENTS THAT EXIST IN DATABASE");
         System.out.println(
-                "==============================================================================================================================================");
+                "================================================================================================");
 
         for (String together : textTitle) {
             System.out.printf("%-17s", together);
         }
         System.out.println(
-                "\n==============================================================================================================================================");
+                "\n================================================================================================");
         for (String[] getDatas : getDataOfStudent) {
 
             if (getDatas.length > 5) {
@@ -399,13 +406,13 @@ public class StudentManagement extends UMPS implements forMethodInStudent {
                 String stAddress = getDatas[3];
                 String stAge = getDatas[4];
 
-                String newAddress = textBehaviour(stAddress, 20);
+                String newAddress = textBehaviour(stAddress, 7);
 
-                System.out.printf("\r|%-16s| %-16s| %-16s| %-16s| %-16s| %-16s|", studentIdentity,
-                stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(),
-                stAge);
+                System.out.printf("\r|%-16s|%-16s|%-16s|%-16s|%-16s|%-9s|", studentIdentity,
+                        stFname.toUpperCase(), stLname.toUpperCase(), stMname.toUpperCase(), newAddress.toUpperCase(),
+                        stAge);
                 System.out.println(
-                "\n==================================================================================================================================================");
+                        "\n================================================================================================");
 
                 boolean subjectAppear = false;
                 int count = 0;
@@ -418,35 +425,34 @@ public class StudentManagement extends UMPS implements forMethodInStudent {
                             String thisThreeInSubject = subjectCode + subjectName + subjectCredits;
                             boolean displayAtTheSame = false;
 
-                            for(int i = 0; i < count; i++){
+                            for (int i = 0; i < count; i++) {
                                 if (updateSubject[i] != null && updateSubject[i].equals(thisThreeInSubject)) {
                                     displayAtTheSame = true;
                                     break;
                                 }
                             }
 
-                            if(!displayAtTheSame){
+                            if (!displayAtTheSame) {
                                 for (String textS : textSub) {
-                                    System.out.printf("%-17s", textS); 
+                                    System.out.printf("%-15s", textS);
                                 }
-                                System.out.printf("%-17s | %-17s | %-17s|\n", subjectCode, subjectName, subjectCredits);
-                                System.out.println("============================================================");
+                                System.out.printf("|%-16s |%-15s |%-15s|\n", subjectCode, subjectName, subjectCredits);
+                                System.out.println("====================================================");
 
                                 updateSubject[count++] = thisThreeInSubject;
 
                                 subjectAppear = true;
                             }
-                            
+
                         }
                     }
                 }
 
                 if (!subjectAppear) {
-                    
-                   
-                    System.out.println("============================================================");
-                    System.out.printf("%-12s| %-12s | %-12s |", "N/A", "N/A", "N/A");
-                    System.out.println("\n==========================================================");
+
+                    System.out.println("====================================================");
+                    System.out.printf("|%-16s|%-15s |%-15s |", "N/A", "N/A", "N/A");
+                    System.out.println("\n====================================================");
                 }
 
             }

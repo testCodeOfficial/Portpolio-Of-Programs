@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
@@ -19,13 +18,12 @@ public class UMPS {
     static List<String[]> forInstructors = new ArrayList<>();
     static List<String[]> forStudents = new ArrayList<>();
     static List<String[]> forSubjects = new ArrayList<>();
-    // static List<String[]> assigningSubject = new ArrayList<>();
-    // static List<String[]> addingSubject = new ArrayList<>();
     static final int year = yearAtFure();
+    static String[] op = { "Add", "display", "edit", "delete", "search", "return to lobby" };
 
     public static void main(String[] backToMain) {
         UMPS umps = new UMPS();
-        SubjectManagement smanagement = new SubjectManagement(); 
+        SubjectManagement smanagement = new SubjectManagement();
         umps.umpsReturn();
     }
 
@@ -63,6 +61,7 @@ public class UMPS {
         do {
             String[] op = { "Subject Management", "Instructor Management", "Student Management", "UMPS Terminate" };
             for (int i = 0; i < op.length; i++) {
+                System.out.println();
                 System.out.println((i + 1) + ". " + op[i]);
             }
             System.out.print("\nSelect from the option: ");
@@ -70,7 +69,7 @@ public class UMPS {
             try {
                 clearScreen();
                 int choice = Integer.parseInt(yourChoice);
-                
+
                 switch (choice) {
                     case 1:
                         SubjectManagement();
@@ -82,27 +81,29 @@ public class UMPS {
                         StudentManagement();
                         break;
                     case 4:
-                           System.out.print("\nuniversity management profiling system termination\n".toUpperCase());
+                    while(!isTrue){
+                        System.out.print("\nuniversity management profiling system termination\n".toUpperCase());
                         System.err.print(
-                                "Are you sure you wanna end this program?\n[Y] Yes \n[N] No");
-                    
+                                "Are you sure you wanna end this program?\n[Y] Yes, I want to end \n[N] No, I want to return");
+
                         System.out.println("Choose From Y/N: ");
                         String yesOrNo = s.nextLine().trim().toUpperCase();
-                        
+
                         if (yesOrNo.equalsIgnoreCase("Y") || yesOrNo.equalsIgnoreCase("YES")) {
                             System.out.println("You now exiting in program. Thank You");
                             isTrue = true;
                             break;
                         } else if (yesOrNo.equalsIgnoreCase("N") || yesOrNo.equalsIgnoreCase("NO")) {
-                            System.out.println("\n--------------------------------------------------");
+                            System.out
+                                    .println("\n--------------------------------------------------------------------");
                             return;
-                        } else if(yesOrNo.isEmpty()){
+                        } else if (yesOrNo.isEmpty()) {
                             System.out.println("Output can't be empty, and choose only from \"Y or N\"");
-                        }else {
+                        } else {
                             System.out.println("print: Error Output");
                         }
-                            break;
-                    
+                    }
+                    break;
                     default:
                         System.out.println("\n--------------------------------------------------------------------");
                         System.out.printf("This %s input is invalid, The valid is from 1 - 6 only\n", choice);
@@ -120,8 +121,7 @@ public class UMPS {
 
         SubjectManagement subjectManagement = new SubjectManagement();
         while (!isTrue) {
-            System.out.println("\n----------------------------------------------------------------\n");
-            String[] op = { "Add", "display", "edit", "delete", "search", "return to lobby" };
+            System.out.println("\n--------------------------------------------------------------------\n");
             for (int i = 0; i < op.length; i++) {
                 String[] word = op[i].split(" ");
                 StringBuilder capatilizeTheWord = new StringBuilder();
@@ -189,8 +189,7 @@ public class UMPS {
     private void InstructorManagement() {
         InstructorManagement instructorManagement = new InstructorManagement();
         while (!isTrue) {
-            System.out.println("\n----------------------------------------------------------------\n");
-            String[] op = { "Add", "display", "edit", "delete", "search", "return to lobby" };
+            System.out.println("\n--------------------------------------------------------------------\n");
             for (int i = 0; i < op.length; i++) {
                 String[] word = op[i].split(" ");
                 StringBuilder capatilizeTheWord = new StringBuilder();
@@ -256,7 +255,6 @@ public class UMPS {
         StudentManagement studentManagement = new StudentManagement();
         while (!isTrue) {
             System.out.println("\n--------------------------------------------------------------------\n");
-            String[] op = { "add", "display", "edit", "delete", "search", "return to lobby" };
             for (int i = 0; i < op.length; i++) {
                 String[] word = op[i].split(" ");
                 StringBuilder capatilizeTheWord = new StringBuilder();
@@ -376,7 +374,7 @@ public class UMPS {
         }
         return false;
     }
-    
+
     static boolean matchingStudent(String id, List<String[]> studentData) {
         for (String[] st : studentData) {
             if (st.length > 5 && st[5].equals(id)) {
@@ -390,10 +388,13 @@ public class UMPS {
     public static Boolean addAgain() {
         String addAgainC;
         do {
-            System.out.println("\n\nDo you want to add again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n--------------------------------------------------------------------\n");
+            System.out.print("Do you want to add again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC = s.nextLine().toUpperCase();
             if (addAgainC.equalsIgnoreCase("Y")) {
+                System.out.println("\n--------------------------------------------------------------------");
                 return true;
+
             } else if (addAgainC.equalsIgnoreCase("N")) {
                 return false;
             }
@@ -404,9 +405,11 @@ public class UMPS {
     public static Boolean editAgain() {
         String addAgainC;
         do {
-            System.out.println("\n\nDo you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n--------------------------------------------------------------------\n");
+            System.out.print("Do you want to edit again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC = s.nextLine().toUpperCase();
             if (addAgainC.equalsIgnoreCase("Y")) {
+                System.out.println("\n--------------------------------------------------------------------");
                 return true;
             } else if (addAgainC.equalsIgnoreCase("N")) {
                 return false;
@@ -418,9 +421,11 @@ public class UMPS {
     public static Boolean deleteAgain() {
         String addAgainC;
         do {
-            System.out.println("\n\nDo you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n--------------------------------------------------------------------\n");
+            System.out.print("Do you want to delete again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC = s.nextLine().toUpperCase();
             if (addAgainC.equalsIgnoreCase("Y")) {
+                System.out.println("\n--------------------------------------------------------------------");
                 return true;
             } else if (addAgainC.equalsIgnoreCase("N")) {
                 return false;
@@ -432,9 +437,11 @@ public class UMPS {
     public static Boolean searchAgain() {
         String addAgainC;
         do {
-            System.out.println("\n\nDo you want to search again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
+            System.out.println("\n--------------------------------------------------------------------\n");
+            System.out.print("Do you want to search again?\n[Y] yes\n[N] no \nChoice[Y/N]: ");
             addAgainC = s.nextLine().toUpperCase();
             if (addAgainC.equalsIgnoreCase("Y")) {
+                System.out.println("\n--------------------------------------------------------------------");
                 return true;
             } else if (addAgainC.equalsIgnoreCase("N")) {
                 return false;
@@ -492,7 +499,7 @@ public class UMPS {
             return idOFInstructor;
         }
 
-        public void confirmationOfAssigning(String insId, String subjCode){
+        public void confirmationOfAssigning(String insId, String subjCode) {
             subjectToAssign(insId, subjCode);
         }
 
@@ -502,31 +509,31 @@ public class UMPS {
 
     }
 
-//     boolean insFound = false;
-//     for (String[] insPassSub : forInstructors) {
-//         if (insPassSub.length > 5 && insPassSub[5].equals(idOFInstructor)) {
-//             for (int i = 6; i < insPassSub.length; i++) {
-//                 if (insPassSub != null && insPassSub[i].contains(subjCode)) {
-//                     System.out.println("This subject is already assigned to " + insId);
-//                     return;
-//                 }
-//             }
-//             for (int i = 6; i < insPassSub.length; i++) {
-//                 if (insPassSub[i] != null && insPassSub[i].isEmpty()) {
-//                     insPassSub[i] = subjCode;
-//                     System.out.println("This subject was assigned to " + insId);
-//                     insFound = true;
-//                     forInstructors.add(insPassSub);
-//                     return;
-//                 }
-//             }
-//         }
-//     }
+    // boolean insFound = false;
+    // for (String[] insPassSub : forInstructors) {
+    // if (insPassSub.length > 5 && insPassSub[5].equals(idOFInstructor)) {
+    // for (int i = 6; i < insPassSub.length; i++) {
+    // if (insPassSub != null && insPassSub[i].contains(subjCode)) {
+    // System.out.println("This subject is already assigned to " + insId);
+    // return;
+    // }
+    // }
+    // for (int i = 6; i < insPassSub.length; i++) {
+    // if (insPassSub[i] != null && insPassSub[i].isEmpty()) {
+    // insPassSub[i] = subjCode;
+    // System.out.println("This subject was assigned to " + insId);
+    // insFound = true;
+    // forInstructors.add(insPassSub);
+    // return;
+    // }
+    // }
+    // }
+    // }
 
-//     if (insFound) {
-//         System.out.println("Instructor not found: " + insId);
-//     }
-// }
+    // if (insFound) {
+    // System.out.println("Instructor not found: " + insId);
+    // }
+    // }
     // CLASS FOR STUDENTS
     public static class ThisIsForStudent extends UMPS {
 
@@ -550,29 +557,31 @@ public class UMPS {
         }
 
         public void subjectToAdd(String StId, String subjsCode, String subjsTitle, String subjsDescription) {
-                boolean subjectExists = false;
-                for (String[] subject : forSubjects) {
-                    if (subject[5].equals(StId) && subject[2].equals(subjsCode)) {
-                      
-                        subject[0] = subjsTitle;
-                        subject[1] = subjsDescription;
-                        subjectExists = true;
-                        System.out.println("Subject " + subjsCode + " is already assigned to student " + StId);
-                        break;
-                    }
+            boolean subjectExists = false;
+            for (String[] subject : forSubjects) {
+                if(subject.length > 5){
+                if (subject[5].equals(StId) && subject[2].equals(subjsCode)) {
+
+                    subject[0] = subjsTitle;
+                    subject[1] = subjsDescription;
+                    subjectExists = true;
+                    System.out.println("Subject " + subjsCode + " is already assigned to student " + StId);
+                    break;
                 }
-            
-                if (!subjectExists) {
-                    String[] subjectDetails = new String[6];
-                    subjectDetails[5] = StId;
-                    subjectDetails[2] = subjsCode;
-                    subjectDetails[0] = subjsTitle;
-                    subjectDetails[1] = subjsDescription;
-            
-                    forSubjects.add(subjectDetails);
-                    System.out.println("Adding subject " + subjsCode + " to student " + StId);
                 }
             }
+
+            if (!subjectExists) {
+                String[] subjectDetails = new String[6];
+                subjectDetails[5] = StId;
+                subjectDetails[2] = subjsCode;
+                subjectDetails[0] = subjsTitle;
+                subjectDetails[1] = subjsDescription;
+
+                forSubjects.add(subjectDetails);
+                System.out.println("Adding subject " + subjsCode + " to student " + StId);
+            }
+        }
     }
 
 }

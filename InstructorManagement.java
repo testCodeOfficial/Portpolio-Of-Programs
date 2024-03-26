@@ -41,7 +41,7 @@ public class InstructorManagement extends UMPS implements forMethodInInstructor 
                     System.out.println(Arrays.toString(instructor));
                 }
                 forInstructors.add(iDetails);
-                for(int i = 0; i < forInstructors.size(); i++){
+                for (int i = 0; i < forInstructors.size(); i++) {
 
                     System.out.println(forInstructors.get(i));
 
@@ -57,43 +57,43 @@ public class InstructorManagement extends UMPS implements forMethodInInstructor 
         do {
             System.out.print("\nEnter the Instructor ID \"INS" + year + "-1234\": ");
             String deleteInsID = s.nextLine().trim();
-            if(deleteInsID.isBlank()){
+            if (deleteInsID.isBlank()) {
                 System.out.println("The instructor id can't be blank.");
-            } else{
-            boolean isFound = false;
+            } else {
+                boolean isFound = false;
 
-            for (int i = forInstructors.size() - 1; i >= 0; i--) {
-                String[] instructor = forInstructors.get(i);
+                for (int i = forInstructors.size() - 1; i >= 0; i--) {
+                    String[] instructor = forInstructors.get(i);
 
-                if (instructor.length > 5) {
-                    String deletionOfInstructor = instructor[5];
+                    if (instructor.length > 5) {
+                        String deletionOfInstructor = instructor[5];
 
-                    if (deletionOfInstructor.endsWith(deleteInsID)) {
-                        isFound = true;
-                        System.out.println(deleteInsID + " Code is processing... for deleting .");
-                        System.out.println();
-                        String adminConfirmation;
-                        System.out.printf(
-                                "Admin: Are you sure you want to delete this instructor data we need as confirmation.\nChoice [Y/N]: ");
-                        adminConfirmation = s.nextLine().trim();
+                        if (deletionOfInstructor.endsWith(deleteInsID)) {
+                            isFound = true;
+                            System.out.println(deleteInsID + " Code is processing... for deleting .");
+                            System.out.println();
+                            String adminConfirmation;
+                            System.out.printf(
+                                    "Admin: Are you sure you want to delete this instructor data we need as confirmation.\nChoice [Y/N]: ");
+                            adminConfirmation = s.nextLine().trim();
 
-                        if (adminConfirmation.equalsIgnoreCase("Y")) {
-                            forInstructors.remove(i);
-                            System.out.println("This instructor profile is now confirm deleted.");
+                            if (adminConfirmation.equalsIgnoreCase("Y")) {
+                                forInstructors.remove(i);
+                                System.out.println("This instructor profile is now confirm deleted.");
+                                break;
+                            } else {
+                                System.out.println("This instructor is not confirm deleted in database");
+
+                            }
                             break;
-                        } else {
-                            System.out.println("This instructor is not confirm deleted in database");
-
                         }
-                        break;
                     }
-                }
 
+                }
+                if (!isFound) {
+                    System.out.println("This instructor with this id \"" + deleteInsID + "\" is not existing.");
+                }
             }
-            if (!isFound) {
-                System.out.println("This instructor with this id \"" + deleteInsID + "\" is not existing.");
-            }
-        }
         } while (deleteAgain());
     }
 
@@ -234,50 +234,51 @@ public class InstructorManagement extends UMPS implements forMethodInInstructor 
             // Scanner insSearch = new Scanner(System.in);
             System.out.println("Search Instructors: ");
             String instructorSearched = s.nextLine();
-            if(instructorSearched.isBlank()){
+            if (instructorSearched.isBlank()) {
                 System.out.println("The instructor id can't be blank.");
             } else {
-            boolean found = false;
-            for (String[] instructor : forInstructors) {
-                if (instructor.length > 5 && 
-                        (instructor[0].toUpperCase().contains(instructorSearched.toUpperCase()) ||
-                                instructor[1].toUpperCase().contains(instructorSearched.toUpperCase()) ||
-                                (instructor[2] != null
-                                        && instructor[2].toUpperCase().contains(instructorSearched.toUpperCase()))
-                                ||
-                                instructor[3].toUpperCase().contains(instructorSearched.toUpperCase()) ||
-                                (instructor[4] != null && instructor[4].contains(instructorSearched)) ||
-                                (instructor[5] != null && instructor[5].toUpperCase().contains(instructorSearched)))) {
-                    System.out.println("\nInstructor Found:");
-                    System.out.println("First Name:    " + instructor[0]);
-                    System.out.println("Last Name:     " + instructor[1]);
-                    System.out.println("Middle Name:   " + (instructor[2] != null ? instructor[2] : ""));
-                    System.out.println("Address:       " + instructor[3]);
-                    System.out.println("Age:           " + (instructor[4] != null ? instructor[4] : ""));
-                    System.out.println("ID:            " + (instructor[5] != null ? instructor[5] : ""));
-                    for(String sub[] : forSubjects){
-                        if(sub.length > 2 && sub[2] != null || sub[2].toUpperCase().contains(instructorSearched)){
-                    System.out.println("SUBJECT  CODE:      " + sub[2] != null ? sub[2] : "");
+                boolean found = false;
+                for (String[] instructor : forInstructors) {
+                    if (instructor.length > 5 &&
+                            (instructor[0].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                                    instructor[1].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                                    (instructor[2] != null
+                                            && instructor[2].toUpperCase().contains(instructorSearched.toUpperCase()))
+                                    ||
+                                    instructor[3].toUpperCase().contains(instructorSearched.toUpperCase()) ||
+                                    (instructor[4] != null && instructor[4].contains(instructorSearched)) ||
+                                    (instructor[5] != null
+                                            && instructor[5].toUpperCase().contains(instructorSearched)))) {
+                        System.out.println("\nInstructor Found:");
+                        System.out.println("First Name:    " + instructor[0]);
+                        System.out.println("Last Name:     " + instructor[1]);
+                        System.out.println("Middle Name:   " + (instructor[2] != null ? instructor[2] : ""));
+                        System.out.println("Address:       " + instructor[3]);
+                        System.out.println("Age:           " + (instructor[4] != null ? instructor[4] : ""));
+                        System.out.println("ID:            " + (instructor[5] != null ? instructor[5] : ""));
+                        for (String sub[] : forSubjects) {
+                            if (sub.length > 2 && sub[2] != null || sub[2].toUpperCase().contains(instructorSearched)) {
+                                System.out.println("SUBJECT  CODE:      " + sub[2] != null ? sub[2] : "");
+                            }
                         }
+                        found = true;
                     }
-                    found = true;
+                }
+
+                if (!found) {
+                    System.out.println("No instructor found.");
                 }
             }
-
-            if (!found) {
-                System.out.println("No instructor found.");
-            }
-        }
         } while (searchAgain());
     }
 
     // INSTRUCTOR DATA SETTER
     public static String[] insInformation(String dataInformation) {
-        System.out.print("CREATE INSTRUCTOR/S FORM\n");
+        System.out.print("\nCREATE INSTRUCTOR/S FORM\n");
         String informationForAll[] = new String[6];
 
         while (!isTrue) {
-            System.out.print("Enter your First Name: ");
+            System.out.print("\nEnter your First Name: ");
             String instructorFirstName = s.nextLine();
 
             if (instructorFirstName.isBlank()) {
@@ -389,7 +390,7 @@ public class InstructorManagement extends UMPS implements forMethodInInstructor 
         List<String[]> getDataOfIns = new ArrayList<>(takeDataForInstructor);
 
         String[] textTitle = { "|INSTRUCTOR ID", "|FIRST NAME", "|LAST NAME", "|MIDDLE NAME", "|ADDRESS", "|AGE",
-                "SUBJECT HOLD" };
+                "|SUBJECT HOLD" };
         System.out.println("\t\t\t\t\t\t DISPLAYING ALL INSTRUCTORS THAT EXISTING IN DATABASE");
         System.out.println(
                 "=============================================================================================================================================================");
@@ -398,36 +399,35 @@ public class InstructorManagement extends UMPS implements forMethodInInstructor 
         }
         System.out.println(
                 "\n=============================================================================================================================================================");
-
         for (String[] getData : getDataOfIns) {
             // for (int i = 0; i< getData.length; i++){
-            //     System.out.println(getData[i] + " " + i);
+            // System.out.println(getData[i] + " " + i);
             // }
             if (getData.length > 5) {
-            String insFname = getData[0];
-            String insLname = getData[1];
-            String insMname = getData[2];
-            String insAddress = getData[3];
-            String insAge = getData[4];
-            String instructorIdentity = getData[5];
-            String newInsAddress = textBehaviour(insAddress, 7);
-            
-            System.out.printf("| %-14s | %-14s | %-14s | %-14s | %-14s | %-14s ", instructorIdentity,
-                    insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(),
-                    newInsAddress.toUpperCase(), insAge);
+                String insFname = getData[0];
+                String insLname = getData[1];
+                String insMname = getData[2];
+                String insAddress = getData[3];
+                String insAge = getData[4];
+                String instructorIdentity = getData[5];
+                String newInsAddress = textBehaviour(insAddress, 7);
 
-            StringBuilder subjectHold = new StringBuilder();
-            for (String[] assignment : forSubjects) {
-                if (assignment.length > 5 && assignment[5] != null && assignment[5].equals(instructorIdentity)) { 
-                    subjectHold.append(assignment[2]);
-                    subjectHold.append(", ");
+                System.out.printf("|%-15s |%-15s |%-15s |%-15s |%-15s |%-15s ", instructorIdentity,
+                        insFname.toUpperCase(), insLname.toUpperCase(), insMname.toUpperCase(),
+                        newInsAddress.toUpperCase(), insAge);
+
+                StringBuilder subjectHold = new StringBuilder();
+                for (String[] assignment : forSubjects) {
+                    if (assignment.length > 5 && assignment[5] != null && assignment[5].equals(instructorIdentity)) {
+                        subjectHold.append(assignment[2]);
+                        subjectHold.append(", ");
+                    }
                 }
+
+                System.out.printf("| %-14s", subjectHold.toString());
+                System.out.println();
             }
 
-            System.out.printf("| %-14s", subjectHold.toString());
-            System.out.println();
-            }
-            
         }
 
     }
